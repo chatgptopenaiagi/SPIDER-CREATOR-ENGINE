@@ -85,6 +85,8 @@ One caller owns a task at a time in this release.
 & .\.venv\Scripts\python.exe -m pip check
 & .\.venv\Scripts\python.exe scripts/run_experiments.py
 & .\.venv\Scripts\python.exe -m build --wheel
+# Full receipt, including a fresh wheel installation and installed CLI checks:
+& .\.venv\Scripts\python.exe scripts/run_acceptance.py
 ```
 
 Expected failed builds and failed verification are successful test assertions when

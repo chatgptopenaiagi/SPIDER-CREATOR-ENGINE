@@ -14,7 +14,7 @@ import tempfile
 from typing import Any, Callable
 import zipapp
 
-from sce.core.models import Evidence, OperationOutcome, OperationRecord, VerificationStatus
+from sce.core.models import Evidence, OperationOutcome, OperationRecord, VerificationStatus, jsonable
 from sce.verification import verify_process
 
 BUILD_ORIGINAL_PROJECT = "BUILD_ORIGINAL_PROJECT"
@@ -225,6 +225,15 @@ class PythonBuildAdapter:
         return record
 
     def verify(self, plan: BuildPlan, record: OperationRecord, *, cancelled: Callable[[], bool] | None = None) -> OperationRecord:
+        if (record.capability_id != CAPABILITY_ID or record.task_id != plan.task_id
+                or jsonable(record.planned) != jsonable(asdict(plan))):
+            record.verification = VerificationStatus("failed")
+            record.evidence.append(Evidence(
+                source="python.zipapp.verify", kind="error",
+                detail="Verification plan or operation identity does not match the recorded execution plan",
+            ))
+            record.finished_at = _now()
+            return record
         if record.outcome != OperationOutcome("succeeded"):
             record.unknowns.append("functional verification was not run because packaging did not succeed")
             return record
@@ -232,9 +241,21 @@ class PythonBuildAdapter:
             raise ValueError("verification requires explicit source trust")
         artifact = Path(plan.output_root) / plan.artifact_name
         expected_artifacts = [item for item in record.produced if item.get("kind") == "python_zipapp" and item.get("path") == str(artifact)]
-        if not artifact.is_file() or len(expected_artifacts) != 1 or _hash(artifact) != expected_artifacts[0]["sha256"]:
+        try:
+            artifact_matches = (artifact.is_file() and len(expected_artifacts) == 1
+                                and _hash(artifact) == expected_artifacts[0].get("sha256"))
+        except OSError as exc:
+            record.outcome = OperationOutcome("partial")
+            record.verification = VerificationStatus("inconclusive")
+            record.evidence.append(Evidence(source=str(artifact), kind="error",
+                                            detail=f"Could not read artifact identity before verification: {exc}"))
+            record.unknowns.append("Artifact identity could not be established; functional verification was not run")
+            record.finished_at = _now()
+            return record
+        if not artifact_matches:
             record.verification = VerificationStatus("failed")
             record.evidence.append(Evidence(source=str(artifact), detail="artifact missing or changed before verification", kind="verification"))
+            record.finished_at = _now()
             return record
         result = verify_process(
             [sys.executable, "-I", str(artifact), *plan.verification_args], cwd=Path(plan.output_root),

@@ -116,6 +116,21 @@ def test_scope_validation_is_mandatory_and_capability_must_be_allowed():
         validate_proposal(proposal, default_registry(), set(), ExactInputScope({}))
 
 
+@pytest.mark.parametrize("allowed", ["python.build.extra", "python.build", {"python.build": True},
+                                     ["python.build", ""], ["python.build", " "], ["python.build", 1]])
+def test_scope_requires_collection_of_nonempty_identifiers(allowed):
+    with pytest.raises(ProposalError, match="collection"):
+        validate_proposal(Proposal.from_json(proposal_json()), default_registry(), allowed,
+                          ExactInputScope({"python.build": [ACTION["inputs"]]}))
+
+
+@pytest.mark.parametrize("allowed", [["python.build"], ("python.build",), {"python.build"}, frozenset({"python.build"})])
+def test_scope_accepts_explicit_identifier_collections(allowed):
+    validated = validate_proposal(Proposal.from_json(proposal_json()), default_registry(), allowed,
+                                  ExactInputScope({"python.build": [ACTION["inputs"]]}))
+    assert validated.actions[0].capability_id == "python.build"
+
+
 @pytest.mark.parametrize("endpoint", ["http://example.com", "http://localhost:8080", "file:///tmp/model",
     "http://127.0.0.1:8080/?key=x", "http://user:password@127.0.0.1:8080", "http://192.168.1.2:8080",
     "http://127.0.0.1:0", "http://127.0.0.1:8080/arbitrary"])

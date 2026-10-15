@@ -91,7 +91,7 @@ class ExactInputScope:
 def validate_proposal(
     proposal: Proposal,
     registry: CapabilityValidator,
-    allowed_capabilities: set[str] | frozenset[str],
+    allowed_capabilities: set[str] | frozenset[str] | list[str] | tuple[str, ...],
     validate_task_inputs: Callable[[str, Mapping], None],
 ) -> Proposal:
     """Validate availability, exact contracts, and host-defined task scope.
@@ -101,6 +101,10 @@ def validate_proposal(
     and raises on failure. This function does not run any proposed operation.
     Callers must validate again at dispatch if registry, scope, or inputs change.
     """
+    if not isinstance(allowed_capabilities, (set, frozenset, list, tuple)) or any(
+        not isinstance(identifier, str) or not identifier.strip() for identifier in allowed_capabilities
+    ):
+        raise ProposalError("allowed_capabilities must be a collection of nonempty capability identifiers")
     if not callable(validate_task_inputs):
         raise ProposalError("Task-scoped input validation is required")
     # Round-trip to check manually constructed proposals and detach mutable input.

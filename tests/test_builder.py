@@ -1,4 +1,5 @@
-from dataclasses import asdict
+from dataclasses import asdict, replace
+from copy import deepcopy
 import json
 from pathlib import Path
 import shutil
@@ -7,7 +8,7 @@ import sys
 import pytest
 
 from sce.builders import CREATE_NEW_APPLICATION_USING_PROJECT, PythonBuildAdapter
-from sce.core.models import OperationOutcome, VerificationStatus
+from sce.core.models import OperationOutcome, OperationRecord, VerificationStatus, jsonable
 from sce.verification import verify_process
 
 FIXTURES = Path(__file__).resolve().parents[1] / "examples" / "fixtures"
@@ -189,3 +190,63 @@ def test_verification_output_evidence_is_bounded(tmp_path):
     assert result.status == "inconclusive"
     assert "output limit" in result.detail
     assert len(result.stdout) <= 100
+
+
+@pytest.mark.parametrize("mismatch", ["expected_stdout", "verification_args", "task_id", "capability_id"])
+def test_verify_rejects_changed_plan_or_operation_identity(tmp_path, monkeypatch, mismatch):
+    adapter = PythonBuildAdapter()
+    plan = adapter.prepare(fixture(tmp_path, "failed_verification"), tmp_path / "output", trusted=True)
+    record = adapter.execute(plan)
+    requested, planned = deepcopy(record.requested), deepcopy(record.planned)
+    if mismatch == "expected_stdout":
+        plan = replace(plan, expected_stdout="incorrect result\n")
+    elif mismatch == "verification_args":
+        plan = replace(plan, verification_args=("different-authority",))
+    elif mismatch == "task_id":
+        record.task_id = "another-task"
+    else:
+        record.capability_id = "different.capability"
+    record.finished_at = "previous-finish"
+
+    def unexpected_verification(*args, **kwargs):
+        pytest.fail("Mismatched verification must not execute a subprocess")
+
+    monkeypatch.setattr("sce.builders.python.verify_process", unexpected_verification)
+    assert adapter.verify(plan, record) is record
+    assert record.verification == VerificationStatus.FAILED
+    assert record.outcome == OperationOutcome.SUCCEEDED
+    assert record.requested == requested and record.planned == planned
+    assert record.finished_at != "previous-finish"
+    assert "does not match" in record.evidence[-1].detail
+    assert not any(item["stage"] == "verify" for item in record.executed)
+
+
+def test_verify_accepts_serialized_execution_plan(tmp_path):
+    adapter = PythonBuildAdapter()
+    plan = adapter.prepare(fixture(tmp_path), tmp_path / "output", trusted=True)
+    record = OperationRecord.from_dict(json.loads(json.dumps(jsonable(adapter.execute(plan)))))
+    assert adapter.verify(plan, record).verification == VerificationStatus.PASSED
+
+
+def test_artifact_read_failure_preserves_inconclusive_record(tmp_path, monkeypatch):
+    adapter = PythonBuildAdapter()
+    plan = adapter.prepare(fixture(tmp_path), tmp_path / "output", trusted=True)
+    record = adapter.execute(plan)
+    requested, planned, produced = deepcopy(record.requested), deepcopy(record.planned), deepcopy(record.produced)
+    record.finished_at = "previous-finish"
+
+    def unreadable_artifact(path):
+        raise PermissionError("controlled sharing violation")
+
+    def unexpected_verification(*args, **kwargs):
+        pytest.fail("An unreadable artifact must not execute a subprocess")
+
+    monkeypatch.setattr("sce.builders.python._hash", unreadable_artifact)
+    monkeypatch.setattr("sce.builders.python.verify_process", unexpected_verification)
+    assert adapter.verify(plan, record) is record
+    assert record.outcome == OperationOutcome.PARTIAL
+    assert record.verification == VerificationStatus.INCONCLUSIVE
+    assert record.requested == requested and record.planned == planned and record.produced == produced
+    assert record.finished_at != "previous-finish"
+    assert "controlled sharing violation" in record.evidence[-1].detail
+    assert not any(item["stage"] == "verify" for item in record.executed)
