@@ -140,27 +140,47 @@ def execute(args, config, emit, provider):
         return 0 if record.outcome == OperationOutcome.SUCCEEDED else 1
     if args.command == "ai-interpret":
         from sce.ai import TaskContext
+        from sce.ai.provider import INTERPRETATION_PROMPT
         tasks = TaskStore(database)
         task = tasks.get_task(args.id)
         memory = KnowledgeStore(database)
         operations = tasks.operations_for_task(task.id)
         if not operations:
             raise ValueError("Interpretation requires actual recorded operations")
-        budget = max(0, config.ai.max_context_chars - len(task.objective) - 1000)
         context_records, included_ids = [], []
         for operation in reversed(operations[-6:]):
+            receipts = []
+            for execution in operation.executed[-3:]:
+                excerpt = {key: execution[key] for key in ("stage", "exit_code", "timed_out", "interrupted") if key in execution}
+                for key in ("stdout", "stderr", "detail"):
+                    if key in execution:
+                        value = str(execution[key])
+                        excerpt[key] = value[:500]
+                        if len(value) > 500:
+                            excerpt[key + "_truncated"] = True
+                if isinstance(execution.get("argv"), (list, tuple)):
+                    excerpt["argv"] = [str(arg)[:200] for arg in execution["argv"][:12]]
+                    excerpt["argv_is_excerpt"] = True
+                receipts.append(excerpt)
+            artifacts = operation.produced or operation.requested.get("artifact", [])
+            identities = [{key: artifact[key] for key in ("kind", "path", "sha256", "source_fingerprint") if key in artifact}
+                          for artifact in artifacts[:3]]
             item = {"operation_id": operation.id, "capability": operation.capability_id,
+                    "operation_order": next(index for index, candidate in enumerate(operations) if candidate.id == operation.id),
+                    "started_at": operation.started_at, "finished_at": operation.finished_at,
                     "outcome": operation.outcome.value, "verification": operation.verification.value,
                     "evidence": [{"source": evidence.source[:200], "kind": evidence.kind, "detail": evidence.detail[:400]}
                                  for evidence in operation.evidence[-3:]],
+                    "executed": receipts, "artifact_identities": identities,
                     "artifact_count": len(operation.produced), "unknowns": operation.unknowns[:3],
-                    "scope": "Bounded excerpt of actual operation record; omitted content is not an assertion of success"}
+                    "scope": "Historical status of this operation only. Earlier generation NOT_RUN may be superseded by later actual checks only for the same artifact and check scope. Actual executed receipts below show runtime activity. Bounded excerpt; omitted content is not an assertion of success."}
             encoded = json.dumps(item, ensure_ascii=False)
-            if len(encoded) > budget:
+            payload = json.dumps({"objective": task.objective, "records": [*context_records, encoded]}, ensure_ascii=False)
+            estimated = len(payload.encode("utf-8")) + len(INTERPRETATION_PROMPT.encode("utf-8")) + 128
+            if len(payload) > config.ai.max_context_chars or estimated + config.ai.max_response_tokens > config.resources.model_context_tokens:
                 continue
             context_records.append(encoded)
             included_ids.append(operation.id)
-            budget -= len(encoded)
         if not context_records:
             raise ValueError("No actual operation evidence fits the configured context budget")
         context = TaskContext(task.objective, tuple(context_records))

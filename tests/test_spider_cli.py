@@ -202,6 +202,84 @@ def qasc_arguments(tmp_path, *extra):
             "--name", "greeting-app", "--acceptance", str(acceptance), *extra]
 
 
+def test_interpretation_context_keeps_runtime_receipts_and_chronological_artifact_identity(tmp_path, monkeypatch, capsys):
+    monkeypatch.chdir(tmp_path)
+    config = Config.default(tmp_path)
+    task = Task("Interpret generation and later functional checks")
+    tasks = TaskStore(config.storage["TASK_DATABASE"])
+    tasks.create_task(task)
+    artifact = {"kind": "generated_python_project", "path": "fixture-project", "source_fingerprint": "a" * 64}
+    generation = OperationRecord(capability_id="qasc.create_python", task_id=task.id,
+        outcome=OperationOutcome.SUCCEEDED, verification=VerificationStatus.NOT_RUN,
+        started_at="2026-10-15T10:00:00+00:00", finished_at="2026-10-15T10:01:00+00:00",
+        produced=[artifact], unknowns=["Functionality remains unverified until separate VERIFY"])
+    verified = OperationRecord(capability_id="qasc.create_python", task_id=task.id,
+        outcome=OperationOutcome.SUCCEEDED, verification=VerificationStatus.PASSED,
+        started_at="2026-10-15T10:02:00+00:00", finished_at="2026-10-15T10:03:00+00:00",
+        produced=[artifact], evidence=[Evidence("fixture-tests", "Declared acceptance passed", kind="verification")],
+        executed=[{"stage": "verify", "argv": ["python", "-m", "qasc", "test", "fixture-project"],
+                   "exit_code": 0, "stdout": "hello\n", "stderr": "", "timed_out": False, "interrupted": False}])
+    tasks.save_operation(generation)
+    tasks.save_operation(verified)
+    contexts = []
+
+    class Interpreter:
+        def interpret(self, context):
+            contexts.append(context)
+            return Interpretation("Later checks passed for the same artifact.", (), ())
+
+    monkeypatch.setattr(importlib.import_module("sce.cli.main"), "_provider", lambda _: Interpreter())
+    assert main(["ai-interpret", task.id]) == 0
+    capsys.readouterr()
+    records = [json.loads(record) for record in contexts[0].records]
+    assert [record["operation_id"] for record in records] == [verified.id, generation.id]
+    assert records[0]["operation_order"] > records[1]["operation_order"]
+    assert records[0]["started_at"] == verified.started_at
+    assert records[1]["finished_at"] == generation.finished_at
+    receipt = records[0]["executed"][0]
+    assert receipt["stdout"] == "hello\n" and receipt["exit_code"] == 0
+    assert receipt["argv"][-2:] == ["test", "fixture-project"]
+    assert receipt["timed_out"] is False and receipt["interrupted"] is False
+    assert records[0]["artifact_identities"] == records[1]["artifact_identities"] == [artifact]
+    assert records[1]["verification"] == "not_run" and records[1]["unknowns"] == generation.unknowns
+    assert "same artifact and check scope" in records[0]["scope"]
+    assert tasks.operations_for_task(task.id) == [generation, verified]
+
+
+def test_interpretation_execution_excerpts_are_bounded_and_mark_truncation(tmp_path, monkeypatch, capsys):
+    monkeypatch.chdir(tmp_path)
+    config, task, _ = seed_execution(tmp_path)
+    tasks = TaskStore(config.storage["TASK_DATABASE"])
+    operation = OperationRecord(capability_id="application.verify", task_id=task.id,
+        executed=[{"stage": "verify", "argv": ["python", "argument" * 40], "stdout": "x" * 5000,
+                   "stderr": "y" * 5000, "exit_code": index, "timed_out": True} for index in range(5)])
+    tasks.save_operation(operation)
+    contexts = []
+
+    class Interpreter:
+        def interpret(self, context):
+            contexts.append(context)
+            return Interpretation("Recorded execution timed out.", (), ())
+
+    monkeypatch.setattr(importlib.import_module("sce.cli.main"), "_provider", lambda _: Interpreter())
+    assert main(["ai-interpret", task.id]) == 0
+    capsys.readouterr()
+    records = [json.loads(record) for record in contexts[0].records]
+    record = next(item for item in records if item["operation_id"] == operation.id)
+    assert [receipt["exit_code"] for receipt in record["executed"]] == [2, 3, 4]
+    for receipt in record["executed"]:
+        assert len(receipt["stdout"]) == len(receipt["stderr"]) == 500
+        assert receipt["stdout_truncated"] is True and receipt["stderr_truncated"] is True
+        assert all(len(arg) <= 200 for arg in receipt["argv"])
+        assert receipt["argv_is_excerpt"] is True
+    assert sum(map(len, contexts[0].records)) <= config.ai.max_context_chars
+    from sce.ai.provider import INTERPRETATION_PROMPT
+    serialized = json.dumps({"objective": contexts[0].objective, "records": list(contexts[0].records)}, ensure_ascii=False)
+    assert len(serialized) <= config.ai.max_context_chars
+    assert (len(serialized.encode("utf-8")) + len(INTERPRETATION_PROMPT.encode("utf-8")) + 128
+            + config.ai.max_response_tokens <= config.resources.model_context_tokens)
+
+
 def fake_qasc(monkeypatch, *, generation=OperationOutcome.SUCCEEDED, verification=VerificationStatus.PASSED):
     calls = []
 
