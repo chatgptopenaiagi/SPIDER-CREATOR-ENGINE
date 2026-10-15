@@ -42,7 +42,9 @@ def main() -> int:
         selected = [root / "pyproject.toml"]
         for directory in ("src", "tests", "examples", "scripts", "config"):
             selected.extend(path for path in (root / directory).rglob("*") if path.is_file()
-                            and "__pycache__" not in path.parts and path.suffix in {".py", ".json", ".toml", ".ps1", ".txt"}
+                            and "__pycache__" not in path.parts
+                            and not any(part.endswith(".egg-info") for part in path.parts)
+                            and path.suffix in {".py", ".json", ".toml", ".ps1", ".txt"}
                             and path.name != "local.toml")
         receipt["source_sha256"] = {str(path.relative_to(root)).replace("\\", "/"):
                                     hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted(selected)}
@@ -84,6 +86,11 @@ def main() -> int:
         receipt["completed_task_id"] = task_result["id"]
         run("experiments", [sys.executable, root / "scripts/run_experiments.py", "--output", output / "experiments"])
         receipt["experiments"] = json.loads((output / "experiments/summary.json").read_text())["experiments"]
+        changed = [name for name, digest in receipt["source_sha256"].items()
+                   if hashlib.sha256((root / name).read_bytes()).hexdigest() != digest]
+        receipt["source_tree_unchanged"] = not changed
+        if changed:
+            raise RuntimeError(f"Source inputs changed during acceptance: {changed}")
         receipt["passed"] = True
     except (OSError, RuntimeError, ValueError, subprocess.TimeoutExpired) as error:
         receipt["failure"] = f"{type(error).__name__}: {error}"
