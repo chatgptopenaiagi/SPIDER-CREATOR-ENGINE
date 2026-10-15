@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import io
 import json
 from pathlib import Path
 import sqlite3
@@ -134,6 +135,11 @@ def _task_execution(args, config: Config, store: TaskStore) -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
+    # Windows redirected streams may otherwise use a legacy code page, even
+    # when model responses and stored evidence contain valid Unicode text.
+    for stream in (sys.stdout, sys.stderr):
+        if isinstance(stream, io.TextIOWrapper):
+            stream.reconfigure(encoding="utf-8")
     args = parser().parse_args(argv)
     try:
         config = Config.load(args.config) if args.config else Config.default(Path.cwd())

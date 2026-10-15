@@ -1,4 +1,7 @@
 import json
+import os
+import subprocess
+import sys
 
 from sce.ai import Interpretation
 from sce.ai.provider import INTERPRETATION_PROMPT
@@ -6,6 +9,15 @@ from sce.cli.main import main
 from sce.core.config import Config
 from sce.core.models import Evidence, OperationRecord, OperationOutcome, Task, VerificationStatus
 from sce.storage import TaskStore
+
+
+def test_redirected_windows_style_legacy_encoding_keeps_unicode_json(tmp_path):
+    environment = {**os.environ, "PYTHONIOENCODING": "ascii"}
+    objective = "温度 → Fahrenheit"
+    result = subprocess.run([sys.executable, "-m", "sce", "task", "create", objective],
+        cwd=tmp_path, env=environment, capture_output=True, timeout=15)
+    assert result.returncode == 0, result.stderr.decode("utf-8", errors="replace")
+    assert json.loads(result.stdout.decode("utf-8"))["objective"] == objective
 
 
 def test_interpretation_includes_runtime_receipts_chronology_and_fits_wire_budget(tmp_path, monkeypatch, capsys):
