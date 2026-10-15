@@ -1,0 +1,93 @@
+{
+  "capability_id": "python.build",
+  "id": "e9826e22-2b28-4bb8-89dd-45da1cf4cd43",
+  "task_id": null,
+  "requested": {
+    "operation": "BUILD_ORIGINAL_PROJECT",
+    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\success",
+    "trusted": true
+  },
+  "planned": {
+    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\success",
+    "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\success",
+    "operation": "BUILD_ORIGINAL_PROJECT",
+    "trusted": true,
+    "task_id": null,
+    "artifact_name": "hello-sce.pyz",
+    "entry_point": "main:main",
+    "required_modules": [],
+    "verification_args": [
+      "Ada"
+    ],
+    "expected_stdout": "Hello, Ada. Human time matters.\n",
+    "expected_exit": 0,
+    "files": [
+      {
+        "path": "main.py",
+        "sha256": "ab70878bd589f28b493b3cc39b01af352d8411c217512fc543515f4c0d4c2b1a",
+        "size": 192
+      },
+      {
+        "path": "sce-build.json",
+        "sha256": "62b97d13d7235f55ed83b7f34d28428e01868be9f7f8b643ec08d1d27aebd796",
+        "size": 240
+      }
+    ],
+    "validation_errors": [],
+    "unsupported": false
+  },
+  "outcome": "succeeded",
+  "verification": "passed",
+  "executed": [
+    {
+      "stage": "execute",
+      "operation": "zipapp.create_archive",
+      "entry_point": "main:main"
+    },
+    {
+      "stage": "verify",
+      "status": "passed",
+      "argv": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+        "-I",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\success\\hello-sce.pyz",
+        "Ada"
+      ],
+      "expected_stdout": "Hello, Ada. Human time matters.\n",
+      "expected_exit": 0,
+      "stdout": "Hello, Ada. Human time matters.\n",
+      "stderr": "",
+      "exit_code": 0,
+      "detail": "declared exit and stdout matched",
+      "elapsed_seconds": 0.07254449999982171
+    }
+  ],
+  "produced": [
+    {
+      "kind": "python_zipapp",
+      "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\success\\hello-sce.pyz",
+      "sha256": "2565c4f0adcbbab22fd4a8194372fa33e5730cc86f5a7c8478d138f709ba4972",
+      "size": 671
+    }
+  ],
+  "evidence": [
+    {
+      "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\success\\hello-sce.pyz",
+      "detail": "package created and SHA-256 recorded; functionality remains unverified",
+      "observed_at": "2026-10-15T12:23:08.506715+00:00",
+      "kind": "artifact"
+    },
+    {
+      "source": "python.zipapp.verify",
+      "detail": "declared exit and stdout matched",
+      "observed_at": "2026-10-15T12:23:08.581052+00:00",
+      "kind": "verification"
+    }
+  ],
+  "unknowns": [
+    "Installation was not requested, performed, or verified",
+    "Declared fixture check does not establish general application correctness"
+  ],
+  "started_at": "2026-10-15T12:23:08.477664+00:00",
+  "finished_at": "2026-10-15T12:23:08.581099+00:00"
+}

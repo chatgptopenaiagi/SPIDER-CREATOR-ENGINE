@@ -1,0 +1,93 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>SCE operation report</title><body><h1>SCE operation report</h1><p>Outcome: <strong>succeeded</strong></p><p>Verification: <strong>passed</strong></p><pre>{
+  &quot;capability_id&quot;: &quot;python.build&quot;,
+  &quot;id&quot;: &quot;3e9f89ad-916a-4f01-8b41-85cdfc0ea96e&quot;,
+  &quot;task_id&quot;: null,
+  &quot;requested&quot;: {
+    &quot;operation&quot;: &quot;BUILD_ORIGINAL_PROJECT&quot;,
+    &quot;source&quot;: &quot;I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\success&quot;,
+    &quot;trusted&quot;: true
+  },
+  &quot;planned&quot;: {
+    &quot;source&quot;: &quot;I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\success&quot;,
+    &quot;output_root&quot;: &quot;I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\build-output&quot;,
+    &quot;operation&quot;: &quot;BUILD_ORIGINAL_PROJECT&quot;,
+    &quot;trusted&quot;: true,
+    &quot;task_id&quot;: null,
+    &quot;artifact_name&quot;: &quot;hello-sce.pyz&quot;,
+    &quot;entry_point&quot;: &quot;main:main&quot;,
+    &quot;required_modules&quot;: [],
+    &quot;verification_args&quot;: [
+      &quot;Ada&quot;
+    ],
+    &quot;expected_stdout&quot;: &quot;Hello, Ada. Human time matters.\n&quot;,
+    &quot;expected_exit&quot;: 0,
+    &quot;files&quot;: [
+      {
+        &quot;path&quot;: &quot;main.py&quot;,
+        &quot;sha256&quot;: &quot;ab70878bd589f28b493b3cc39b01af352d8411c217512fc543515f4c0d4c2b1a&quot;,
+        &quot;size&quot;: 192
+      },
+      {
+        &quot;path&quot;: &quot;sce-build.json&quot;,
+        &quot;sha256&quot;: &quot;62b97d13d7235f55ed83b7f34d28428e01868be9f7f8b643ec08d1d27aebd796&quot;,
+        &quot;size&quot;: 240
+      }
+    ],
+    &quot;validation_errors&quot;: [],
+    &quot;unsupported&quot;: false
+  },
+  &quot;outcome&quot;: &quot;succeeded&quot;,
+  &quot;verification&quot;: &quot;passed&quot;,
+  &quot;executed&quot;: [
+    {
+      &quot;stage&quot;: &quot;execute&quot;,
+      &quot;operation&quot;: &quot;zipapp.create_archive&quot;,
+      &quot;entry_point&quot;: &quot;main:main&quot;
+    },
+    {
+      &quot;stage&quot;: &quot;verify&quot;,
+      &quot;status&quot;: &quot;passed&quot;,
+      &quot;argv&quot;: [
+        &quot;I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed\\Scripts\\python.exe&quot;,
+        &quot;-I&quot;,
+        &quot;I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\build-output\\hello-sce.pyz&quot;,
+        &quot;Ada&quot;
+      ],
+      &quot;expected_stdout&quot;: &quot;Hello, Ada. Human time matters.\n&quot;,
+      &quot;expected_exit&quot;: 0,
+      &quot;stdout&quot;: &quot;Hello, Ada. Human time matters.\n&quot;,
+      &quot;stderr&quot;: &quot;&quot;,
+      &quot;exit_code&quot;: 0,
+      &quot;detail&quot;: &quot;declared exit and stdout matched&quot;,
+      &quot;elapsed_seconds&quot;: 0.07006630000068981
+    }
+  ],
+  &quot;produced&quot;: [
+    {
+      &quot;kind&quot;: &quot;python_zipapp&quot;,
+      &quot;path&quot;: &quot;I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\build-output\\hello-sce.pyz&quot;,
+      &quot;sha256&quot;: &quot;f325aee2eb9d7e196bff2fb41d6a2c59356403070b8e04bb3d1b2af4495ecbc8&quot;,
+      &quot;size&quot;: 671
+    }
+  ],
+  &quot;evidence&quot;: [
+    {
+      &quot;source&quot;: &quot;I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\build-output\\hello-sce.pyz&quot;,
+      &quot;detail&quot;: &quot;package created and SHA-256 recorded; functionality remains unverified&quot;,
+      &quot;observed_at&quot;: &quot;2026-10-15T12:23:05.972873+00:00&quot;,
+      &quot;kind&quot;: &quot;artifact&quot;
+    },
+    {
+      &quot;source&quot;: &quot;python.zipapp.verify&quot;,
+      &quot;detail&quot;: &quot;declared exit and stdout matched&quot;,
+      &quot;observed_at&quot;: &quot;2026-10-15T12:23:06.044040+00:00&quot;,
+      &quot;kind&quot;: &quot;verification&quot;
+    }
+  ],
+  &quot;unknowns&quot;: [
+    &quot;Installation was not requested, performed, or verified&quot;,
+    &quot;Declared fixture check does not establish general application correctness&quot;
+  ],
+  &quot;started_at&quot;: &quot;2026-10-15T12:23:05.948642+00:00&quot;,
+  &quot;finished_at&quot;: &quot;2026-10-15T12:23:06.044069+00:00&quot;
+}</pre></body></html>

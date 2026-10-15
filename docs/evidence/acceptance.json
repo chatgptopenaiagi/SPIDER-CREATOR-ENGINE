@@ -1,0 +1,375 @@
+{
+  "started_at": "2026-10-15T12:22:37.449415+00:00",
+  "checks": [
+    {
+      "name": "tested-commit",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T12:22:37.449431+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "working-tree",
+      "command": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T12:22:37.475220+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "tests",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "--junitxml=I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\pytest.xml"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T12:22:37.517951+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "dependencies",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T12:22:46.302008+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "wheel-build",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+        "-m",
+        "build",
+        "--wheel",
+        "--outdir",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\dist"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T12:22:47.157331+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "create-install-environment",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+        "-m",
+        "venv",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T12:22:53.231734+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "wheel-install",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\dist\\spider_creator_engine-0.1.0-py3-none-any.whl"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T12:23:01.476324+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "isolated-import",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import sce; print(sce.__file__)"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1",
+      "started_at": "2026-10-15T12:23:04.021998+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "installed-dependencies",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1",
+      "started_at": "2026-10-15T12:23:04.084716+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "cli-version",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed\\Scripts\\sce.exe",
+        "--version"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1",
+      "started_at": "2026-10-15T12:23:04.881173+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "capabilities",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed\\Scripts\\sce.exe",
+        "capabilities"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1",
+      "started_at": "2026-10-15T12:23:05.290716+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "installed-build",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed\\Scripts\\sce.exe",
+        "build",
+        "I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\success",
+        "--output",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\build-output",
+        "--trust-source",
+        "--verify"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1",
+      "started_at": "2026-10-15T12:23:05.629639+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "report-json",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed\\Scripts\\sce.exe",
+        "report",
+        "3e9f89ad-916a-4f01-8b41-85cdfc0ea96e",
+        "--format",
+        "json",
+        "--output",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed-operation.json"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1",
+      "started_at": "2026-10-15T12:23:06.377304+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "report-markdown",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed\\Scripts\\sce.exe",
+        "report",
+        "3e9f89ad-916a-4f01-8b41-85cdfc0ea96e",
+        "--format",
+        "markdown",
+        "--output",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed-operation.md"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1",
+      "started_at": "2026-10-15T12:23:06.716656+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "report-html",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed\\Scripts\\sce.exe",
+        "report",
+        "3e9f89ad-916a-4f01-8b41-85cdfc0ea96e",
+        "--format",
+        "html",
+        "--output",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed-operation.html"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1",
+      "started_at": "2026-10-15T12:23:07.042657+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "installed-task",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed\\Scripts\\sce.exe",
+        "task",
+        "run",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\task.json",
+        "--trust-source"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1",
+      "started_at": "2026-10-15T12:23:07.362583+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "experiments",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+        "I:\\SPIDER-CREATOR-ENGINE\\scripts\\run_experiments.py",
+        "--output",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T12:23:08.227551+00:00",
+      "exit_code": 0
+    }
+  ],
+  "passed": true,
+  "tested_commit": "ad56f2d2ac95fb5bd0e9d2cf8b0ddb2f0aff4536",
+  "working_tree_at_start": [
+    "?? docs/evidence/"
+  ],
+  "source_sha256": {
+    "config/example.toml": "efd60a6494b5957c71f954cea0be69cf916bcf2492d63678e2e7ae7fed585f02",
+    "examples/fixtures/failed_verification/main.py": "aded67560a1c409a497625085fd5d6b3f909517ef4be2e57ef63e34c2b1b143c",
+    "examples/fixtures/failed_verification/sce-build.json": "dfee3b084050c4202350945917e40ddc1e532dbe5281342f449feabdf7bee535",
+    "examples/fixtures/missing_dependency/main.py": "c94a5e3c05a3ddd4f1dfd54ad487bf2b0a19bd0d4d0b4114245457eec8cfe2bd",
+    "examples/fixtures/missing_dependency/sce-build.json": "04f42046eb0fd4648249de675fd87968da388b73928aeb700204e5d9ca05a025",
+    "examples/fixtures/success/main.py": "ab70878bd589f28b493b3cc39b01af352d8411c217512fc543515f4c0d4c2b1a",
+    "examples/fixtures/success/sce-build.json": "62b97d13d7235f55ed83b7f34d28428e01868be9f7f8b643ec08d1d27aebd796",
+    "examples/fixtures/timeout/main.py": "584e2c6380a0b1e6969908173cd578484a9d7147a6a1936a16d569c874ca5798",
+    "examples/fixtures/timeout/sce-build.json": "ffd68ffd7ba89006d8e106dbbfa76c2a6f65395a6d19eb31cadcc75e60e19dff",
+    "examples/fixtures/unsupported/README.txt": "ba8a9c6e6a9702bf4da69acb1bc2d83374bebd254f250c8a1a2ea5fe8920b7eb",
+    "examples/task.json": "3f8c10213489cb5f41393df96da4efa30af36c4339bd88c73c8d9b6ff92981e8",
+    "pyproject.toml": "6b575b18ce5b8220e52e00631df7a2d8176a41c41c0da0f7e7e906e188fe2bf4",
+    "scripts/run_acceptance.py": "66d445f618d619cf72e95e4311f3f0d01275777aa46ac19aa160f47b42e6005a",
+    "scripts/run_experiments.py": "efa3cfe5d851928bbab280ea8758aee34abcbf499df470f5c61bffb5527d9808",
+    "scripts/verify.ps1": "9da27cb341d3258fa7a0549df35d47651eb000769d2ccc3f9688dce57cd31740",
+    "src/sce/__init__.py": "86ec7259c4a9481a147c4edd22ce1984e93b45993c063738c3d8dcbd9675ee57",
+    "src/sce/__main__.py": "851a55c0028a4034b2b79931532a90a8d7a97b00cbe864323c616d43ce654210",
+    "src/sce/acquisition/__init__.py": "5fd0e8b2147dab06fdba708aed0b991fcf339ae396aee3e7869dd97257f8398c",
+    "src/sce/acquisition/local.py": "40d290df61954fdf2d215c0ebbd648e43c42fbcdd58d9e290db8c0b11c9e6976",
+    "src/sce/adapters/__init__.py": "cd6d891bc35953c06e8b22c8824ba15a7fc3b3f4e9c714885da1b1ba729c5e48",
+    "src/sce/adapters/base.py": "3da5b2a625fe3eee91205350da4a1304401ead5f2451df6d3e48edf6999e4b85",
+    "src/sce/ai/__init__.py": "4a7a093f832a19e80583ba0c9bcb57459a2ee602c804adfb760ec88400665e27",
+    "src/sce/ai/proposals.py": "dcb144223597f805522bf837981dbae70865afc016cba02b0edc5229ba1bedab",
+    "src/sce/ai/provider.py": "568eec6343be23256e53b8d74c71dd8011ae2f456c527b8bfab6dca1c45694bb",
+    "src/sce/analysis/__init__.py": "24dbc9bc3efe4af6b884855b9e13a7f1a8163d8f9f0433570fba6de1e7bfbfe5",
+    "src/sce/builders/__init__.py": "1f0658a9a585d610a80c88b11f652df7f606aee1d285c5171f9564e067f1c6cf",
+    "src/sce/builders/python.py": "2c508bb5b4de03ee8a34d15d1b45b0efa438027aa6ffc50c67b1c44208b47646",
+    "src/sce/capabilities/__init__.py": "9777e082d727799fba9f364b3750d1a79732a7b1a9a0ebdac6fe4a47d3267da0",
+    "src/sce/capabilities/registry.py": "93245978c1d6768b1f9d4298c5703f4932ce98e5bbdbf6399514035768748554",
+    "src/sce/cli/__init__.py": "27bfa72782b52541c008262a56fe5b8611a1acd7fb4612fd602918be2ac51cda",
+    "src/sce/cli/main.py": "85460bae1fedecd5996b2a25ca775abb53b809bd43e25d32f678464ca4e8bb65",
+    "src/sce/core/__init__.py": "83ebd1574a88bcf43a4f1c2eb14d50a99c8da3935ccec4b40a2c312d33b228ee",
+    "src/sce/core/config.py": "4d33d41e7e6422b35bc6e7a5fed2bbec9ead53a564812c5a79731bfe2eeb9d4a",
+    "src/sce/core/models.py": "8bad64f35b697d62a956cbec9815c775f80e21c9eb2ec75d025e9dd1395900a9",
+    "src/sce/discovery/__init__.py": "d87af474947b4229dbbc08be18cbd8fe8291410b838e77b8a333042c1719a0a5",
+    "src/sce/knowledge/__init__.py": "3802d5834259aff8ff2b6dcdb4c1cc37f4cb472ab1ade5dcf7c748e6e8f35dd3",
+    "src/sce/knowledge/models.py": "8c4031729e494fd89a78e3a56f8d9f8b611c31d8219ad681cd6fbb223dffbf1d",
+    "src/sce/knowledge/store.py": "d49adbf083a6393d7e9363e5aac68b6718b5897ad4ca50a631a06dada16e52cf",
+    "src/sce/orchestration/__init__.py": "f75daa6bbd4e7d4800838325acbe570c649c49aee3b3a2710273e39e3f6601f8",
+    "src/sce/orchestration/engine.py": "276568291c31e8e711916d17b58ee593ae2cebcd3e1c87d43676113f92b08323",
+    "src/sce/recovery/__init__.py": "cdfc35500e0b28106ec0e1a2ec54c4f98a107f97091de40a40e3398df2b923f8",
+    "src/sce/recovery/capsules.py": "c75ea2a6c90169b42641107cc8b66d424bc724bf9ea62a662df1e77561eead98",
+    "src/sce/reporting/__init__.py": "e97e1cb55d3c9287242379d20178adce57bb34d0449126ae14b46c62ab3e88b8",
+    "src/sce/reporting/render.py": "0fb2ba9e217170576bfb910b8851d748762c25dde64a73f3815062716a2c7a93",
+    "src/sce/resources/__init__.py": "e59b70a4849923a80432a254e95cbfcc07675c1936822d919da2f5929e65afc5",
+    "src/sce/resources/environment.py": "44f5de88429135b8565761ab82d64a2bdf52a4d6b269dc520be65970255a87b3",
+    "src/sce/resources/limits.py": "93945a7599f0bbddfdcd2ea513802b3154c8fdfa22d236ebd90212233c1705e9",
+    "src/sce/storage/__init__.py": "181b99617b840da30dc0b8d868befbc73a0be09bc4d8a4733a38b3dc4d0fbdd5",
+    "src/sce/storage/task_store.py": "2b1154865b60dffd6a8c180378d2ba57e3200777fb8b717198f31620d0badba3",
+    "src/sce/verification/__init__.py": "54433511000a2fe74675e9316c6294cefaa06c92f1b9d5208f2d960b1ad24706",
+    "src/sce/verification/process.py": "ebe1f561f6d44079a8c3890a8a83fc53f11dc55a99c9f6d230baa28e54461e64",
+    "src/spider_creator_engine.egg-info/dependency_links.txt": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "src/spider_creator_engine.egg-info/entry_points.txt": "6cf2cd36fd6d40bd52b24716005b9490648cc5430e49c87ab8049bebdd3c4997",
+    "src/spider_creator_engine.egg-info/requires.txt": "81f249348017b6952bed5f937fad7753b52c24ca4bfee1362b6305f4f04e2d54",
+    "src/spider_creator_engine.egg-info/SOURCES.txt": "19404cf35502e3c9df09034e051ac9f14099d6fa9179cf156eae8311e1298a6a",
+    "src/spider_creator_engine.egg-info/top_level.txt": "65c86df06887c6cd84758c1082c60ad9a2b2e84d25dd6902e0078a74aee07698",
+    "tests/test_ai.py": "dfdd7d25775f76e72d466fd7152ec9865e67a28c999b95f8dbe69edcb7aa608a",
+    "tests/test_builder.py": "181bf14da43750c44ebea1d3cd4f8924b79bffe9832c7b725a1b7e3cc685f8bb",
+    "tests/test_cli.py": "5fb1bb9e8ef32f08712b75693b03304c68c75af0965048a5131b5358d87d09a0",
+    "tests/test_core.py": "15116fe8b514f0157331e08e7d42a31b67fba7cd92b795a98e7c73d8e3bc9683",
+    "tests/test_knowledge.py": "a3c683d474e6a2ded59fd0e6482df5d5370e173e5a5bf69303ec55f9c539a664",
+    "tests/test_local_resources.py": "18ce866ec5270d32aa4dee8864964caefbcc6532eb310addadc57797abc5519f",
+    "tests/test_orchestration.py": "6d7fff35ed3069d1c7cd0eb8f5eb7f1ada80a5f64bddf4603e82ba251b8e18ff",
+    "tests/test_resources.py": "4c8436aeb426f2fe54a5bb6611328eaee3033ab1bd71c9697ae374162e8889d5"
+  },
+  "tests": {
+    "tests": 148,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "wheel": {
+    "filename": "spider_creator_engine-0.1.0-py3-none-any.whl",
+    "sha256": "19f982be05e272eee31dbf24b25b3bbf2460d9ee29c94583f5f15cd0ac79da64"
+  },
+  "installed_module": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\installed\\Lib\\site-packages\\sce\\__init__.py",
+  "cli_version": "SCE 0.1.0",
+  "installed_build_operation": "3e9f89ad-916a-4f01-8b41-85cdfc0ea96e",
+  "completed_task_id": "4659a532-df3f-44a4-8333-15d5e91fd7d3",
+  "experiments": [
+    {
+      "fixture": "success",
+      "expected": [
+        "succeeded",
+        "passed"
+      ],
+      "actual": [
+        "succeeded",
+        "passed"
+      ],
+      "passed": true,
+      "operation_id": "e9826e22-2b28-4bb8-89dd-45da1cf4cd43"
+    },
+    {
+      "fixture": "missing_dependency",
+      "expected": [
+        "failed",
+        "not_run"
+      ],
+      "actual": [
+        "failed",
+        "not_run"
+      ],
+      "passed": true,
+      "operation_id": "f204e74f-dfce-4ae4-a4ec-87146b1d5b9e"
+    },
+    {
+      "fixture": "unsupported",
+      "expected": [
+        "unsupported",
+        "not_run"
+      ],
+      "actual": [
+        "unsupported",
+        "not_run"
+      ],
+      "passed": true,
+      "operation_id": "518b1f73-fd87-447b-af98-e19d47772a50"
+    },
+    {
+      "fixture": "failed_verification",
+      "expected": [
+        "succeeded",
+        "failed"
+      ],
+      "actual": [
+        "succeeded",
+        "failed"
+      ],
+      "passed": true,
+      "operation_id": "810e26a3-f006-4577-97e4-41db84fb76d0"
+    },
+    {
+      "fixture": "timeout",
+      "expected": [
+        "partial",
+        "inconclusive"
+      ],
+      "actual": [
+        "partial",
+        "inconclusive"
+      ],
+      "passed": true,
+      "operation_id": "8c1cc4b2-b0b1-4b79-a43e-0933a8c8bd5b"
+    }
+  ],
+  "finished_at": "2026-10-15T12:23:08.986052+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "observed_at": "2026-10-15T12:19:57.2931440Z",
+  "processor": {
+    "Name": "AMD Ryzen 5 5600G with Radeon Graphics         ",
+    "NumberOfCores": 6,
+    "NumberOfLogicalProcessors": 12
+  },
+  "memory": {
+    "TotalPhysicalMemory": 68047577088
+  },
+  "gpu": "NVIDIA GeForce RTX 3050, 6144 MiB, 5373 MiB",
+  "dotnet_sdks": [
+    "5.0.416 [C:\\Program Files\\dotnet\\sdk]",
+    "8.0.425 [C:\\Program Files\\dotnet\\sdk]",
+    "10.0.401 [C:\\Program Files\\dotnet\\sdk]",
+    "11.0.100-preview.7.26381.103 [C:\\Program Files\\dotnet\\sdk]"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "environment": {
+    "observed_at": "2026-10-15T12:19:03.347543+00:00",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "python": {
+      "version": "3.14.7",
+      "executable": "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe"
+    },
+    "cpu": {
+      "description": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+      "logical_count": 12
+    },
+    "memory": {
+      "total_bytes": 68047577088,
+      "available_bytes": 30460010496,
+      "source": "GlobalMemoryStatusEx",
+      "error": null
+    },
+    "disk": {
+      "path": "I:\\SPIDER-CREATOR-ENGINE",
+      "total_bytes": 419429347328,
+      "free_bytes": 100612210688,
+      "error": null
+    },
+    "gpu": {
+      "status": "not_probed",
+      "devices": [],
+      "error": null
+    },
+    "tools": {
+      "python": "C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python315\\python.EXE",
+      "git": "C:\\Program Files\\Git\\cmd\\git.EXE",
+      "gh": "C:\\Program Files\\GitHub CLI\\gh.EXE",
+      "dotnet": "C:\\Program Files\\dotnet\\dotnet.EXE",
+      "nvidia-smi": "C:\\Windows\\system32\\nvidia-smi.EXE"
+    },
+    "limitations": [
+      "Point-in-time observations, not reservations or resource enforcement.",
+      "No model offload configuration inferred from GPU memory."
+    ]
+  },
+  "limits": {
+    "max_ram_bytes": null,
+    "max_gpu_bytes": null,
+    "model_context_tokens": 8192,
+    "max_workers": 1,
+    "build_parallelism": 1,
+    "max_temp_bytes": 1073741824,
+    "execution_timeout_seconds": 120.0,
+    "max_retries": 1
+  },
+  "enforcement": {
+    "max_ram_bytes": "advisory: no operating-system memory isolation",
+    "max_gpu_bytes": "advisory: no GPU allocation isolation or offload configuration",
+    "model_context_tokens": "AI request budget; actual tokenization belongs to the provider",
+    "max_workers": "orchestrator scheduling limit; no global process isolation",
+    "build_parallelism": "adapter-specific; only effective when a builder consumes it",
+    "max_temp_bytes": "advisory: no filesystem quota enforcement",
+    "execution_timeout_seconds": "adapter-specific timeout; no guarantee for detached child processes",
+    "max_retries": "orchestrator retry limit; zero disables automatic recovery"
+  }
+}

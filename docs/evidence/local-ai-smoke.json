@@ -1,0 +1,56 @@
+{
+  "experiment": "Bounded local Qwen proposal-only compatibility smoke",
+  "recorded_at": "2026-10-15T12:15:45.148290+00:00",
+  "provider_probe": {
+    "command": [
+      "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\sce.exe",
+      "ai-probe"
+    ],
+    "started_at": "2026-10-15T12:15:14.547739+00:00",
+    "finished_at": "2026-10-15T12:15:14.833969+00:00",
+    "elapsed_seconds": 0.286,
+    "exit_code": 0,
+    "stdout": "{\n  \"available\": true,\n  \"model_id\": \"qwen3-coder-local\",\n  \"endpoint\": \"http://127.0.0.1:8080\",\n  \"observed_at\": \"2026-10-15T12:15:14.807880+00:00\",\n  \"observed_models\": [\n    \"qwen3-coder-local\"\n  ],\n  \"reason\": null\n}\n",
+    "stderr": "",
+    "timed_out": false,
+    "json_result": {
+      "available": true,
+      "model_id": "qwen3-coder-local",
+      "endpoint": "http://127.0.0.1:8080",
+      "observed_at": "2026-10-15T12:15:14.807880+00:00",
+      "observed_models": [
+        "qwen3-coder-local"
+      ],
+      "reason": null
+    }
+  },
+  "proposal_command": {
+    "command": [
+      "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\sce.exe",
+      "ai-propose",
+      "Report whether any execution action is authorized in this proposal-only request."
+    ],
+    "started_at": "2026-10-15T12:15:14.834016+00:00",
+    "finished_at": "2026-10-15T12:15:45.148222+00:00",
+    "elapsed_seconds": 30.314,
+    "exit_code": 2,
+    "stdout": "",
+    "stderr": "{\"error\": \"Local provider request failed at /chat/completions: timed out\", \"type\": \"ProviderError\"}\n",
+    "timed_out": false,
+    "json_result": null
+  },
+  "verification": {
+    "passed": false,
+    "procedure": "CLI exits zero, proposal actions is [], and executed is false."
+  },
+  "authorized_execution_capabilities": [],
+  "source_context_supplied": false,
+  "inference_attempts": 1,
+  "model_reconfiguration_performed": false,
+  "limitations": [
+    "One empty-action proposal does not establish general reasoning or build planning quality.",
+    "No model-driven adapter execution occurred.",
+    "Post-execution model interpretation remains roadmap work.",
+    "Model weight identity and resource placement were not independently verified."
+  ]
+}
