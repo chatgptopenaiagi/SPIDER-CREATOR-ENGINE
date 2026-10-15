@@ -1,0 +1,77 @@
+{
+  "observed_at": "2026-10-15T13:05:42.384260+00:00",
+  "method": "Read-only document and manifest inspection; file hashes identify these observations",
+  "components": [
+    {
+      "name": "QASC",
+      "root": "I:/QWEN-AUTONOMOUS-SOFTWARE-CREATOR",
+      "observation": "Installed Python CLI qasc 0.1.0; SCE invokes create and test through an explicit interpreter; generation experiment recorded separately.",
+      "documents": [
+        {
+          "path": "I:\\QWEN-AUTONOMOUS-SOFTWARE-CREATOR\\README.md",
+          "exists": true,
+          "sha256": "e0c4a5ea13a36c545ea6626581002f3963b243640350b298975e2bbfcb937874"
+        },
+        {
+          "path": "I:\\QWEN-AUTONOMOUS-SOFTWARE-CREATOR\\pyproject.toml",
+          "exists": true,
+          "sha256": "4d77b0c2dbfdd5842bd0126b5ac25f839804fb06d400fbaae4df6bf5ea0f5bab"
+        }
+      ],
+      "modified_by_SCE": false,
+      "verified_functionality": false
+    },
+    {
+      "name": "LocalAI",
+      "root": "I:/LocalAI/qwen-integration",
+      "observation": "Independent local inference/bridge environment; no source or server configuration changes requested.",
+      "documents": [
+        {
+          "path": "I:\\LocalAI\\qwen-integration\\README.md",
+          "exists": true,
+          "sha256": "8d6d3efc5763b773b0fefd9f1bf7377662eaa10fde40807d1d1266559187783e"
+        }
+      ],
+      "modified_by_SCE": false,
+      "verified_functionality": false
+    },
+    {
+      "name": "UIB",
+      "root": "I:/UNIVERSAL-INSTALL-BUILDER/UIB",
+      "observation": "Inspected PowerShell/Python-oriented build wrapper documentation; no SCE execution adapter qualified.",
+      "documents": [
+        {
+          "path": "I:\\UNIVERSAL-INSTALL-BUILDER\\UIB\\README.md",
+          "exists": true,
+          "sha256": "538fc3d89e0f7d673fa0c920ba3f58f22f7ee0eff3adf29fa1c96ae77b65ec09"
+        }
+      ],
+      "modified_by_SCE": false,
+      "verified_functionality": false
+    },
+    {
+      "name": "UIE",
+      "root": "I:/UNIVERSAL-INSTALL-ENGINE",
+      "observation": "Inspected Python entry point and Rust workspace declarations; no SCE packaging/installation integration claimed.",
+      "documents": [
+        {
+          "path": "I:\\UNIVERSAL-INSTALL-ENGINE\\README.md",
+          "exists": true,
+          "sha256": "e4d74d64f29b7454354f32426b1ff2267d904335677e64d7413477dd85e8a4b8"
+        },
+        {
+          "path": "I:\\UNIVERSAL-INSTALL-ENGINE\\pyproject.toml",
+          "exists": true,
+          "sha256": "410d82b772ffd32bcdd4744f0940011c6e70f55535f503ea5c8c73b4036d3c54"
+        },
+        {
+          "path": "I:\\UNIVERSAL-INSTALL-ENGINE\\Cargo.toml",
+          "exists": true,
+          "sha256": "30cb369e92cc8ebfb5d9fa8f35165064067d5f4c5a0e339113ef8b92c6487a8d"
+        }
+      ],
+      "modified_by_SCE": false,
+      "verified_functionality": false
+    }
+  ]
+}

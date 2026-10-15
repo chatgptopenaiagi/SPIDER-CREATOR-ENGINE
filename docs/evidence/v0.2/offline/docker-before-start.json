@@ -1,0 +1,30 @@
+{
+  "network_mode": "none",
+  "memory_bytes": 536870912,
+  "nano_cpus": 1000000000,
+  "pids_limit": 128,
+  "readonly_rootfs": true,
+  "mounts": [
+    {
+      "Type": "volume",
+      "Name": "sce-offline-d4fa6098-c6e6-4630-bcd5-5d0d7355a162-source",
+      "Source": "/var/lib/docker/volumes/sce-offline-d4fa6098-c6e6-4630-bcd5-5d0d7355a162-source/_data",
+      "Destination": "/repo",
+      "Driver": "local",
+      "Mode": "z",
+      "RW": false,
+      "Propagation": ""
+    },
+    {
+      "Type": "volume",
+      "Name": "sce-offline-d4fa6098-c6e6-4630-bcd5-5d0d7355a162-output",
+      "Source": "/var/lib/docker/volumes/sce-offline-d4fa6098-c6e6-4630-bcd5-5d0d7355a162-output/_data",
+      "Destination": "/workspace",
+      "Driver": "local",
+      "Mode": "z",
+      "RW": true,
+      "Propagation": ""
+    }
+  ],
+  "image_id": "sha256:a2b82f3c48559aa0a8446d9af49826b6e2b2016f4cd2afabfe6013ec53729170"
+}

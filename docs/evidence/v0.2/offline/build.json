@@ -1,0 +1,126 @@
+{
+  "capability_id": "python.build",
+  "id": "b5f858dd-f4c9-4b3e-aa5e-93aa944960b8",
+  "task_id": "offline-synthesis-verification",
+  "requested": {
+    "operation": "BUILD_ORIGINAL_PROJECT",
+    "source": "/workspace/application_source",
+    "trusted": true
+  },
+  "planned": {
+    "source": "/workspace/application_source",
+    "output_root": "/workspace/artifacts",
+    "operation": "BUILD_ORIGINAL_PROJECT",
+    "trusted": true,
+    "task_id": "offline-synthesis-verification",
+    "artifact_name": "offline-csv-report.pyz",
+    "entry_point": "sce_bridge:main",
+    "required_modules": [],
+    "verification_args": [
+      "--input-json",
+      "{\"csv_text\":\"name,team\\nAda,engineering\\nLin,design\\nAda,engineering\\n\"}"
+    ],
+    "expected_stdout": "{\"column_count\":2,\"columns\":[\"name\",\"team\"],\"distinct_values\":{\"name\":2,\"team\":2},\"report\":\"Rows: 3\\nColumns: 2\\nname: 2 distinct values\\nteam: 2 distinct values\",\"row_count\":3}\n",
+    "expected_exit": 0,
+    "files": [
+      {
+        "path": "_sce_parts/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "_sce_parts/p0/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "_sce_parts/p0/csv_tools.py",
+        "sha256": "8b626639d89c6310c36b92a9779a590196f4aa473e6b2a972f568b4c91d33620",
+        "size": 1101
+      },
+      {
+        "path": "_sce_parts/p1/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      {
+        "path": "_sce_parts/p1/report_tools.py",
+        "sha256": "922aaf5791c8dbb7ac089c961110dee5d1f4d7cd1ea8f93928d92035f9aea21a",
+        "size": 444
+      },
+      {
+        "path": "sce-build.json",
+        "sha256": "bcbfe373145bed826b26f9b766cae39307326a55a25b0ad4c85c8de62e7d56ee",
+        "size": 474
+      },
+      {
+        "path": "sce-provenance.json",
+        "sha256": "e871892c2338d0d6190c868fdfb1da5a3ef2571bf995733947dfa1b2754d600f",
+        "size": 1552
+      },
+      {
+        "path": "sce_bridge.py",
+        "sha256": "968f68291e684a5a36931503f59a8ab0a79c061154ed87548729bdf80a6f808d",
+        "size": 1226
+      }
+    ],
+    "validation_errors": [],
+    "unsupported": false,
+    "temporary_root": null
+  },
+  "outcome": "succeeded",
+  "verification": "passed",
+  "executed": [
+    {
+      "stage": "execute",
+      "operation": "zipapp.create_archive",
+      "entry_point": "sce_bridge:main"
+    },
+    {
+      "stage": "verify",
+      "status": "passed",
+      "argv": [
+        "/usr/local/bin/python",
+        "-I",
+        "/workspace/artifacts/offline-csv-report.pyz",
+        "--input-json",
+        "{\"csv_text\":\"name,team\\nAda,engineering\\nLin,design\\nAda,engineering\\n\"}"
+      ],
+      "expected_stdout": "{\"column_count\":2,\"columns\":[\"name\",\"team\"],\"distinct_values\":{\"name\":2,\"team\":2},\"report\":\"Rows: 3\\nColumns: 2\\nname: 2 distinct values\\nteam: 2 distinct values\",\"row_count\":3}\n",
+      "expected_exit": 0,
+      "stdout": "{\"column_count\":2,\"columns\":[\"name\",\"team\"],\"distinct_values\":{\"name\":2,\"team\":2},\"report\":\"Rows: 3\\nColumns: 2\\nname: 2 distinct values\\nteam: 2 distinct values\",\"row_count\":3}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "detail": "declared exit and stdout matched",
+      "elapsed_seconds": 0.13282920200072112
+    }
+  ],
+  "produced": [
+    {
+      "kind": "python_zipapp",
+      "path": "/workspace/artifacts/offline-csv-report.pyz",
+      "sha256": "f9396a8e61cc05a3f5eac34cff1b90350adf740c44321d4d127096e70ce181ed",
+      "size": 3795
+    }
+  ],
+  "evidence": [
+    {
+      "source": "/workspace/artifacts/offline-csv-report.pyz",
+      "detail": "package created and SHA-256 recorded; functionality remains unverified",
+      "observed_at": "2026-10-15T13:23:05.297829+00:00",
+      "kind": "artifact"
+    },
+    {
+      "source": "python.zipapp.verify",
+      "detail": "declared exit and stdout matched",
+      "observed_at": "2026-10-15T13:23:05.430989+00:00",
+      "kind": "verification"
+    }
+  ],
+  "unknowns": [
+    "Installation was not requested, performed, or verified",
+    "Declared fixture check does not establish general application correctness"
+  ],
+  "started_at": "2026-10-15T13:23:05.288626+00:00",
+  "finished_at": "2026-10-15T13:23:05.431017+00:00"
+}

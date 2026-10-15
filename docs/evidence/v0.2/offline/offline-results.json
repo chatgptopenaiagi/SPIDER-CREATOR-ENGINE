@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "network": {
+    "interfaces": [
+      "lo"
+    ],
+    "ipv4_routes": "Iface\tDestination\tGateway \tFlags\tRefCnt\tUse\tMetric\tMask\t\tMTU\tWindow\tIRTT                                                       \n",
+    "ipv6_routes": "00000000000000000000000000000000 00 00000000000000000000000000000000 00 00000000000000000000000000000000 ffffffff 00000001 00000000 00200200       lo\n00000000000000000000000000000001 80 00000000000000000000000000000000 00 00000000000000000000000000000000 00000000 00000002 00000000 80200001       lo\n00000000000000000000000000000000 00 00000000000000000000000000000000 00 00000000000000000000000000000000 ffffffff 00000001 00000000 00200200       lo\n",
+    "probe_target": "1.1.1.1:443",
+    "external_connection": {
+      "status": "blocked",
+      "error": "[Errno 101] Network is unreachable",
+      "errno": 101
+    }
+  },
+  "python": "3.14.8 (main, Oct  6 2026, 01:59:23) [GCC 14.2.0]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.41",
+  "synthesis_operation_id": "72bcb141-386a-4564-a8d7-b69d9a994e77",
+  "build_operation_id": "b5f858dd-f4c9-4b3e-aa5e-93aa944960b8",
+  "functional_verification": "passed",
+  "persistent_memory_second_process": {
+    "status": "passed",
+    "record_ids": [
+      "af6516fb-62b0-4416-be93-a7c6e4fc6550",
+      "ef77af9e-2293-454c-a864-b73247d466a5"
+    ],
+    "spider_task_id": "70a6a582-e87a-42d2-ae51-8558d7105943",
+    "spider_operation_count": 6,
+    "new_interpreter_pid": 10
+  },
+  "artifacts": [
+    {
+      "kind": "python_zipapp",
+      "path": "/workspace/artifacts/offline-csv-report.pyz",
+      "sha256": "f9396a8e61cc05a3f5eac34cff1b90350adf740c44321d4d127096e70ce181ed",
+      "size": 3795
+    }
+  ],
+  "spider_task_id": "70a6a582-e87a-42d2-ae51-8558d7105943",
+  "source_hashes_unchanged": true,
+  "scope": "Local discovery, acquisition, analysis, callable synthesis, Python zipapp build, declared fixture, SQLite persistence; no AI or online discovery"
+}

@@ -1,0 +1,127 @@
+{
+  "task_id": "2a79f6a5-bb03-48d8-aa29-a32a2c90cc8e",
+  "operation": {
+    "capability_id": "qasc.create_python",
+    "id": "ec083138-73d5-4e54-a289-72c8866bbf40",
+    "task_id": "2a79f6a5-bb03-48d8-aa29-a32a2c90cc8e",
+    "requested": {
+      "objective": "Create a minimal dependency-free Python CLI main.py. One positional Celsius number in sys.argv[1]; print Fahrenheit C*9/5+32 with exactly one decimal place and newline. Non-numeric input exits nonzero. Include a test_conversion.py with two unittest tests. Keep source short. Do not access network or files at runtime.",
+      "operation": "CREATE_NEW_APPLICATION"
+    },
+    "planned": {
+      "id": "06f6d466-eef8-45da-a361-1c3c90b8d170",
+      "objective": "Create a minimal dependency-free Python CLI main.py. One positional Celsius number in sys.argv[1]; print Fahrenheit C*9/5+32 with exactly one decimal place and newline. Non-numeric input exits nonzero. Include a test_conversion.py with two unittest tests. Keep source short. Do not access network or files at runtime.",
+      "name": "temperature-v02-retry",
+      "workspace": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc",
+      "project": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc\\temperature-v02-retry",
+      "interpreter": "I:\\QWEN-AUTONOMOUS-SOFTWARE-CREATOR\\.venv\\Scripts\\python.exe",
+      "interpreter_sha256": "553a3ab1745f76010992beb8be8e37252e064324fdd878a11bb04d34f861dac5",
+      "endpoint": "http://127.0.0.1:8080",
+      "model": "qwen3-coder-local",
+      "acceptance_json": "{\"cases\": [{\"args\": [\"0\"], \"exit_code\": 0, \"name\": \"freezing\", \"stdout\": \"32.0\\n\"}, {\"args\": [\"100\"], \"exit_code\": 0, \"name\": \"boiling\", \"stdout\": \"212.0\\n\"}, {\"args\": [\"-40\"], \"exit_code\": 0, \"name\": \"negative\", \"stdout\": \"-40.0\\n\"}], \"provenance\": \"operator_supplied_verification\"}",
+      "task_id": "2a79f6a5-bb03-48d8-aa29-a32a2c90cc8e"
+    },
+    "outcome": "succeeded",
+    "verification": "passed",
+    "executed": [
+      {
+        "stage": "generate",
+        "argv": [
+          "I:\\QWEN-AUTONOMOUS-SOFTWARE-CREATOR\\.venv\\Scripts\\python.exe",
+          "-I",
+          "-B",
+          "-m",
+          "qasc",
+          "--projects-dir",
+          "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc",
+          "--endpoint",
+          "http://127.0.0.1:8080",
+          "--model-timeout",
+          "600",
+          "--max-tokens",
+          "1200",
+          "--model",
+          "qwen3-coder-local",
+          "create",
+          "--name",
+          "temperature-v02-retry",
+          "--request-file",
+          "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc\\.sce-qasc\\06f6d466-eef8-45da-a361-1c3c90b8d170\\request.txt",
+          "--acceptance",
+          "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc\\.sce-qasc\\06f6d466-eef8-45da-a361-1c3c90b8d170\\acceptance.json",
+          "--max-corrections",
+          "0"
+        ],
+        "exit_code": 0,
+        "stdout": "{\r\n  \"name\": \"temperature-v02-retry\",\r\n  \"path\": \"I:\\\\SPIDER-CREATOR-ENGINE\\\\.sce\\\\ai-v02\\\\.sce\\\\build_workspaces\\\\qasc\\\\temperature-v02-retry\",\r\n  \"status\": \"generated\",\r\n  \"revision\": \"0001-345c6b89\",\r\n  \"requirements\": [\r\n    \"Python 3.11+\",\r\n    \"Standard library only (no external dependencies)\"\r\n  ],\r\n  \"entrypoint\": \"main.py\",\r\n  \"files\": [\r\n    \"main.py\",\r\n    \"tests/test_conversion.py\"\r\n  ],\r\n  \"last_verification\": null,\r\n  \"verification_matches_current_source\": null,\r\n  \"corrections\": 0,\r\n  \"verified_versions\": 0,\r\n  \"unresolved_problems\": [],\r\n  \"metadata_path\": \"I:\\\\SPIDER-CREATOR-ENGINE\\\\.sce\\\\ai-v02\\\\.sce\\\\build_workspaces\\\\qasc\\\\temperature-v02-retry\\\\.qasc\",\r\n  \"updated_at\": \"2026-10-15T13:05:48.713622+00:00\"\r\n}\r\n",
+        "stderr": "",
+        "interrupted": false,
+        "detail": "",
+        "elapsed_seconds": 135.22836259999895
+      },
+      {
+        "stage": "verify",
+        "argv": [
+          "I:\\QWEN-AUTONOMOUS-SOFTWARE-CREATOR\\.venv\\Scripts\\python.exe",
+          "-I",
+          "-B",
+          "-m",
+          "qasc",
+          "--projects-dir",
+          "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc",
+          "--endpoint",
+          "http://127.0.0.1:8080",
+          "--model-timeout",
+          "600",
+          "--max-tokens",
+          "1200",
+          "--model",
+          "qwen3-coder-local",
+          "test",
+          "temperature-v02-retry",
+          "--timeout",
+          "30"
+        ],
+        "exit_code": 0,
+        "stdout": "{\r\n  \"name\": \"temperature-v02-retry\",\r\n  \"path\": \"I:\\\\SPIDER-CREATOR-ENGINE\\\\.sce\\\\ai-v02\\\\.sce\\\\build_workspaces\\\\qasc\\\\temperature-v02-retry\",\r\n  \"status\": \"verified\",\r\n  \"revision\": \"0001-345c6b89\",\r\n  \"requirements\": [\r\n    \"Python 3.11+\",\r\n    \"Standard library only (no external dependencies)\"\r\n  ],\r\n  \"entrypoint\": \"main.py\",\r\n  \"files\": [\r\n    \"main.py\",\r\n    \"tests/test_conversion.py\"\r\n  ],\r\n  \"last_verification\": {\r\n    \"id\": \"58e30e622fa2\",\r\n    \"at\": \"2026-10-15T13:05:50.715585+00:00\",\r\n    \"revision\": \"0001-345c6b89\",\r\n    \"passed\": true,\r\n    \"unit_tests_passed\": true,\r\n    \"unit_test_count\": 2,\r\n    \"unit_receipt_id\": \"d758c506a6d142da83028b9d0d494756\",\r\n    \"acceptance_cases\": [\r\n      {\r\n        \"name\": \"freezing\",\r\n        \"passed\": true,\r\n        \"receipt_id\": \"de41cd19b4ef4dff9ab26cb53f56ad0e\",\r\n        \"mismatches\": []\r\n      },\r\n      {\r\n        \"name\": \"boiling\",\r\n        \"passed\": true,\r\n        \"receipt_id\": \"5c3012c3b5144edaa1ed6ad31c056501\",\r\n        \"mismatches\": []\r\n      },\r\n      {\r\n        \"name\": \"negative\",\r\n        \"passed\": true,\r\n        \"receipt_id\": \"0e3aa69bb4f348bc810dfca0e602e0bd\",\r\n        \"mismatches\": []\r\n      }\r\n    ],\r\n    \"independent_acceptance_passed\": true,\r\n    \"source_unchanged\": true,\r\n    \"source_fingerprint\": \"509960349933fcf55816a83ba6e53cc520925300f9f5f9945102884e2ac19531\",\r\n    \"scope\": \"operator_acceptance_and_model_tests\",\r\n    \"unit_feedback\": {\r\n      \"stdout\": \"212.0\\r\\n32.0\\r\\n\",\r\n      \"stderr\": \"test_boiling (test_conversion.TestConversion.test_boiling) ... ok\\r\\ntest_freezing (test_conversion.TestConversion.test_freezing) ... ok\\r\\n\\r\\n----------------------------------------------------------------------\\r\\nRan 2 tests in 0.088s\\r\\n\\r\\nOK\\r\\n\",\r\n      \"exit_code\": 0,\r\n      \"timed_out\": false,\r\n      \"error\": null\r\n    }\r\n  },\r\n  \"verification_matches_current_source\": true,\r\n  \"corrections\": 0,\r\n  \"verified_versions\": 1,\r\n  \"unresolved_problems\": [],\r\n  \"metadata_path\": \"I:\\\\SPIDER-CREATOR-ENGINE\\\\.sce\\\\ai-v02\\\\.sce\\\\build_workspaces\\\\qasc\\\\temperature-v02-retry\\\\.qasc\",\r\n  \"updated_at\": \"2026-10-15T13:05:50.849440+00:00\"\r\n}\r\n",
+        "stderr": "",
+        "interrupted": false,
+        "detail": "",
+        "elapsed_seconds": 1.6141800999994302
+      }
+    ],
+    "produced": [
+      {
+        "kind": "generated_python_project",
+        "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc\\temperature-v02-retry",
+        "files": {
+          "main.py": "518bafaad828f35a82309bbf393306e832209d91c87a5e4634cb7cbd8cce96a1",
+          "tests/test_conversion.py": "34d85ecc394fe69a103d1a0a2fb238dd97ef3a1c0a4c857f73edd32bb02622e3"
+        },
+        "source_fingerprint": "509960349933fcf55816a83ba6e53cc520925300f9f5f9945102884e2ac19531",
+        "revision": "0001-345c6b89",
+        "entrypoint": "main.py"
+      }
+    ],
+    "evidence": [
+      {
+        "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc\\temperature-v02-retry\\.qasc\\state.json",
+        "detail": "QASC generated source exists; acceptance retained and file hashes observed; no source execution requested",
+        "observed_at": "2026-10-15T13:05:48.834032+00:00",
+        "kind": "artifact"
+      },
+      {
+        "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc\\temperature-v02-retry\\.qasc\\state.json",
+        "detail": "{\"verification\": {\"id\": \"58e30e622fa2\", \"at\": \"2026-10-15T13:05:50.715585+00:00\", \"revision\": \"0001-345c6b89\", \"passed\": true, \"unit_tests_passed\": true, \"unit_test_count\": 2, \"unit_receipt_id\": \"d758c506a6d142da83028b9d0d494756\", \"acceptance_cases\": [{\"name\": \"freezing\", \"passed\": true, \"receipt_id\": \"de41cd19b4ef4dff9ab26cb53f56ad0e\", \"mismatches\": []}, {\"name\": \"boiling\", \"passed\": true, \"receipt_id\": \"5c3012c3b5144edaa1ed6ad31c056501\", \"mismatches\": []}, {\"name\": \"negative\", \"passed\": true, \"receipt_id\": \"0e3aa69bb4f348bc810dfca0e602e0bd\", \"mismatches\": []}], \"independent_acceptance_passed\": true, \"source_unchanged\": true, \"source_fingerprint\": \"509960349933fcf55816a83ba6e53cc520925300f9f5f9945102884e2ac19531\", \"scope\": \"operator_acceptance_and_model_tests\", \"unit_feedback\": {\"stdout\": \"212.0\\r\\n32.0\\r\\n\", \"stderr\": \"test_boiling (test_conversion.TestConversion.test_boiling) ... ok\\r\\ntest_freezing (test_conversion.TestConversion.test_freezing) ... ok\\r\\n\\r\\n----------------------------------------------------------------------\\r\\nRan 2 tests in 0.088s\\r\\n\\r\\nOK\\r\\n\", \"exit_code\": 0, \"timed_out\": false, \"error\": null}}, \"sce_fingerprint\": \"509960349933fcf55816a83ba6e53cc520925300f9f5f9945102884e2ac19531\", \"fixed_acceptance_retained\": true, \"passed\": true}",
+        "observed_at": "2026-10-15T13:05:50.975472+00:00",
+        "kind": "verification"
+      }
+    ],
+    "unknowns": [
+      "No packaging, installation, or dependency installation was requested",
+      "Checks cover supplied acceptance cases and generated tests; they do not establish general correctness or sandbox isolation"
+    ],
+    "started_at": "2026-10-15T13:03:33.589382+00:00",
+    "finished_at": "2026-10-15T13:05:50.975502+00:00"
+  }
+}

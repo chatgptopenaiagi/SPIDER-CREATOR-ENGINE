@@ -1,81 +1,178 @@
-# Foundation architecture
+# Spider Creator Engine architecture
 
-SCE v0.1 uses Python 3.11+ and the standard library at runtime. Build/test dependencies
-are development-only. Replaceable adapters avoid coupling orchestration to a language
-toolchain or model provider. Existing Rust components may remain in Rust when future
-interface inspection supports an integration.
+SCE is a local-first software discovery, engineering intelligence, and creation
+platform. Its architecture connects human objectives to reusable software
+knowledge, explicit engineering decisions, component construction, and observed
+functional results. The v0.1 orchestrator remains execution infrastructure for
+that larger product. The v0.2 milestone introduces a bounded Spider workflow.
+
+Python 3.11+ and the standard library provide the host runtime. Replaceable
+adapters allow Python, Rust, PowerShell, C++, .NET, or independently developed
+components to retain their own implementations. Integration follows inspected
+interfaces rather than a requirement to rewrite every engine in Python.
+
+## Product flow
 
 ```mermaid
 flowchart TD
-    H[Human objective and explicit scope] --> T[Validated task DAG]
-    T --> O[Sequential orchestrator]
-    O --> C[Capability registry and input contract]
-    C --> A[Adapter prepare / execute / verify / report]
-    A --> R[Canonical operation evidence]
-    R --> S[SQLite checkpoints and operation history]
-    R --> F[JSON / Markdown / HTML]
-    K[Provenance-bearing engineering memory] --> Q[Bounded local AI proposal]
-    Q --> V[Registry + exact task input validation]
-    V -. future planning integration .-> T
+    H[Human objective and acceptance requirements] --> D[Spider resource discovery]
+    D --> A[Acquire or register selected resources]
+    A --> U[Inspect structure and declared interfaces]
+    U --> K[Software Knowledge Library]
+    K --> P[Engineering route and scoped plan]
+    K --> Q[Bounded local AI proposal]
+    Q --> V[Task and capability validation]
+    V -. model-driven execution loop proposed .-> P
+    P --> C[Executable Capability Library]
+    C --> S[Adapt or synthesize application]
+    S --> B[Build]
+    B --> F[Independent functional checks]
+    F --> E[Artifacts and canonical evidence]
+    E --> K
+    E --> T[Inspectable three-level trace]
+    E -. future delivery adapters .-> I[Packaging / installation / installation checks]
 ```
 
-## Implemented boundaries
+The concrete local creation route uses human-selected Python callable components
+and a caller-supplied input/expected-output pair. It discovers and snapshots the
+sources, inspects them, creates a thin JSON bridge in a fresh workspace, builds an
+archive, runs the declared functional check, and persists evidence. Choosing
+arbitrary components from a natural-language request and generating missing source
+are proposed extensions to this implemented route.
 
-| Module | Implemented role | Important limitation |
+## Modules and evidence boundaries
+
+| Module | Implemented role | Boundary |
 | --- | --- | --- |
-| `core` | Typed tasks, timing, operation records, TOML configuration | No automatic baseline estimates |
-| `orchestration` | DAG ordering, attempts, checkpoints, cancellation, conservative resume | Sequential, one owner per task; no distributed lease |
-| `storage` | SQLite task and operation persistence | Local database, no schema migration framework yet |
-| `capabilities` | Input/output descriptions, implementation state, availability, evidence | Implemented does not imply verified in this environment |
-| `knowledge` / `recovery` | Provenance, contradictions, bounded retrieval, unresolved capsules | Explicit ingestion; no automatic repair selection |
-| `discovery` | Provider protocol and explicit local paths | GitHub/SourceForge/forums/URL connectors proposed |
-| `acquisition` | Provider protocol and bounded local file/directory snapshots | No HTTP downloader, archive extraction, repository category selection |
-| `analysis` | Bounded static filename/metadata observations | Interfaces/tool requirements remain incomplete or inferred |
-| `adapters` / `builders` | Common contract and controlled Python zipapp builder | .NET and new-application synthesis unavailable |
-| `verification` | Declared subprocess stdout/exit verification, cancellation, timeout | Reviewed code only; no security sandbox or process-tree isolation |
-| `reporting` | Canonical JSON, Markdown, HTML | Runtime receipts can contain source paths/output; review before sharing |
-| `ai` | Local provider protocol, bounded structured proposals, exact scope checks | No autonomous approval/execution or final interpretation loop |
-| `resources` | Runtime observations and configured budgets | RAM/GPU/temp quotas advisory, no OS enforcement |
+| `discovery` | Starting-point normalization, local static inspection, public GitHub account/repository/keyword discovery | Bounded pinned trees/root documents; no general semantic research or remote execution |
+| `acquisition` | Local file/directory snapshots with identities, hashes, and transfer evidence | Network acquisition and archive extraction proposed |
+| `analysis` | Static project structure, language, dependency, and build metadata observations | Declarations and filename clues do not prove compatibility |
+| `synthesis` | Explicit Python callable components, source selection, isolated namespaces, generated JSON bridge | Controlled interface class; no source generation by a model |
+| `builders` / `adapters` | Common contract, controlled Python archive builder, optional inspected installed-QASC CLI bridge | QASC generation needs separate functional qualification; general build backends and .NET proposed |
+| `verification` | Separate subprocess checks against declared stdout/exit requirements | One acceptance case qualifies one observed result; no sandbox |
+| `knowledge` / `recovery` | Provenance categories, resource indexes, typed relationships, applicability, human corrections, failure capsules | Retrieval supports engineering judgment; automatic diagnosis and repair proposed |
+| `capabilities` | Contracts, implementation status, availability, evidence, and limitations | Registry presence is not functional proof |
+| `ai` | Provider-independent proposals and evidence interpretation, loopback probing, bounded context, exact input-scope validation | Interpretations remain inference; live models and independent external adapters need qualification |
+| `orchestration` | Task DAGs, attempts, checkpoints, cancellation, conservative resume | Sequential execution; one owner per task |
+| `storage` | Local task and operation database | Additive memory/trace schema changes; full migration/backup tooling proposed |
+| `reporting` | Canonical operation JSON/Markdown/HTML and three-level trace | Operation outcome and verification remain separate |
+| `resources` / `core` | Configuration, portable data models, timing, environment observation, declared budgets | Memory/GPU/disk quotas advisory; no fabricated measurements |
+| `cli` | Discover, create from selected components, inspect memory/trace, and foundation operations | A practical bounded workflow rather than general autonomous product negotiation |
 
-Synthesis has no empty placeholder module. Its capability descriptor and roadmap
-state are proposed. A future synthesis adapter should use thin CLI/API bridges or
-intermediate representations with independently verified contracts.
+## Discovery and source understanding
 
-## State and recovery
+Starting points include local paths, repository URLs, `owner/repository`, GitHub
+account URLs or `@username`, and project/objective text. Online discovery requires
+an explicit opt-in. Natural-language text currently becomes a literal GitHub
+keyword query; semantic request decomposition is proposed. SourceForge,
+MediaFire, arbitrary URLs, and unsupported GitHub URL forms are classified with
+explicit unsupported results rather than treated as implemented connectors.
 
-Task states are `pending`, `running`, `completed`, `failed`, `cancelled`, and `blocked`.
-Before execution, the engine saves the running step and increments its attempt count.
-After execution, a single transaction saves the canonical operation and task state.
-Completion requires a successful operation with passed declared verification.
-Operation outcome and verification remain independent: `succeeded` + `failed` is
-valid when packaging succeeded but functional checks failed.
+Public GitHub observations use anonymous read-only REST requests, request/response
+budgets, a pinned commit, its source tree, and verified blob identities for selected
+root documents. They record metadata, source paths, language clues, README and
+supported manifest declarations. Releases, full repository acquisition, and
+arbitrary source-file interpretation require further adapters. Local inspection
+uses a bounded file set and content-derived observation identity, reporting
+exclusions and incomplete inventories. A local archive is identified, not extracted.
 
-Retries require a failed outcome, an explicit adapter `retry_safe` declaration, and
-a remaining bounded attempt budget. Partial operations and interrupted running steps
-require reconciliation. Cancellation is cooperative at stage boundaries and during
-the direct verification subprocess. Stopping a descendant process tree is not
-implemented. Concurrent runners for one task are outside the v0.1 contract.
+Both routes produce structured resources and attributable observations. They do
+not import selected source. The static analysis layer preserves the distinction
+between observed structure, author declarations, AI inference, and tested behavior.
 
-## Resource and storage policy
+## Creation and the adapter contract
 
-Every managed storage category is independently configurable, including database,
-resource library, caches, build workspaces, dependency environments, artifacts,
-models, indexes, temporary data, logs, and reports. Some categories reserve locations
-for future adapters; configuration does not claim corresponding features exist.
-Resource UUIDs and content hashes are separate from their current filesystem location.
-Selected paths are never silently redirected to another volume.
+The common engine contract is `DESCRIBE → PREPARE → EXECUTE → VERIFY → REPORT`.
+`PREPARE` validates and returns an inspectable plan without performing execution.
+Synthesis copies selected source into a new workspace and writes a fixed bridge;
+its own verification checks construction integrity. A separate builder creates
+an archive; separate functional checks execute it against declared requirements.
+Changes to prepared source or generated effects invalidate the plan.
 
-Execution is currently serial regardless of larger configured worker/build counts.
-The CLI applies timeout and retry settings; AI requests apply context/output bounds.
-RAM, GPU memory, and aggregate temporary-storage quotas are declared advisory. No
-Qwen offload layout is assumed or changed. `sce doctor` records live observations
-without inferring that adequate resources are reserved for SCE.
+`BUILD_ORIGINAL_PROJECT` means building the selected project itself.
+`CREATE_NEW_APPLICATION_USING_PROJECT` means constructing a new application using
+selected components. The latter preserves component identities and revisions in
+application provenance. Neither operation implies installation.
 
-## Sources for implementation decisions
+Python component interfaces are explicit `module:function` callables accepting one
+JSON object; intermediate results must also be JSON objects. Source files are
+selected explicitly, package imports must suit isolated namespaces, and ambient
+dependencies are not silently installed. CLI/API wrappers, generated missing
+components, cross-language bridges, and hybrid creation will extend these contracts
+as separately qualified capabilities.
 
-Python archives require an available Python interpreter and have limitations for
-native extensions: [Python zipapp documentation](https://docs.python.org/3.14/library/zipapp.html).
-The package uses a `src` layout and `pyproject.toml` metadata following the
-[Python Packaging User Guide](https://packaging.python.org/en/latest/tutorials/packaging-projects/).
-These sources inform packaging design; they do not establish compatibility beyond
-the controlled tests in this repository.
+An optional `PythonQASCAdapter` uses the independently installed QASC CLI through
+an explicitly selected interpreter. Generation and later functional verification
+produce separate canonical records. Generated source requires explicit trust
+before execution, and independent acceptance expectations remain separate from
+model-authored tests. The adapter does not modify the external project or its
+environment. This narrow integration does not establish general autonomous
+source adaptation or successful live inference without a corresponding receipt.
+
+Independent stages include discovery, acquisition, analysis, adaptation, synthesis,
+build, functional verification, packaging, installation, installation verification,
+and AI capability registration. Not every task needs every stage. Download-only,
+build-existing-project, create-new-application, package-application, and register-
+capability are distinct objectives; only implemented adapters can execute a stage.
+
+## Memory, AI, and living evidence
+
+Knowledge records preserve original claims and provenance, resource identity and
+revision, evidence, environment, applicability conditions, related records, known
+limits, and recording time. Typed relationships connect those records. Explicit
+historical retrieval is bounded by resource identity, task scope, record count,
+and serialized character budget. A reusable repair candidate can be matched,
+incompatible, or unknown under observed conditions; none of those labels is a
+verified repair. Human corrections append attributable contradiction links.
+
+The model receives relevant records rather than entire repositories. Qwen at
+`http://127.0.0.1:8080` is a configuration candidate that must be probed; an endpoint
+listing is not proof of reasoning quality or successful inference. Proposed
+actions pass task/capability/input validation. Actual results belong in evidence
+before any model interpretation. Model-generated source cannot expand authority.
+The implemented `interpret(TaskContext)` method returns a structured summary,
+unknowns, and suggested diagnostic checks from supplied records. That output is
+AI inference with no execution authority. The complete model-driven proposal,
+validated execution, interpretation, and next-action loop remains staged work.
+
+A trace exposes: (1) what happened, (2) why that route was chosen, and (3) supporting
+evidence. It retains planned, executed, verified, failed, not-run, and inconclusive
+states while preserving independent operation outcomes and verification statuses.
+Trace writes are not the same transaction as every external effect; canonical
+checkpoints remain necessary for interruption reconciliation.
+
+## State, resources, and continuity
+
+Task states are `pending`, `running`, `completed`, `failed`, `cancelled`, and
+`blocked`. The engine records running attempts and atomically saves canonical
+operation/task checkpoints. A completed step needs a successful outcome and passed
+declared verification. Retries require an explicitly retry-safe failed operation
+and remaining attempts. Partial execution and ambiguous interrupted stages block
+for reconciliation. Cancellation is cooperative; automatic rollback and general
+process-tree containment are not implemented.
+
+Every managed category has an independent configured location: task database,
+resource library, download cache, build workspaces, dependency environments,
+artifacts, models, model cache, indexes, temporary data, logs, reports, and
+installation destinations. Several categories reserve locations for future
+adapters; configuration alone does not implement them. Unusable paths fail at
+the selected location without silently redirecting storage to another volume.
+
+Environment observations record available tools, Python/platform, memory/CPU, and
+optional GPU data. Reported hardware is not assumed to be observed availability.
+Current execution is serial; configurable worker/build counts do not imply parallel
+scheduling. Context/output limits, timeouts, and retry budgets are consumed by
+their callers. RAM/GPU/temporary-storage quotas remain advisory.
+
+Local memory, source inspection, synthesis, builds, and reporting require no cloud
+service. Offline operation additionally depends on an installed interpreter and
+local dependencies. The local creation route passed a real disconnected Docker
+qualification; see [scope and evidence](OFFLINE.md). Portable knowledge export, dependency mirroring,
+backup/restore validation, and wider offline toolchains are roadmap work.
+
+## Verification references
+
+The [adapter contract](ADAPTER_CONTRACT.md), [knowledge system](KNOWLEDGE_SYSTEM.md),
+[local AI boundary](LOCAL_AI.md), and [experiments](EXPERIMENTS.md) define specific
+contracts and limitations. [Acceptance evidence](ACCEPTANCE_V0.2.md) records observed
+results; historical foundation receipts do not qualify later capabilities.

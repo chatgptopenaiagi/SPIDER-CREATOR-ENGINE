@@ -1,0 +1,98 @@
+[
+  {
+    "claim": "Unresolved failure for qasc:742a47ab-2117-445f-9ddb-0d6feefc533f: QASC generation did not return generated project status",
+    "provenance": [
+      {
+        "source": "operation:e57b89e2-6df4-4005-8bbe-5481f6fb50e3",
+        "method": "Recorded incomplete AI creation attempt",
+        "observed_at": "2026-10-15T13:02:41.390433+00:00",
+        "source_revision": null,
+        "content_sha256": null,
+        "category": "OBSERVED_BEHAVIOR",
+        "actor": null
+      }
+    ],
+    "task_ids": [
+      "742a47ab-2117-445f-9ddb-0d6feefc533f"
+    ],
+    "kind": "failure_capsule",
+    "id": "aff83e93-427e-4190-b8ac-b82c6bb89644",
+    "recorded_at": "2026-10-15T13:02:41.390760+00:00",
+    "supporting_evidence": [
+      {
+        "source": "qasc.create",
+        "detail": "QASC generation did not return generated project status",
+        "observed_at": "2026-10-15T13:02:40.268541+00:00",
+        "kind": "error"
+      }
+    ],
+    "contradictory_evidence": [],
+    "environment": {},
+    "limitations": [
+      "No repair is established; SCE does not automatically resume QASC tasks",
+      "Historical observations do not establish future applicability or resolution."
+    ],
+    "related_record_ids": [],
+    "metadata": {
+      "capsule": {
+        "project_identity": "qasc:742a47ab-2117-445f-9ddb-0d6feefc533f",
+        "provenance": [
+          {
+            "source": "operation:e57b89e2-6df4-4005-8bbe-5481f6fb50e3",
+            "method": "Recorded incomplete AI creation attempt",
+            "observed_at": "2026-10-15T13:02:41.390433+00:00",
+            "source_revision": null,
+            "content_sha256": null,
+            "category": "OBSERVED_BEHAVIOR",
+            "actor": null
+          }
+        ],
+        "relevant_errors": [
+          "QASC generation did not return generated project status"
+        ],
+        "id": "aff83e93-427e-4190-b8ac-b82c6bb89644",
+        "source_revision": null,
+        "environment": {},
+        "reproduction_instructions": [],
+        "attempted_repairs": [],
+        "partial_artifacts": [
+          {
+            "kind": "partial_qasc_project",
+            "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc\\temperature-v02"
+          }
+        ],
+        "unresolved_hypotheses": [],
+        "suggested_next_checks": [
+          "Inspect generated source and preserved QASC verification receipts before choosing a repair"
+        ],
+        "supporting_evidence": [
+          {
+            "source": "qasc.create",
+            "detail": "QASC generation did not return generated project status",
+            "observed_at": "2026-10-15T13:02:40.268541+00:00",
+            "kind": "error"
+          }
+        ],
+        "contradictory_evidence": [],
+        "limitations": [
+          "No repair is established; SCE does not automatically resume QASC tasks"
+        ],
+        "created_at": "2026-10-15T13:02:41.390633+00:00",
+        "state": "unresolved",
+        "original_objective": "Create a small dependency-free Python CLI that accepts one Celsius temperature positional argument and prints its Fahrenheit value with exactly one decimal place and a newline. Formula F=C*9/5+32. Include unit tests for the conversion function. Use no files, network or installed dependencies at runtime. Include a main.py entry point. Invalid numeric input should exit nonzero.",
+        "failed_operation": "qasc.create_python",
+        "relevant_inputs": {
+          "objective": "Create a small dependency-free Python CLI that accepts one Celsius temperature positional argument and prints its Fahrenheit value with exactly one decimal place and a newline. Formula F=C*9/5+32. Include unit tests for the conversion function. Use no files, network or installed dependencies at runtime. Include a main.py entry point. Invalid numeric input should exit nonzero.",
+          "operation": "CREATE_NEW_APPLICATION"
+        },
+        "software_versions": {},
+        "error_signature": null
+      }
+    },
+    "resource_id": "qasc:742a47ab-2117-445f-9ddb-0d6feefc533f",
+    "resource_revision": null,
+    "subject": "qasc.create_python",
+    "description": null,
+    "applicability": {}
+  }
+]

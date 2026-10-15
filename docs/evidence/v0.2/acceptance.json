@@ -1,0 +1,1222 @@
+{
+  "started_at": "2026-10-15T13:23:14.766120+00:00",
+  "checks": [
+    {
+      "name": "tested-commit",
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T13:23:14.766141+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "working-tree",
+      "command": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T13:23:14.796633+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "tests",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-q",
+        "--junitxml=I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\pytest.xml"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T13:23:14.856618+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "dependencies",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T13:23:56.754295+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "wheel-build",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+        "-m",
+        "build",
+        "--wheel",
+        "--outdir",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\dist"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T13:23:57.475463+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "create-install-environment",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+        "-m",
+        "venv",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T13:24:03.937282+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "wheel-install",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\dist\\spider_creator_engine-0.2.0-py3-none-any.whl"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T13:24:12.415600+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "isolated-import",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\python.exe",
+        "-I",
+        "-c",
+        "import sce; print(sce.__file__)"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:15.459026+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "installed-dependencies",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:15.554240+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "cli-version",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\sce.exe",
+        "--version"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:16.257041+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "capabilities",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\sce.exe",
+        "capabilities"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:16.842766+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "installed-build",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\sce.exe",
+        "build",
+        "I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\success",
+        "--output",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\build-output",
+        "--trust-source",
+        "--verify"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:17.252426+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "report-json",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\sce.exe",
+        "report",
+        "0a24f973-c4e4-4486-b832-cedfc27a6aba",
+        "--format",
+        "json",
+        "--output",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed-operation.json"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:18.043616+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "report-markdown",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\sce.exe",
+        "report",
+        "0a24f973-c4e4-4486-b832-cedfc27a6aba",
+        "--format",
+        "markdown",
+        "--output",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed-operation.md"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:18.396017+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "report-html",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\sce.exe",
+        "report",
+        "0a24f973-c4e4-4486-b832-cedfc27a6aba",
+        "--format",
+        "html",
+        "--output",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed-operation.html"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:18.792613+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "installed-task",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\sce.exe",
+        "task",
+        "run",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\task.json",
+        "--trust-source"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:19.167118+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "installed-discovery",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\sce.exe",
+        "discover",
+        "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:20.093326+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "installed-creation",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\sce.exe",
+        "spider",
+        "create",
+        "Create a useful CSV summary report from inspected local components",
+        "--component",
+        "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+        "--component",
+        "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report",
+        "--acceptance",
+        "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_report_request.json",
+        "--name",
+        "acceptance-csv-report",
+        "--trust-source"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:21.969578+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "application-holdout",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\python.exe",
+        "-I",
+        "-B",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1\\acceptance-csv-report.pyz",
+        "--input-json",
+        "{\"csv_text\": \"city,value\\nVienna,1\\nParis,2\\nVienna,3\\n\"}"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:27.080656+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "creation-trace-1",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\sce.exe",
+        "trace",
+        "3db35515-7a9b-4612-8145-5cf2c84227f1",
+        "--level",
+        "1"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:27.177454+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "creation-trace-2",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\sce.exe",
+        "trace",
+        "3db35515-7a9b-4612-8145-5cf2c84227f1",
+        "--level",
+        "2"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:27.523901+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "creation-trace-3",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\sce.exe",
+        "trace",
+        "3db35515-7a9b-4612-8145-5cf2c84227f1",
+        "--level",
+        "3"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:27.926888+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "creation-memory",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\sce.exe",
+        "memory",
+        "3db35515-7a9b-4612-8145-5cf2c84227f1"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:28.289182+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "creation-resume",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\sce.exe",
+        "spider",
+        "resume",
+        "3db35515-7a9b-4612-8145-5cf2c84227f1",
+        "--trust-source"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish",
+      "started_at": "2026-10-15T13:24:28.704760+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "experiments",
+      "command": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+        "I:\\SPIDER-CREATOR-ENGINE\\scripts\\run_experiments.py",
+        "--output",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\experiments"
+      ],
+      "cwd": "I:\\SPIDER-CREATOR-ENGINE",
+      "started_at": "2026-10-15T13:24:29.091764+00:00",
+      "exit_code": 0
+    }
+  ],
+  "passed": true,
+  "tested_commit": "b596bca10fecec2b78a564f64af30c281cf9ca12",
+  "working_tree_at_start": [
+    " M LICENSE-STATUS.md",
+    " M README.md",
+    " M docs/ACCEPTANCE.md",
+    " M docs/ADAPTER_CONTRACT.md",
+    " M docs/ARCHITECTURE.md",
+    " M docs/CONCEPT.md",
+    " M docs/EXPERIMENTS.md",
+    " M docs/KNOWLEDGE_SYSTEM.md",
+    " M docs/LOCAL_AI.md",
+    " M docs/ROADMAP.md",
+    "?? ARCHITECTURE.md",
+    "?? ROADMAP.md",
+    "?? VISION.md",
+    "?? docs/ACCEPTANCE_V0.2.md",
+    "?? docs/DISCOVERY.md",
+    "?? docs/INTEGRATIONS.md",
+    "?? docs/OFFLINE.md",
+    "?? docs/SYNTHESIS.md",
+    "?? docs/evidence/v0.2/"
+  ],
+  "source_sha256": {
+    "config/example.toml": "0d1b86d10a3d14cc5349392b3ff3a185bb476108ea32f1ccb31f01f1c7a1d056",
+    "examples/ai/temperature-acceptance.json": "75dd1c0e5a2e0ba2c5056b0bb676ccdea29924c41becac9f35838aac761903d8",
+    "examples/components/csv_report_request.json": "eacf903e941fde3353790628d9874edd097332379c1aff8811546393ceab0332",
+    "examples/components/csv_summary/csv_tools.py": "8b626639d89c6310c36b92a9779a590196f4aa473e6b2a972f568b4c91d33620",
+    "examples/components/csv_summary/sce-component.json": "4845ebe6f256f840cb614c8649c86b6edb32470e05b5cbe1f671f380a5e611d5",
+    "examples/components/summary_report/report_tools.py": "922aaf5791c8dbb7ac089c961110dee5d1f4d7cd1ea8f93928d92035f9aea21a",
+    "examples/components/summary_report/sce-component.json": "72ee68ee0561629b0d15ecdc31e05e3779d50ae4e089e4e5724ab3922482acfd",
+    "examples/fixtures/failed_verification/main.py": "aded67560a1c409a497625085fd5d6b3f909517ef4be2e57ef63e34c2b1b143c",
+    "examples/fixtures/failed_verification/sce-build.json": "dfee3b084050c4202350945917e40ddc1e532dbe5281342f449feabdf7bee535",
+    "examples/fixtures/missing_dependency/main.py": "c94a5e3c05a3ddd4f1dfd54ad487bf2b0a19bd0d4d0b4114245457eec8cfe2bd",
+    "examples/fixtures/missing_dependency/sce-build.json": "04f42046eb0fd4648249de675fd87968da388b73928aeb700204e5d9ca05a025",
+    "examples/fixtures/success/main.py": "ab70878bd589f28b493b3cc39b01af352d8411c217512fc543515f4c0d4c2b1a",
+    "examples/fixtures/success/sce-build.json": "62b97d13d7235f55ed83b7f34d28428e01868be9f7f8b643ec08d1d27aebd796",
+    "examples/fixtures/timeout/main.py": "584e2c6380a0b1e6969908173cd578484a9d7147a6a1936a16d569c874ca5798",
+    "examples/fixtures/timeout/sce-build.json": "ffd68ffd7ba89006d8e106dbbfa76c2a6f65395a6d19eb31cadcc75e60e19dff",
+    "examples/fixtures/unsupported/README.txt": "ba8a9c6e6a9702bf4da69acb1bc2d83374bebd254f250c8a1a2ea5fe8920b7eb",
+    "examples/task.json": "3f8c10213489cb5f41393df96da4efa30af36c4339bd88c73c8d9b6ff92981e8",
+    "pyproject.toml": "f76082e306de766a6a719188d02c7a91116cdd903f0df4946706762d744ee272",
+    "scripts/run_acceptance.py": "7660b479e9a3e94b750b98a4799d5aba9b85c42c24fef9f4598a3c8e4daa4af5",
+    "scripts/run_experiments.py": "efa3cfe5d851928bbab280ea8758aee34abcbf499df470f5c61bffb5527d9808",
+    "scripts/verify.ps1": "9da27cb341d3258fa7a0549df35d47651eb000769d2ccc3f9688dce57cd31740",
+    "scripts/verify_offline.py": "52b0333e695ef73063f22470eedc71a4b9256af1f620c97c93b16e46e475e5eb",
+    "src/sce/__init__.py": "34c77936129dc490b15540c8777e9226224d1dee519f03b27d49091114a0184f",
+    "src/sce/__main__.py": "851a55c0028a4034b2b79931532a90a8d7a97b00cbe864323c616d43ce654210",
+    "src/sce/acquisition/__init__.py": "5fd0e8b2147dab06fdba708aed0b991fcf339ae396aee3e7869dd97257f8398c",
+    "src/sce/acquisition/local.py": "40d290df61954fdf2d215c0ebbd648e43c42fbcdd58d9e290db8c0b11c9e6976",
+    "src/sce/adapters/__init__.py": "cd6d891bc35953c06e8b22c8824ba15a7fc3b3f4e9c714885da1b1ba729c5e48",
+    "src/sce/adapters/base.py": "3da5b2a625fe3eee91205350da4a1304401ead5f2451df6d3e48edf6999e4b85",
+    "src/sce/adapters/qasc.py": "527de0c19bdf9d76bc5ca675f5102433bf0dcb26d32fd53d76f98124b1fa238a",
+    "src/sce/ai/__init__.py": "1703002921d85f058c03e76d40a380bfaa5723eec7c0bc59dd22dd0584817723",
+    "src/sce/ai/interpretation.py": "2b48b7cf5ecc7abdca2e80a30a5d796d775e40c662b69564f4f9e15f441fb35a",
+    "src/sce/ai/proposals.py": "dcb144223597f805522bf837981dbae70865afc016cba02b0edc5229ba1bedab",
+    "src/sce/ai/provider.py": "0678b6cfb59dcaff55a1f7cc735fe60606c22ca6934b03fc8af0dc52d9437021",
+    "src/sce/analysis/__init__.py": "24dbc9bc3efe4af6b884855b9e13a7f1a8163d8f9f0433570fba6de1e7bfbfe5",
+    "src/sce/builders/__init__.py": "1f0658a9a585d610a80c88b11f652df7f606aee1d285c5171f9564e067f1c6cf",
+    "src/sce/builders/python.py": "b48fe1016193586fac6ceed7ec0f9c7c12aa07faa65b5f4e1d9b4dd2fc96d35e",
+    "src/sce/capabilities/__init__.py": "9777e082d727799fba9f364b3750d1a79732a7b1a9a0ebdac6fe4a47d3267da0",
+    "src/sce/capabilities/registry.py": "7ff2feffefc75795c002c73912aa19e4d0e0248db8fac834b70559381be49ed5",
+    "src/sce/cli/__init__.py": "27bfa72782b52541c008262a56fe5b8611a1acd7fb4612fd602918be2ac51cda",
+    "src/sce/cli/main.py": "0bb8956a720cf2d2751337fcc89a35f5529361899de68f4aa94f279b128a1dd4",
+    "src/sce/cli/spider.py": "39986411be97b5945dc5e21049ff83ec01f715da881c9292f67931d01b232981",
+    "src/sce/core/__init__.py": "83ebd1574a88bcf43a4f1c2eb14d50a99c8da3935ccec4b40a2c312d33b228ee",
+    "src/sce/core/config.py": "e12dc20531b9cdeab549e25d601159504b5d2171e99ee5361c58cbc68ac607e3",
+    "src/sce/core/models.py": "899cd014da61d01e87c42b2d0e4ca785977f2506cb9b09a0a3ff23c8dc610123",
+    "src/sce/discovery/__init__.py": "52c0d3d017361fc3ecb207ebb3ad1463cb4a96efe1584010f8aedea20a493492",
+    "src/sce/discovery/github.py": "9911a45dd692788a66316617d302ffd3b3532c352c8ba4969dee100cae77b082",
+    "src/sce/discovery/spider.py": "c02296b0604f2ac981772fc7fab1e86cbb9d54163d98c843c717054c61d9c6de",
+    "src/sce/discovery/structured.py": "7f012b8c567eae00285c0a4cd7a7ce60536113c79e880347185d48d93e0d72d0",
+    "src/sce/knowledge/__init__.py": "314d5c14c197b6c01544290c9bafbf71500d35cfe8ebb5b7271f0032bab9a8e6",
+    "src/sce/knowledge/models.py": "04c2c90e7d883d0ef37467d2806f092abab33ead847fa00309db7bc4e540f7fb",
+    "src/sce/knowledge/store.py": "f7ab4966dc289699d8042c06213fa2756199632f703435fb9bc6336a13af578f",
+    "src/sce/orchestration/__init__.py": "f75daa6bbd4e7d4800838325acbe570c649c49aee3b3a2710273e39e3f6601f8",
+    "src/sce/orchestration/engine.py": "276568291c31e8e711916d17b58ee593ae2cebcd3e1c87d43676113f92b08323",
+    "src/sce/recovery/__init__.py": "cdfc35500e0b28106ec0e1a2ec54c4f98a107f97091de40a40e3398df2b923f8",
+    "src/sce/recovery/capsules.py": "6371b5e606dd84e208494759f38f07d1369e761a78bff2542f0647d0ddc9498e",
+    "src/sce/reporting/__init__.py": "e97e1cb55d3c9287242379d20178adce57bb34d0449126ae14b46c62ab3e88b8",
+    "src/sce/reporting/render.py": "0fb2ba9e217170576bfb910b8851d748762c25dde64a73f3815062716a2c7a93",
+    "src/sce/reporting/trace.py": "202e5d0e05c7d76ee9afbe871ce0f78cd4bd7e758dc86e27ec4863388c7a6d71",
+    "src/sce/resources/__init__.py": "e59b70a4849923a80432a254e95cbfcc07675c1936822d919da2f5929e65afc5",
+    "src/sce/resources/environment.py": "44f5de88429135b8565761ab82d64a2bdf52a4d6b269dc520be65970255a87b3",
+    "src/sce/resources/limits.py": "93945a7599f0bbddfdcd2ea513802b3154c8fdfa22d236ebd90212233c1705e9",
+    "src/sce/spider/__init__.py": "d9d34a7968ff215271ffd1a3cfe8d449013f836ed1a859d8076ed0d852269ead",
+    "src/sce/spider/engine.py": "e0fee255596d439a642e787a4791156558569509eef352c89c00b0b4862cab16",
+    "src/sce/storage/__init__.py": "181b99617b840da30dc0b8d868befbc73a0be09bc4d8a4733a38b3dc4d0fbdd5",
+    "src/sce/storage/task_store.py": "2b1154865b60dffd6a8c180378d2ba57e3200777fb8b717198f31620d0badba3",
+    "src/sce/synthesis/__init__.py": "3dc78f883f72ee1c6bc49568dbfc7500e9315662496929ec92c113ade620fc89",
+    "src/sce/synthesis/python.py": "87339022893639e35ba76440dad7ab544f4c826eb6afaba1f8609e1e2e6e535e",
+    "src/sce/verification/__init__.py": "54433511000a2fe74675e9316c6294cefaa06c92f1b9d5208f2d960b1ad24706",
+    "src/sce/verification/process.py": "ebe1f561f6d44079a8c3890a8a83fc53f11dc55a99c9f6d230baa28e54461e64",
+    "tests/test_ai.py": "dfdd7d25775f76e72d466fd7152ec9865e67a28c999b95f8dbe69edcb7aa608a",
+    "tests/test_ai_interpretation.py": "f4f70bb29abc0a4fed65f13daa798af99c6a2b7106714a8ee6dfd96d9af80dd9",
+    "tests/test_builder.py": "181bf14da43750c44ebea1d3cd4f8924b79bffe9832c7b725a1b7e3cc685f8bb",
+    "tests/test_capability_states.py": "86e2a938f67bb3244a1e8febaa6c9ec98b7e87b6f42db4e6dc51bf361a2082a3",
+    "tests/test_cli.py": "703556e38dd75be2b39f294a0511e08c6db87f0fb02ef758c9e2188977268dc2",
+    "tests/test_core.py": "15116fe8b514f0157331e08e7d42a31b67fba7cd92b795a98e7c73d8e3bc9683",
+    "tests/test_interpretation_evidence.py": "ef0f0dc4e311b9c126b2894e1836a202f12903587fdd09abef60c2e2b079f8df",
+    "tests/test_knowledge.py": "a3c683d474e6a2ded59fd0e6482df5d5370e173e5a5bf69303ec55f9c539a664",
+    "tests/test_local_resources.py": "18ce866ec5270d32aa4dee8864964caefbcc6532eb310addadc57797abc5519f",
+    "tests/test_memory_graph.py": "e9002ee25be1e524b6f9f80b7eb3982a443c43bdcade706125589ac87be3d730",
+    "tests/test_orchestration.py": "6d7fff35ed3069d1c7cd0eb8f5eb7f1ada80a5f64bddf4603e82ba251b8e18ff",
+    "tests/test_qasc_adapter.py": "6b2e7faa2b8a5aa0c7e9e2462d83b8bc0472e127cf8af90d6558f1ed6fd320ca",
+    "tests/test_resources.py": "4c8436aeb426f2fe54a5bb6611328eaee3033ab1bd71c9697ae374162e8889d5",
+    "tests/test_spider_cli.py": "731afe12bd069b4c006da3835d1069b17304a60920313a6b8304b9a037d477f6",
+    "tests/test_spider_discovery.py": "3eef8f4b40c3792400b7422e6e763e54c9bbdb1766e0df81d917403b362d5765",
+    "tests/test_spider_engine.py": "41d615cdb72628f66a67d3aeae57a7e5ff052d435bbc3b86b0d74feacc49cc42",
+    "tests/test_synthesis.py": "7a2d620e7ef1a6206d48434e560238463b0c741165697054e9cfe4f11599a1ca"
+  },
+  "tests": {
+    "tests": 321,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "wheel": {
+    "filename": "spider_creator_engine-0.2.0-py3-none-any.whl",
+    "sha256": "fa377bead09586a4bfa5571d4df4a78cb923a251fb132a8cb01aa9e0b9cdbfac"
+  },
+  "installed_module": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Lib\\site-packages\\sce\\__init__.py",
+  "cli_version": "SCE 0.2.0",
+  "installed_build_operation": "0a24f973-c4e4-4486-b832-cedfc27a6aba",
+  "completed_task_id": "95c10fc3-b1d8-400a-b2e5-a6bdfcce320c",
+  "created_application": {
+    "task": {
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "allowed_capabilities": [
+        "spider.discover",
+        "resource.acquire_local",
+        "project.analyze",
+        "application.synthesize",
+        "python.build",
+        "application.verify"
+      ],
+      "steps": [
+        {
+          "id": "discovery",
+          "capability_id": "spider.discover",
+          "inputs": {
+            "request": {
+              "components": [
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report"
+              ],
+              "name": "acceptance-csv-report",
+              "input_data": {
+                "csv_text": "name,team\nAda,engineering\nLin,design\nAda,engineering\n"
+              },
+              "expected_output": {
+                "row_count": 3,
+                "column_count": 2,
+                "columns": [
+                  "name",
+                  "team"
+                ],
+                "distinct_values": {
+                  "name": 2,
+                  "team": 2
+                },
+                "report": "Rows: 3\nColumns: 2\nname: 2 distinct values\nteam: 2 distinct values"
+              },
+              "trusted": true,
+              "workspace": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application",
+              "artifact_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1",
+              "storage_profile": {
+                "TASK_DATABASE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\tasks.sqlite3",
+                "RESOURCE_LIBRARY": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\resource_library",
+                "DOWNLOAD_CACHE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\download_cache",
+                "BUILD_WORKSPACES": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces",
+                "DEPENDENCY_ENVIRONMENTS": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\dependency_environments",
+                "ARTIFACT_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage",
+                "MODEL_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\model_storage",
+                "MODEL_CACHE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\model_cache",
+                "INDEX_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\index_storage",
+                "TEMP_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\temp_storage",
+                "LOG_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\log_storage",
+                "REPORT_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\report_storage",
+                "INSTALLATION_DESTINATIONS": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\installation_destinations"
+              },
+              "prepared_components": [
+                {
+                  "spec": {
+                    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                    "interface": "csv_tools:summarize",
+                    "source_files": [
+                      "csv_tools.py"
+                    ],
+                    "required_modules": [],
+                    "resource_id": null,
+                    "resource_revision": null
+                  },
+                  "files": [
+                    {
+                      "path": "csv_tools.py",
+                      "sha256": "8b626639d89c6310c36b92a9779a590196f4aa473e6b2a972f568b4c91d33620",
+                      "size": 1101
+                    }
+                  ],
+                  "resource_id": "sha256:fbd1d2d98e26911bd33f9f4bf378bbc07482bd8ee533038d6eb5fbb56ff18f09",
+                  "resource_revision": "sha256:fbd1d2d98e26911bd33f9f4bf378bbc07482bd8ee533038d6eb5fbb56ff18f09",
+                  "manifest": {
+                    "path": "sce-component.json",
+                    "sha256": "4845ebe6f256f840cb614c8649c86b6edb32470e05b5cbe1f671f380a5e611d5",
+                    "size": 266
+                  }
+                },
+                {
+                  "spec": {
+                    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report",
+                    "interface": "report_tools:format_report",
+                    "source_files": [
+                      "report_tools.py"
+                    ],
+                    "required_modules": [],
+                    "resource_id": null,
+                    "resource_revision": null
+                  },
+                  "files": [
+                    {
+                      "path": "report_tools.py",
+                      "sha256": "922aaf5791c8dbb7ac089c961110dee5d1f4d7cd1ea8f93928d92035f9aea21a",
+                      "size": 444
+                    }
+                  ],
+                  "resource_id": "sha256:aa7613a71e4723ed2d03ddebcafbbc3e62ad383cd2bee34ff0963d58c311d2d6",
+                  "resource_revision": "sha256:aa7613a71e4723ed2d03ddebcafbbc3e62ad383cd2bee34ff0963d58c311d2d6",
+                  "manifest": {
+                    "path": "sce-component.json",
+                    "sha256": "72ee68ee0561629b0d15ecdc31e05e3779d50ae4e089e4e5724ab3922482acfd",
+                    "size": 290
+                  }
+                }
+              ],
+              "source_roots": [
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report"
+              ],
+              "manifest_names": [
+                "sce-component.json",
+                "sce-component.json"
+              ]
+            }
+          },
+          "dependencies": [],
+          "status": "completed",
+          "attempts": 1,
+          "max_attempts": 1,
+          "operation_ids": [
+            "3421136b-0d37-4a00-8769-ce0b15248af7"
+          ]
+        },
+        {
+          "id": "acquisition",
+          "capability_id": "resource.acquire_local",
+          "inputs": {
+            "request": {
+              "components": [
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report"
+              ],
+              "name": "acceptance-csv-report",
+              "input_data": {
+                "csv_text": "name,team\nAda,engineering\nLin,design\nAda,engineering\n"
+              },
+              "expected_output": {
+                "row_count": 3,
+                "column_count": 2,
+                "columns": [
+                  "name",
+                  "team"
+                ],
+                "distinct_values": {
+                  "name": 2,
+                  "team": 2
+                },
+                "report": "Rows: 3\nColumns: 2\nname: 2 distinct values\nteam: 2 distinct values"
+              },
+              "trusted": true,
+              "workspace": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application",
+              "artifact_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1",
+              "storage_profile": {
+                "TASK_DATABASE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\tasks.sqlite3",
+                "RESOURCE_LIBRARY": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\resource_library",
+                "DOWNLOAD_CACHE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\download_cache",
+                "BUILD_WORKSPACES": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces",
+                "DEPENDENCY_ENVIRONMENTS": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\dependency_environments",
+                "ARTIFACT_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage",
+                "MODEL_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\model_storage",
+                "MODEL_CACHE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\model_cache",
+                "INDEX_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\index_storage",
+                "TEMP_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\temp_storage",
+                "LOG_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\log_storage",
+                "REPORT_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\report_storage",
+                "INSTALLATION_DESTINATIONS": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\installation_destinations"
+              },
+              "prepared_components": [
+                {
+                  "spec": {
+                    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                    "interface": "csv_tools:summarize",
+                    "source_files": [
+                      "csv_tools.py"
+                    ],
+                    "required_modules": [],
+                    "resource_id": null,
+                    "resource_revision": null
+                  },
+                  "files": [
+                    {
+                      "path": "csv_tools.py",
+                      "sha256": "8b626639d89c6310c36b92a9779a590196f4aa473e6b2a972f568b4c91d33620",
+                      "size": 1101
+                    }
+                  ],
+                  "resource_id": "sha256:fbd1d2d98e26911bd33f9f4bf378bbc07482bd8ee533038d6eb5fbb56ff18f09",
+                  "resource_revision": "sha256:fbd1d2d98e26911bd33f9f4bf378bbc07482bd8ee533038d6eb5fbb56ff18f09",
+                  "manifest": {
+                    "path": "sce-component.json",
+                    "sha256": "4845ebe6f256f840cb614c8649c86b6edb32470e05b5cbe1f671f380a5e611d5",
+                    "size": 266
+                  }
+                },
+                {
+                  "spec": {
+                    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report",
+                    "interface": "report_tools:format_report",
+                    "source_files": [
+                      "report_tools.py"
+                    ],
+                    "required_modules": [],
+                    "resource_id": null,
+                    "resource_revision": null
+                  },
+                  "files": [
+                    {
+                      "path": "report_tools.py",
+                      "sha256": "922aaf5791c8dbb7ac089c961110dee5d1f4d7cd1ea8f93928d92035f9aea21a",
+                      "size": 444
+                    }
+                  ],
+                  "resource_id": "sha256:aa7613a71e4723ed2d03ddebcafbbc3e62ad383cd2bee34ff0963d58c311d2d6",
+                  "resource_revision": "sha256:aa7613a71e4723ed2d03ddebcafbbc3e62ad383cd2bee34ff0963d58c311d2d6",
+                  "manifest": {
+                    "path": "sce-component.json",
+                    "sha256": "72ee68ee0561629b0d15ecdc31e05e3779d50ae4e089e4e5724ab3922482acfd",
+                    "size": 290
+                  }
+                }
+              ],
+              "source_roots": [
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report"
+              ],
+              "manifest_names": [
+                "sce-component.json",
+                "sce-component.json"
+              ]
+            }
+          },
+          "dependencies": [
+            "discovery"
+          ],
+          "status": "completed",
+          "attempts": 1,
+          "max_attempts": 1,
+          "operation_ids": [
+            "f4f49973-bae9-4cab-a4bf-87c7007b8890"
+          ]
+        },
+        {
+          "id": "analysis",
+          "capability_id": "project.analyze",
+          "inputs": {
+            "request": {
+              "components": [
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report"
+              ],
+              "name": "acceptance-csv-report",
+              "input_data": {
+                "csv_text": "name,team\nAda,engineering\nLin,design\nAda,engineering\n"
+              },
+              "expected_output": {
+                "row_count": 3,
+                "column_count": 2,
+                "columns": [
+                  "name",
+                  "team"
+                ],
+                "distinct_values": {
+                  "name": 2,
+                  "team": 2
+                },
+                "report": "Rows: 3\nColumns: 2\nname: 2 distinct values\nteam: 2 distinct values"
+              },
+              "trusted": true,
+              "workspace": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application",
+              "artifact_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1",
+              "storage_profile": {
+                "TASK_DATABASE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\tasks.sqlite3",
+                "RESOURCE_LIBRARY": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\resource_library",
+                "DOWNLOAD_CACHE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\download_cache",
+                "BUILD_WORKSPACES": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces",
+                "DEPENDENCY_ENVIRONMENTS": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\dependency_environments",
+                "ARTIFACT_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage",
+                "MODEL_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\model_storage",
+                "MODEL_CACHE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\model_cache",
+                "INDEX_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\index_storage",
+                "TEMP_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\temp_storage",
+                "LOG_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\log_storage",
+                "REPORT_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\report_storage",
+                "INSTALLATION_DESTINATIONS": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\installation_destinations"
+              },
+              "prepared_components": [
+                {
+                  "spec": {
+                    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                    "interface": "csv_tools:summarize",
+                    "source_files": [
+                      "csv_tools.py"
+                    ],
+                    "required_modules": [],
+                    "resource_id": null,
+                    "resource_revision": null
+                  },
+                  "files": [
+                    {
+                      "path": "csv_tools.py",
+                      "sha256": "8b626639d89c6310c36b92a9779a590196f4aa473e6b2a972f568b4c91d33620",
+                      "size": 1101
+                    }
+                  ],
+                  "resource_id": "sha256:fbd1d2d98e26911bd33f9f4bf378bbc07482bd8ee533038d6eb5fbb56ff18f09",
+                  "resource_revision": "sha256:fbd1d2d98e26911bd33f9f4bf378bbc07482bd8ee533038d6eb5fbb56ff18f09",
+                  "manifest": {
+                    "path": "sce-component.json",
+                    "sha256": "4845ebe6f256f840cb614c8649c86b6edb32470e05b5cbe1f671f380a5e611d5",
+                    "size": 266
+                  }
+                },
+                {
+                  "spec": {
+                    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report",
+                    "interface": "report_tools:format_report",
+                    "source_files": [
+                      "report_tools.py"
+                    ],
+                    "required_modules": [],
+                    "resource_id": null,
+                    "resource_revision": null
+                  },
+                  "files": [
+                    {
+                      "path": "report_tools.py",
+                      "sha256": "922aaf5791c8dbb7ac089c961110dee5d1f4d7cd1ea8f93928d92035f9aea21a",
+                      "size": 444
+                    }
+                  ],
+                  "resource_id": "sha256:aa7613a71e4723ed2d03ddebcafbbc3e62ad383cd2bee34ff0963d58c311d2d6",
+                  "resource_revision": "sha256:aa7613a71e4723ed2d03ddebcafbbc3e62ad383cd2bee34ff0963d58c311d2d6",
+                  "manifest": {
+                    "path": "sce-component.json",
+                    "sha256": "72ee68ee0561629b0d15ecdc31e05e3779d50ae4e089e4e5724ab3922482acfd",
+                    "size": 290
+                  }
+                }
+              ],
+              "source_roots": [
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report"
+              ],
+              "manifest_names": [
+                "sce-component.json",
+                "sce-component.json"
+              ]
+            }
+          },
+          "dependencies": [
+            "acquisition"
+          ],
+          "status": "completed",
+          "attempts": 1,
+          "max_attempts": 1,
+          "operation_ids": [
+            "147baf6b-3b8e-47de-a0bc-ad55458ace93"
+          ]
+        },
+        {
+          "id": "synthesis",
+          "capability_id": "application.synthesize",
+          "inputs": {
+            "request": {
+              "components": [
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report"
+              ],
+              "name": "acceptance-csv-report",
+              "input_data": {
+                "csv_text": "name,team\nAda,engineering\nLin,design\nAda,engineering\n"
+              },
+              "expected_output": {
+                "row_count": 3,
+                "column_count": 2,
+                "columns": [
+                  "name",
+                  "team"
+                ],
+                "distinct_values": {
+                  "name": 2,
+                  "team": 2
+                },
+                "report": "Rows: 3\nColumns: 2\nname: 2 distinct values\nteam: 2 distinct values"
+              },
+              "trusted": true,
+              "workspace": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application",
+              "artifact_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1",
+              "storage_profile": {
+                "TASK_DATABASE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\tasks.sqlite3",
+                "RESOURCE_LIBRARY": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\resource_library",
+                "DOWNLOAD_CACHE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\download_cache",
+                "BUILD_WORKSPACES": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces",
+                "DEPENDENCY_ENVIRONMENTS": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\dependency_environments",
+                "ARTIFACT_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage",
+                "MODEL_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\model_storage",
+                "MODEL_CACHE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\model_cache",
+                "INDEX_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\index_storage",
+                "TEMP_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\temp_storage",
+                "LOG_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\log_storage",
+                "REPORT_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\report_storage",
+                "INSTALLATION_DESTINATIONS": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\installation_destinations"
+              },
+              "prepared_components": [
+                {
+                  "spec": {
+                    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                    "interface": "csv_tools:summarize",
+                    "source_files": [
+                      "csv_tools.py"
+                    ],
+                    "required_modules": [],
+                    "resource_id": null,
+                    "resource_revision": null
+                  },
+                  "files": [
+                    {
+                      "path": "csv_tools.py",
+                      "sha256": "8b626639d89c6310c36b92a9779a590196f4aa473e6b2a972f568b4c91d33620",
+                      "size": 1101
+                    }
+                  ],
+                  "resource_id": "sha256:fbd1d2d98e26911bd33f9f4bf378bbc07482bd8ee533038d6eb5fbb56ff18f09",
+                  "resource_revision": "sha256:fbd1d2d98e26911bd33f9f4bf378bbc07482bd8ee533038d6eb5fbb56ff18f09",
+                  "manifest": {
+                    "path": "sce-component.json",
+                    "sha256": "4845ebe6f256f840cb614c8649c86b6edb32470e05b5cbe1f671f380a5e611d5",
+                    "size": 266
+                  }
+                },
+                {
+                  "spec": {
+                    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report",
+                    "interface": "report_tools:format_report",
+                    "source_files": [
+                      "report_tools.py"
+                    ],
+                    "required_modules": [],
+                    "resource_id": null,
+                    "resource_revision": null
+                  },
+                  "files": [
+                    {
+                      "path": "report_tools.py",
+                      "sha256": "922aaf5791c8dbb7ac089c961110dee5d1f4d7cd1ea8f93928d92035f9aea21a",
+                      "size": 444
+                    }
+                  ],
+                  "resource_id": "sha256:aa7613a71e4723ed2d03ddebcafbbc3e62ad383cd2bee34ff0963d58c311d2d6",
+                  "resource_revision": "sha256:aa7613a71e4723ed2d03ddebcafbbc3e62ad383cd2bee34ff0963d58c311d2d6",
+                  "manifest": {
+                    "path": "sce-component.json",
+                    "sha256": "72ee68ee0561629b0d15ecdc31e05e3779d50ae4e089e4e5724ab3922482acfd",
+                    "size": 290
+                  }
+                }
+              ],
+              "source_roots": [
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report"
+              ],
+              "manifest_names": [
+                "sce-component.json",
+                "sce-component.json"
+              ]
+            }
+          },
+          "dependencies": [
+            "analysis"
+          ],
+          "status": "completed",
+          "attempts": 1,
+          "max_attempts": 1,
+          "operation_ids": [
+            "70add4b0-ca8f-4427-adcd-4492c7cd9e21"
+          ]
+        },
+        {
+          "id": "build",
+          "capability_id": "python.build",
+          "inputs": {
+            "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application",
+            "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1",
+            "trusted": true
+          },
+          "dependencies": [
+            "synthesis"
+          ],
+          "status": "completed",
+          "attempts": 1,
+          "max_attempts": 1,
+          "operation_ids": [
+            "251b8459-9e59-479b-a893-d33a73ddd830"
+          ]
+        },
+        {
+          "id": "functional_verification",
+          "capability_id": "application.verify",
+          "inputs": {
+            "request": {
+              "components": [
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report"
+              ],
+              "name": "acceptance-csv-report",
+              "input_data": {
+                "csv_text": "name,team\nAda,engineering\nLin,design\nAda,engineering\n"
+              },
+              "expected_output": {
+                "row_count": 3,
+                "column_count": 2,
+                "columns": [
+                  "name",
+                  "team"
+                ],
+                "distinct_values": {
+                  "name": 2,
+                  "team": 2
+                },
+                "report": "Rows: 3\nColumns: 2\nname: 2 distinct values\nteam: 2 distinct values"
+              },
+              "trusted": true,
+              "workspace": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application",
+              "artifact_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1",
+              "storage_profile": {
+                "TASK_DATABASE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\tasks.sqlite3",
+                "RESOURCE_LIBRARY": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\resource_library",
+                "DOWNLOAD_CACHE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\download_cache",
+                "BUILD_WORKSPACES": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces",
+                "DEPENDENCY_ENVIRONMENTS": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\dependency_environments",
+                "ARTIFACT_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage",
+                "MODEL_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\model_storage",
+                "MODEL_CACHE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\model_cache",
+                "INDEX_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\index_storage",
+                "TEMP_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\temp_storage",
+                "LOG_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\log_storage",
+                "REPORT_STORAGE": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\report_storage",
+                "INSTALLATION_DESTINATIONS": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\installation_destinations"
+              },
+              "prepared_components": [
+                {
+                  "spec": {
+                    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                    "interface": "csv_tools:summarize",
+                    "source_files": [
+                      "csv_tools.py"
+                    ],
+                    "required_modules": [],
+                    "resource_id": null,
+                    "resource_revision": null
+                  },
+                  "files": [
+                    {
+                      "path": "csv_tools.py",
+                      "sha256": "8b626639d89c6310c36b92a9779a590196f4aa473e6b2a972f568b4c91d33620",
+                      "size": 1101
+                    }
+                  ],
+                  "resource_id": "sha256:fbd1d2d98e26911bd33f9f4bf378bbc07482bd8ee533038d6eb5fbb56ff18f09",
+                  "resource_revision": "sha256:fbd1d2d98e26911bd33f9f4bf378bbc07482bd8ee533038d6eb5fbb56ff18f09",
+                  "manifest": {
+                    "path": "sce-component.json",
+                    "sha256": "4845ebe6f256f840cb614c8649c86b6edb32470e05b5cbe1f671f380a5e611d5",
+                    "size": 266
+                  }
+                },
+                {
+                  "spec": {
+                    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report",
+                    "interface": "report_tools:format_report",
+                    "source_files": [
+                      "report_tools.py"
+                    ],
+                    "required_modules": [],
+                    "resource_id": null,
+                    "resource_revision": null
+                  },
+                  "files": [
+                    {
+                      "path": "report_tools.py",
+                      "sha256": "922aaf5791c8dbb7ac089c961110dee5d1f4d7cd1ea8f93928d92035f9aea21a",
+                      "size": 444
+                    }
+                  ],
+                  "resource_id": "sha256:aa7613a71e4723ed2d03ddebcafbbc3e62ad383cd2bee34ff0963d58c311d2d6",
+                  "resource_revision": "sha256:aa7613a71e4723ed2d03ddebcafbbc3e62ad383cd2bee34ff0963d58c311d2d6",
+                  "manifest": {
+                    "path": "sce-component.json",
+                    "sha256": "72ee68ee0561629b0d15ecdc31e05e3779d50ae4e089e4e5724ab3922482acfd",
+                    "size": 290
+                  }
+                }
+              ],
+              "source_roots": [
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+                "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report"
+              ],
+              "manifest_names": [
+                "sce-component.json",
+                "sce-component.json"
+              ]
+            }
+          },
+          "dependencies": [
+            "build"
+          ],
+          "status": "completed",
+          "attempts": 1,
+          "max_attempts": 1,
+          "operation_ids": [
+            "83a8718c-5b26-4db9-b50e-7f6468e57d19"
+          ]
+        }
+      ],
+      "status": "completed",
+      "created_at": "2026-10-15T13:24:22.344749+00:00",
+      "time": {
+        "baseline_human_active_seconds": null,
+        "assisted_human_active_seconds": null,
+        "machine_execution_seconds": null,
+        "total_elapsed_seconds": null,
+        "setup_seconds": null,
+        "review_seconds": null,
+        "repair_seconds": null,
+        "measurement_source": null
+      },
+      "unknowns": [],
+      "mode": "CREATE_NEW_APPLICATION"
+    },
+    "operation_ids": [
+      "3421136b-0d37-4a00-8769-ce0b15248af7",
+      "f4f49973-bae9-4cab-a4bf-87c7007b8890",
+      "147baf6b-3b8e-47de-a0bc-ad55458ace93",
+      "70add4b0-ca8f-4427-adcd-4492c7cd9e21",
+      "251b8459-9e59-479b-a893-d33a73ddd830",
+      "83a8718c-5b26-4db9-b50e-7f6468e57d19"
+    ],
+    "application_source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application",
+    "artifacts": [
+      {
+        "kind": "python_zipapp",
+        "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1\\acceptance-csv-report.pyz",
+        "sha256": "e2096d421b40fd414d1a415d2220771799f57aa73f02bc671d011c4727a8828e",
+        "size": 3904
+      }
+    ],
+    "current_artifact_integrity": [
+      {
+        "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1\\acceptance-csv-report.pyz",
+        "status": "matched"
+      }
+    ],
+    "functional_application_created": true,
+    "verification_basis": "Recorded acceptance at execution time; resume does not repeat completed checks",
+    "human_time_recovered": null,
+    "installation": "not_run",
+    "ai_generation": "not_run",
+    "remaining_work": []
+  },
+  "holdout": {
+    "input": {
+      "csv_text": "city,value\nVienna,1\nParis,2\nVienna,3\n"
+    },
+    "expected": {
+      "row_count": 3,
+      "column_count": 2,
+      "columns": [
+        "city",
+        "value"
+      ],
+      "distinct_values": {
+        "city": 2,
+        "value": 3
+      },
+      "report": "Rows: 3\nColumns: 2\ncity: 2 distinct values\nvalue: 3 distinct values"
+    },
+    "actual": {
+      "column_count": 2,
+      "columns": [
+        "city",
+        "value"
+      ],
+      "distinct_values": {
+        "city": 2,
+        "value": 3
+      },
+      "report": "Rows: 3\nColumns: 2\ncity: 2 distinct values\nvalue: 3 distinct values",
+      "row_count": 3
+    },
+    "passed": true
+  },
+  "experiments": [
+    {
+      "fixture": "success",
+      "expected": [
+        "succeeded",
+        "passed"
+      ],
+      "actual": [
+        "succeeded",
+        "passed"
+      ],
+      "passed": true,
+      "operation_id": "de8f3f56-28aa-4aeb-b9dd-5b5c147346b2"
+    },
+    {
+      "fixture": "missing_dependency",
+      "expected": [
+        "failed",
+        "not_run"
+      ],
+      "actual": [
+        "failed",
+        "not_run"
+      ],
+      "passed": true,
+      "operation_id": "3a63ce8f-9ad6-46fb-a0df-1eeaf679b142"
+    },
+    {
+      "fixture": "unsupported",
+      "expected": [
+        "unsupported",
+        "not_run"
+      ],
+      "actual": [
+        "unsupported",
+        "not_run"
+      ],
+      "passed": true,
+      "operation_id": "f8e83b64-05ce-4219-8680-4360d535a0c0"
+    },
+    {
+      "fixture": "failed_verification",
+      "expected": [
+        "succeeded",
+        "failed"
+      ],
+      "actual": [
+        "succeeded",
+        "failed"
+      ],
+      "passed": true,
+      "operation_id": "4f460e9c-fbcd-416a-bc26-d4e7009074cf"
+    },
+    {
+      "fixture": "timeout",
+      "expected": [
+        "partial",
+        "inconclusive"
+      ],
+      "actual": [
+        "partial",
+        "inconclusive"
+      ],
+      "passed": true,
+      "operation_id": "7d2d1e9d-c7db-4f8b-a471-3e74a811396c"
+    }
+  ],
+  "source_tree_unchanged": true,
+  "finished_at": "2026-10-15T13:24:29.727862+00:00"
+}

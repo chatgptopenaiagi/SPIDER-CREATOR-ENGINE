@@ -1,0 +1,287 @@
+{
+  "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+  "level": 2,
+  "offset": 0,
+  "limit": 1000,
+  "events": [
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "planning",
+      "status": "planned",
+      "summary": "Create a new application from selected components",
+      "decision": "Connect declared Python JSON callables using a thin CLI bridge; build a new application",
+      "resource_ids": [],
+      "operation_id": null,
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": null,
+      "verification": "not_run",
+      "selected_components": [
+        "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+        "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report"
+      ],
+      "planned_actions": [
+        {
+          "stage": "discovery",
+          "capability": "spider.discover"
+        },
+        {
+          "stage": "acquisition",
+          "capability": "resource.acquire_local"
+        },
+        {
+          "stage": "analysis",
+          "capability": "project.analyze"
+        },
+        {
+          "stage": "synthesis",
+          "capability": "application.synthesize"
+        },
+        {
+          "stage": "build",
+          "capability": "python.build"
+        },
+        {
+          "stage": "functional_verification",
+          "capability": "application.verify"
+        }
+      ],
+      "id": "0da82b1f-3950-4261-91b3-2a3c93dcad2c",
+      "recorded_at": "2026-10-15T13:24:22.363531+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "discovery",
+      "status": "planned",
+      "summary": "Prepare spider.discover",
+      "decision": null,
+      "resource_ids": [],
+      "operation_id": null,
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": null,
+      "verification": "not_run",
+      "selected_components": [],
+      "planned_actions": [
+        {
+          "capability": "spider.discover"
+        }
+      ],
+      "id": "97258dae-c347-4b6c-a2ba-17a0e7533e60",
+      "recorded_at": "2026-10-15T13:24:22.745644+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "discovery",
+      "status": "verified",
+      "summary": "spider.discover: succeeded; declared verification passed",
+      "decision": "Structured local source observations, not software functionality",
+      "resource_ids": [],
+      "operation_id": "3421136b-0d37-4a00-8769-ce0b15248af7",
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "selected_components": [],
+      "planned_actions": [],
+      "id": "dfb5df36-6f2d-44ee-8447-ae27d5dd048c",
+      "recorded_at": "2026-10-15T13:24:23.312697+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "acquisition",
+      "status": "planned",
+      "summary": "Prepare resource.acquire_local",
+      "decision": null,
+      "resource_ids": [],
+      "operation_id": null,
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": null,
+      "verification": "not_run",
+      "selected_components": [],
+      "planned_actions": [
+        {
+          "capability": "resource.acquire_local"
+        }
+      ],
+      "id": "d77520a4-ebbc-4366-8905-5a20bf4b0cbf",
+      "recorded_at": "2026-10-15T13:24:23.598173+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "acquisition",
+      "status": "verified",
+      "summary": "resource.acquire_local: succeeded; declared verification passed",
+      "decision": "Acquired bytes match the prepared source inventory",
+      "resource_ids": [],
+      "operation_id": "f4f49973-bae9-4cab-a4bf-87c7007b8890",
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "selected_components": [],
+      "planned_actions": [],
+      "id": "99172b66-312b-4ec0-95cf-1af9cddb2ea7",
+      "recorded_at": "2026-10-15T13:24:24.201388+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "analysis",
+      "status": "planned",
+      "summary": "Prepare project.analyze",
+      "decision": null,
+      "resource_ids": [],
+      "operation_id": null,
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": null,
+      "verification": "not_run",
+      "selected_components": [],
+      "planned_actions": [
+        {
+          "capability": "project.analyze"
+        }
+      ],
+      "id": "52a33abd-bcab-4182-ae13-4120e119ead0",
+      "recorded_at": "2026-10-15T13:24:24.515068+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "analysis",
+      "status": "verified",
+      "summary": "project.analyze: succeeded; declared verification passed",
+      "decision": "Bounded static inspection completed; interface validity is checked during synthesis",
+      "resource_ids": [],
+      "operation_id": "147baf6b-3b8e-47de-a0bc-ad55458ace93",
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "selected_components": [],
+      "planned_actions": [],
+      "id": "1c0d0b9b-90bf-40ac-9bea-aecd8b2e91d4",
+      "recorded_at": "2026-10-15T13:24:25.093068+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "synthesis",
+      "status": "planned",
+      "summary": "Prepare application.synthesize",
+      "decision": null,
+      "resource_ids": [],
+      "operation_id": null,
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": null,
+      "verification": "not_run",
+      "selected_components": [],
+      "planned_actions": [
+        {
+          "capability": "application.synthesize"
+        }
+      ],
+      "id": "242d9c89-3e26-48bd-839e-29a6ca32af2d",
+      "recorded_at": "2026-10-15T13:24:25.349171+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "synthesis",
+      "status": "verified",
+      "summary": "application.synthesize: succeeded; declared verification passed",
+      "decision": "Apply the selected component route and declared adapter contract",
+      "resource_ids": [],
+      "operation_id": "70add4b0-ca8f-4427-adcd-4492c7cd9e21",
+      "unknowns": [
+        "Application functionality remains unverified until separate build and functional verification"
+      ],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "selected_components": [],
+      "planned_actions": [],
+      "id": "c626616d-3c81-4ea9-b9fd-10bc5241e6e4",
+      "recorded_at": "2026-10-15T13:24:25.618158+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "build",
+      "status": "planned",
+      "summary": "Prepare python.build",
+      "decision": null,
+      "resource_ids": [],
+      "operation_id": null,
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": null,
+      "verification": "not_run",
+      "selected_components": [],
+      "planned_actions": [
+        {
+          "capability": "python.build"
+        }
+      ],
+      "id": "8ff8fe7d-590a-4d99-b709-87d93a6081ad",
+      "recorded_at": "2026-10-15T13:24:25.882559+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "build",
+      "status": "verified",
+      "summary": "python.build: succeeded; declared verification passed",
+      "decision": "Apply the selected component route and declared adapter contract",
+      "resource_ids": [],
+      "operation_id": "251b8459-9e59-479b-a893-d33a73ddd830",
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "selected_components": [],
+      "planned_actions": [],
+      "id": "ba15c15e-f02e-4f23-9aad-dee25843c44c",
+      "recorded_at": "2026-10-15T13:24:26.130897+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "functional_verification",
+      "status": "planned",
+      "summary": "Prepare application.verify",
+      "decision": null,
+      "resource_ids": [],
+      "operation_id": null,
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": null,
+      "verification": "not_run",
+      "selected_components": [],
+      "planned_actions": [
+        {
+          "capability": "application.verify"
+        }
+      ],
+      "id": "a9b506bc-a8b9-48c1-8a39-90a447195c56",
+      "recorded_at": "2026-10-15T13:24:26.472111+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "functional_verification",
+      "status": "verified",
+      "summary": "application.verify: succeeded; declared verification passed",
+      "decision": "Functional acceptance",
+      "resource_ids": [],
+      "operation_id": "83a8718c-5b26-4db9-b50e-7f6468e57d19",
+      "unknowns": [
+        "Installation was not requested, performed, or verified",
+        "Declared fixture check does not establish general application correctness"
+      ],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "selected_components": [],
+      "planned_actions": [],
+      "id": "0d3c0680-a592-4981-9d05-50d8db62c397",
+      "recorded_at": "2026-10-15T13:24:26.772112+00:00"
+    }
+  ]
+}
+

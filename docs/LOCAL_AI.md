@@ -1,7 +1,9 @@
 # Local AI and resource boundaries
 
-SCE v0.1 defines a provider-independent `AIProvider` protocol with `probe()` and
-`propose(TaskContext)` operations. The implemented `LoopbackAIProvider` uses the
+SCE defines a provider-independent `AIProvider` protocol with `probe()`,
+`propose(TaskContext)`, and `interpret(TaskContext)` operations. An independent
+`AIInterpreter` protocol supports evidence interpretation without action proposal.
+The implemented `LoopbackAIProvider` uses the
 OpenAI-compatible HTTP wire format with a local server. It does not use the
 OpenAI hosted API, require an OpenAI API key, or fall back to a remote service.
 
@@ -78,10 +80,43 @@ that exceed its capacity. SCE requests `max_tokens` for output and rejects
 truncated or abnormally finished responses. HTTP errors, malformed JSON,
 oversized responses, absent models, and invalid proposals remain failures.
 
-The v0.1 implementation covers proposal generation and validation, not an
-autonomous model-driven execution loop. Structured post-execution model
-interpretation, model-side tool calling, streaming, and automatic model loading
-are future work. Model responses have no authority to execute tools directly.
+The preserved v0.1 proposal interface is joined by structured evidence
+interpretation in v0.2. The full autonomous model-driven execution loop,
+model-side tool calling, streaming, and automatic model loading remain proposed.
+Model responses have no authority to execute tools directly.
+
+## Interpret actual execution evidence
+
+`interpret(TaskContext)` requires nonempty supplied records, applies the same
+context/response budgets as proposal generation, and probes the configured model
+before requesting a completion. The system prompt tells the model to distinguish
+execution outcome, artifact existence, declared verification, and unknowns. Record
+contents are untrusted data rather than instructions or new authority.
+
+The response must contain exactly these three fields:
+
+```json
+{
+  "summary": "The archive was built, but the declared output comparison failed.",
+  "unknowns": ["The cause of the mismatch has not been established."],
+  "suggested_next_checks": ["Compare expected output with preserved stdout."]
+}
+```
+
+`Interpretation.from_json` rejects duplicate fields, non-finite JSON, extra action
+fields, malformed arrays, empty values, and excess text/count budgets. The summary
+is limited to 8,192 characters; each array allows at most 16 nonempty strings of
+at most 2,048 characters. Provider response/context limits still apply. Truncated
+completions and tool calls are rejected. The interpretation has provenance
+`AI_INFERENCE` and `execution_authority=False`; advisory checks are never dispatched.
+Strict structure does not establish factual accuracy, so the original evidence
+remains available for human inspection.
+
+`sce ai-interpret TASK_ID` retrieves bounded actual task evidence and stores the
+result as a new `AI_INFERENCE` knowledge record. It does not change the task's
+verification state or execute the suggestions. A task without qualifying evidence,
+an unavailable model, or an invalid response fails explicitly. Earlier AI summaries
+must not replace original execution observations when forming the next context.
 
 ## Resource observations and limits
 
@@ -104,11 +139,15 @@ reserve capacity or prevent contention with another process or Codex session.
 
 ## Validation evidence and limitations
 
-`tests/test_ai.py` uses a temporary loopback HTTP fixture to exercise the local
+`tests/test_ai.py` and `tests/test_ai_interpretation.py` use temporary loopback HTTP fixtures to exercise the local
 wire protocol; it does not run a language model. Tests cover exact model
 matching, probe-before-chat ordering, local endpoint constraints, redirects,
 HTTP failures, request/response bounds, malformed and truncated output, and
-strict task input authorization. `tests/test_resources.py` covers limit
+strict task input authorization. Interpretation tests check evidence delivery,
+no-action response structure, provenance semantics, and rejection before network
+access when records or budgets are invalid. `tests/test_spider_cli.py` checks CLI
+evidence persistence with a mocked provider; these tests do not establish live
+Qwen reasoning quality. `tests/test_resources.py` covers limit
 validation, truthful advisory labels, actual local environment observations,
 missing storage, and absent GPU tooling.
 
@@ -117,7 +156,7 @@ Qwen inference compatibility or quality. Record live inference experiments
 separately, including server configuration, resource contention, result, and
 unknowns. Do not load or reconfigure the model merely to make a probe pass.
 
-### Live compatibility experiment: 2026-10-15
+### Historical v0.1 live compatibility experiment: 2026-10-15
 
 The installed CLI checked the local model listing at 12:15:14 UTC. The endpoint
 `http://127.0.0.1:8080` listed the configured `qwen3-coder-local` model, and
@@ -132,11 +171,33 @@ The proposal request exited with code 2 after 30.314 seconds and reported:
 Local provider request failed at /chat/completions: timed out
 ```
 
-Live proposal compatibility remains **unverified**. This observed timeout does
+In that experiment, live proposal compatibility remained **unverified**. This observed timeout does
 not identify its cause: model load, server contention, prompt processing, and
 other server conditions were not diagnosed. No retry or model reconfiguration
-was performed. No model-driven adapter execution occurred. Post-execution
-report interpretation remains roadmap work.
+was performed. No model-driven adapter execution or post-execution interpretation
+occurred in that historical experiment. Later interpretation and independent
+QASC integration results must be qualified by their own acceptance evidence.
 
 The exact commands, timestamps, probe response, stderr, and verification result
 are preserved in [local-ai-smoke.json](evidence/local-ai-smoke.json).
+
+### v0.2 generation and evidence interpretation
+
+The [current acceptance](ACCEPTANCE_V0.2.md#local-ai-experiment) records a live
+Qwen/QASC generation, separate independent functional tests, an earlier timeout,
+and an actual evidence-interpretation response. The generated application passed
+the specified output tests. The first interpretation nevertheless incorrectly
+denied runtime execution; both that model output and a contradictory reviewer
+record were retained. This demonstrates why AI inference is never promoted into
+verification evidence merely because it follows a successful tool execution.
+
+The CLI interpretation context includes bounded actual command receipts and
+timestamps, with record identities retained across generation and verification.
+Older generation-only uncertainty must be assessed against later evidence for
+the same artifact, not treated as the final task state. The model's suggested
+checks are stored as text; this command grants no execution authority.
+
+The recorded follow-up recognized the actual output checks but retained a stale
+unknown from generation. Reviewers should rely on the original operation receipts
+for verification status. The CLI uses UTF-8 for redirected output so valid Unicode
+model text is preserved on Windows as well as in SQLite.

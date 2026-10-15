@@ -1,7 +1,11 @@
-# SCE FOUNDATION V0.1 — acceptance
+# Historical SCE FOUNDATION V0.1 acceptance
+
+This document preserves the original foundation qualification. The current product
+milestone and its evidence are described in [v0.2 acceptance](ACCEPTANCE_V0.2.md).
+Proposed features and next steps below describe the v0.1 state, not current status.
 
 The local foundation acceptance run passed on **2026-10-15**, Windows 10 AMD64,
-PowerShell 7.6.6, Python 3.14.7. The private repository is
+PowerShell 7.6.6, Python 3.14.7. The repository is now public at
 [chatgptopenaiagi/SPIDER-CREATOR-ENGINE](https://github.com/chatgptopenaiagi/SPIDER-CREATOR-ENGINE),
 with independent workspace `I:\SPIDER-CREATOR-ENGINE`.
 

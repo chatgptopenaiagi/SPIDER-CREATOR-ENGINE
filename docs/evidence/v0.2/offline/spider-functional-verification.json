@@ -1,0 +1,72 @@
+{
+  "capability_id": "application.verify",
+  "id": "96d2d758-5dd3-4ce2-aa53-2b1dd131c74c",
+  "task_id": "70a6a582-e87a-42d2-ae51-8558d7105943",
+  "requested": {
+    "build_operation_id": "e8f27d10-86d9-49e5-9a9b-57ec59d55ce1",
+    "artifact": [
+      {
+        "kind": "python_zipapp",
+        "path": "/workspace/spider/.sce/artifact_storage/70a6a582-e87a-42d2-ae51-8558d7105943/spider-offline-report.pyz",
+        "sha256": "df8fcaab5086c725a85e2a849ecfbf7c740910fb1d7de52eb953e8fc20d6165e",
+        "size": 3877
+      }
+    ]
+  },
+  "planned": {
+    "verification_scope": "Functional acceptance",
+    "input": {
+      "csv_text": "name,team\nAda,engineering\nLin,design\nAda,engineering\n"
+    },
+    "expected_output": {
+      "row_count": 3,
+      "column_count": 2,
+      "columns": [
+        "name",
+        "team"
+      ],
+      "distinct_values": {
+        "name": 2,
+        "team": 2
+      },
+      "report": "Rows: 3\nColumns: 2\nname: 2 distinct values\nteam: 2 distinct values"
+    }
+  },
+  "outcome": "succeeded",
+  "verification": "passed",
+  "executed": [
+    {
+      "stage": "verify",
+      "status": "passed",
+      "argv": [
+        "/usr/local/bin/python",
+        "-I",
+        "/workspace/spider/.sce/artifact_storage/70a6a582-e87a-42d2-ae51-8558d7105943/spider-offline-report.pyz",
+        "--input-json",
+        "{\"csv_text\":\"name,team\\nAda,engineering\\nLin,design\\nAda,engineering\\n\"}"
+      ],
+      "expected_stdout": "{\"column_count\":2,\"columns\":[\"name\",\"team\"],\"distinct_values\":{\"name\":2,\"team\":2},\"report\":\"Rows: 3\\nColumns: 2\\nname: 2 distinct values\\nteam: 2 distinct values\",\"row_count\":3}\n",
+      "expected_exit": 0,
+      "stdout": "{\"column_count\":2,\"columns\":[\"name\",\"team\"],\"distinct_values\":{\"name\":2,\"team\":2},\"report\":\"Rows: 3\\nColumns: 2\\nname: 2 distinct values\\nteam: 2 distinct values\",\"row_count\":3}\n",
+      "stderr": "",
+      "exit_code": 0,
+      "detail": "declared exit and stdout matched",
+      "elapsed_seconds": 0.15414826100095524
+    }
+  ],
+  "produced": [],
+  "evidence": [
+    {
+      "source": "python.zipapp.verify",
+      "detail": "declared exit and stdout matched",
+      "observed_at": "2026-10-15T13:23:06.543768+00:00",
+      "kind": "verification"
+    }
+  ],
+  "unknowns": [
+    "Installation was not requested, performed, or verified",
+    "Declared fixture check does not establish general application correctness"
+  ],
+  "started_at": "2026-10-15T13:23:06.543814+00:00",
+  "finished_at": "2026-10-15T13:23:06.543859+00:00"
+}

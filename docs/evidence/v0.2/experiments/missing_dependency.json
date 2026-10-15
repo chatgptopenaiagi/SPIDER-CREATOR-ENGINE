@@ -1,0 +1,59 @@
+{
+  "capability_id": "python.build",
+  "id": "3a63ce8f-9ad6-46fb-a0df-1eeaf679b142",
+  "task_id": null,
+  "requested": {
+    "operation": "BUILD_ORIGINAL_PROJECT",
+    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\missing_dependency",
+    "trusted": true
+  },
+  "planned": {
+    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\missing_dependency",
+    "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\experiments\\missing_dependency",
+    "operation": "BUILD_ORIGINAL_PROJECT",
+    "trusted": true,
+    "task_id": null,
+    "artifact_name": "missing-dependency.pyz",
+    "entry_point": "main:main",
+    "required_modules": [
+      "sce_fixture_intentionally_absent_dependency_83f2a1"
+    ],
+    "verification_args": [],
+    "expected_stdout": "not run\n",
+    "expected_exit": 0,
+    "files": [
+      {
+        "path": "main.py",
+        "sha256": "c94a5e3c05a3ddd4f1dfd54ad487bf2b0a19bd0d4d0b4114245457eec8cfe2bd",
+        "size": 105
+      },
+      {
+        "path": "sce-build.json",
+        "sha256": "04f42046eb0fd4648249de675fd87968da388b73928aeb700204e5d9ca05a025",
+        "size": 256
+      }
+    ],
+    "validation_errors": [
+      "missing dependency module: sce_fixture_intentionally_absent_dependency_83f2a1"
+    ],
+    "unsupported": false,
+    "temporary_root": null
+  },
+  "outcome": "failed",
+  "verification": "not_run",
+  "executed": [],
+  "produced": [],
+  "evidence": [
+    {
+      "source": "python.zipapp.prepare",
+      "detail": "missing dependency module: sce_fixture_intentionally_absent_dependency_83f2a1",
+      "observed_at": "2026-10-15T13:24:29.368019+00:00",
+      "kind": "validation"
+    }
+  ],
+  "unknowns": [
+    "functional verification was not run because packaging did not succeed"
+  ],
+  "started_at": "2026-10-15T13:24:29.367948+00:00",
+  "finished_at": "2026-10-15T13:24:29.368027+00:00"
+}

@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "name": "temperature-v02-retry",
+  "created_at": "2026-10-15T13:03:33.906282+00:00",
+  "updated_at": "2026-10-15T13:05:50.849440+00:00",
+  "status": "verified",
+  "request": "Create a minimal dependency-free Python CLI main.py. One positional Celsius number in sys.argv[1]; print Fahrenheit C*9/5+32 with exactly one decimal place and newline. Non-numeric input exits nonzero. Include a test_conversion.py with two unittest tests. Keep source short. Do not access network or files at runtime.",
+  "request_provenance": "human_requirement",
+  "adapter": {
+    "id": "llama.cpp-openai-compatible",
+    "base_url": "http://127.0.0.1:8080",
+    "model": "qwen3-coder-local",
+    "timeout": 600.0,
+    "max_tokens": 1200
+  },
+  "requirements": [
+    "Python 3.11+",
+    "Standard library only (no external dependencies)"
+  ],
+  "acceptance_criteria": [
+    "main.py accepts one positional argument: Celsius temperature",
+    "main.py converts Celsius to Fahrenheit using formula C*9/5+32",
+    "main.py outputs exactly one decimal place followed by newline",
+    "main.py exits with code 0 on valid numeric input",
+    "main.py exits with non-zero code on non-numeric input",
+    "test_conversion.py contains two unittest tests",
+    "All tests use temporary directories for output",
+    "No network or file system access at runtime"
+  ],
+  "architecture": "Single module CLI application with separate test module",
+  "entrypoint": "main.py",
+  "files": [
+    "main.py",
+    "tests/test_conversion.py"
+  ],
+  "revision": "0001-345c6b89",
+  "history": [
+    {
+      "revision": "0001-345c6b89",
+      "created_at": "2026-10-15T13:05:48.327035+00:00",
+      "provenance": {
+        "kind": "ai_generated_application",
+        "model": "qwen3-coder-local",
+        "call_id": "generating-f8d016c54d3c"
+      },
+      "files": [
+        {
+          "path": "main.py",
+          "sha256": "518bafaad828f35a82309bbf393306e832209d91c87a5e4634cb7cbd8cce96a1"
+        },
+        {
+          "path": "tests/test_conversion.py",
+          "sha256": "34d85ecc394fe69a103d1a0a2fb238dd97ef3a1c0a4c857f73edd32bb02622e3"
+        }
+      ],
+      "before_hashes": {}
+    }
+  ],
+  "executions": [
+    "d758c506a6d142da83028b9d0d494756",
+    "de41cd19b4ef4dff9ab26cb53f56ad0e",
+    "5c3012c3b5144edaa1ed6ad31c056501",
+    "0e3aa69bb4f348bc810dfca0e602e0bd"
+  ],
+  "failures": [],
+  "corrections": [],
+  "verified_revisions": [
+    {
+      "id": "0001-345c6b89-58e30e622fa2",
+      "revision": "0001-345c6b89",
+      "verification_id": "58e30e622fa2",
+      "scope": "operator_acceptance_and_model_tests"
+    }
+  ],
+  "last_verification": {
+    "id": "58e30e622fa2",
+    "at": "2026-10-15T13:05:50.715585+00:00",
+    "revision": "0001-345c6b89",
+    "passed": true,
+    "unit_tests_passed": true,
+    "unit_test_count": 2,
+    "unit_receipt_id": "d758c506a6d142da83028b9d0d494756",
+    "acceptance_cases": [
+      {
+        "name": "freezing",
+        "passed": true,
+        "receipt_id": "de41cd19b4ef4dff9ab26cb53f56ad0e",
+        "mismatches": []
+      },
+      {
+        "name": "boiling",
+        "passed": true,
+        "receipt_id": "5c3012c3b5144edaa1ed6ad31c056501",
+        "mismatches": []
+      },
+      {
+        "name": "negative",
+        "passed": true,
+        "receipt_id": "0e3aa69bb4f348bc810dfca0e602e0bd",
+        "mismatches": []
+      }
+    ],
+    "independent_acceptance_passed": true,
+    "source_unchanged": true,
+    "source_fingerprint": "509960349933fcf55816a83ba6e53cc520925300f9f5f9945102884e2ac19531",
+    "scope": "operator_acceptance_and_model_tests",
+    "unit_feedback": {
+      "stdout": "212.0\r\n32.0\r\n",
+      "stderr": "test_boiling (test_conversion.TestConversion.test_boiling) ... ok\r\ntest_freezing (test_conversion.TestConversion.test_freezing) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 2 tests in 0.088s\r\n\r\nOK\r\n",
+      "exit_code": 0,
+      "timed_out": false,
+      "error": null
+    }
+  },
+  "acceptance": {
+    "cases": [
+      {
+        "args": [
+          "0"
+        ],
+        "exit_code": 0,
+        "name": "freezing",
+        "stdout": "32.0\n"
+      },
+      {
+        "args": [
+          "100"
+        ],
+        "exit_code": 0,
+        "name": "boiling",
+        "stdout": "212.0\n"
+      },
+      {
+        "args": [
+          "-40"
+        ],
+        "exit_code": 0,
+        "name": "negative",
+        "stdout": "-40.0\n"
+      }
+    ],
+    "provenance": "operator_supplied_verification"
+  },
+  "limitations": [],
+  "decisions": [
+    {
+      "at": "2026-10-15T13:03:33.982049+00:00",
+      "kind": "generating",
+      "call_id": "generating-f8d016c54d3c"
+    }
+  ],
+  "stack": "python-stdlib",
+  "test_policy": {
+    "command": [
+      "{python}",
+      "-I",
+      "-B",
+      "-X",
+      "utf8",
+      "-X",
+      "pycache_prefix={unique_cache}",
+      "{qasc_runner}",
+      "--project",
+      "{project}",
+      "--result",
+      "{result_json}"
+    ],
+    "origin": "qasc_fixed_runner",
+    "model_tests_frozen": true
+  }
+}

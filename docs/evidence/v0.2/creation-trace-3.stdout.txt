@@ -1,0 +1,687 @@
+{
+  "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+  "level": 3,
+  "offset": 0,
+  "limit": 1000,
+  "events": [
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "planning",
+      "status": "planned",
+      "summary": "Create a new application from selected components",
+      "decision": "Connect declared Python JSON callables using a thin CLI bridge; build a new application",
+      "evidence": [],
+      "resource_ids": [],
+      "operation_id": null,
+      "artifacts": [],
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": null,
+      "verification": "not_run",
+      "selected_components": [
+        "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\csv_summary",
+        "I:\\SPIDER-CREATOR-ENGINE\\examples\\components\\summary_report"
+      ],
+      "planned_actions": [
+        {
+          "stage": "discovery",
+          "capability": "spider.discover"
+        },
+        {
+          "stage": "acquisition",
+          "capability": "resource.acquire_local"
+        },
+        {
+          "stage": "analysis",
+          "capability": "project.analyze"
+        },
+        {
+          "stage": "synthesis",
+          "capability": "application.synthesize"
+        },
+        {
+          "stage": "build",
+          "capability": "python.build"
+        },
+        {
+          "stage": "functional_verification",
+          "capability": "application.verify"
+        }
+      ],
+      "errors": [],
+      "id": "0da82b1f-3950-4261-91b3-2a3c93dcad2c",
+      "recorded_at": "2026-10-15T13:24:22.363531+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "discovery",
+      "status": "planned",
+      "summary": "Prepare spider.discover",
+      "decision": null,
+      "evidence": [],
+      "resource_ids": [],
+      "operation_id": null,
+      "artifacts": [],
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": null,
+      "verification": "not_run",
+      "selected_components": [],
+      "planned_actions": [
+        {
+          "capability": "spider.discover"
+        }
+      ],
+      "errors": [],
+      "id": "97258dae-c347-4b6c-a2ba-17a0e7533e60",
+      "recorded_at": "2026-10-15T13:24:22.745644+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "discovery",
+      "status": "verified",
+      "summary": "spider.discover: succeeded; declared verification passed",
+      "decision": "Structured local source observations, not software functionality",
+      "evidence": [
+        {
+          "source": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/csv_summary",
+          "detail": "Read-only local inspection; 2 paths observed, 2 content hashes, 1367 bytes hashed",
+          "observed_at": "2026-10-15T13:24:22.847133+00:00",
+          "kind": "static_inspection"
+        },
+        {
+          "source": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/summary_report",
+          "detail": "Read-only local inspection; 2 paths observed, 2 content hashes, 734 bytes hashed",
+          "observed_at": "2026-10-15T13:24:22.852315+00:00",
+          "kind": "static_inspection"
+        }
+      ],
+      "resource_ids": [],
+      "operation_id": "3421136b-0d37-4a00-8769-ce0b15248af7",
+      "artifacts": [
+        {
+          "kind": "local_directory",
+          "resource_id": "local-observation:sha256:e13a1fda52e9d97578e827726e9e52c1544649edef095d6fc6d90dcfdc8ce846",
+          "source_uri": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/csv_summary",
+          "name": "csv_summary",
+          "revision": "observed-sha256:e13a1fda52e9d97578e827726e9e52c1544649edef095d6fc6d90dcfdc8ce846",
+          "metadata": {
+            "content_hashes": {
+              "csv_tools.py": "8b626639d89c6310c36b92a9779a590196f4aa473e6b2a972f568b4c91d33620",
+              "sce-component.json": "4845ebe6f256f840cb614c8649c86b6edb32470e05b5cbe1f671f380a5e611d5"
+            },
+            "bytes_hashed": 1367,
+            "structure": [
+              "csv_tools.py",
+              "sce-component.json"
+            ],
+            "languages": [
+              "Python"
+            ]
+          },
+          "observations": [
+            {
+              "subject": "file_structure",
+              "value": [
+                "csv_tools.py",
+                "sce-component.json"
+              ],
+              "provenance": "OBSERVED_BEHAVIOR",
+              "source": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/csv_summary",
+              "content_sha256": null
+            },
+            {
+              "subject": "languages_inferred_from_suffixes",
+              "value": [
+                "Python"
+              ],
+              "provenance": "OBSERVED_BEHAVIOR",
+              "source": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/csv_summary",
+              "content_sha256": null
+            }
+          ],
+          "evidence": [
+            {
+              "source": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/csv_summary",
+              "detail": "Read-only local inspection; 2 paths observed, 2 content hashes, 1367 bytes hashed",
+              "observed_at": "2026-10-15T13:24:22.847133+00:00",
+              "kind": "static_inspection"
+            }
+          ],
+          "limitations": [
+            "Local identity covers the bounded observed file set; it is not a Git revision or a full repository fingerprint",
+            "Static filename and declaration observations do not prove buildability, interface compatibility, licensing permission, or application functionality"
+          ],
+          "discovered_at": "2026-10-15T13:24:22.841955+00:00"
+        },
+        {
+          "kind": "local_directory",
+          "resource_id": "local-observation:sha256:6d6cfa2d0f718cd0a46aa08f9423573ead57fdbdc4a7c14ff5a0a514a190bc61",
+          "source_uri": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/summary_report",
+          "name": "summary_report",
+          "revision": "observed-sha256:6d6cfa2d0f718cd0a46aa08f9423573ead57fdbdc4a7c14ff5a0a514a190bc61",
+          "metadata": {
+            "content_hashes": {
+              "report_tools.py": "922aaf5791c8dbb7ac089c961110dee5d1f4d7cd1ea8f93928d92035f9aea21a",
+              "sce-component.json": "72ee68ee0561629b0d15ecdc31e05e3779d50ae4e089e4e5724ab3922482acfd"
+            },
+            "bytes_hashed": 734,
+            "structure": [
+              "report_tools.py",
+              "sce-component.json"
+            ],
+            "languages": [
+              "Python"
+            ]
+          },
+          "observations": [
+            {
+              "subject": "file_structure",
+              "value": [
+                "report_tools.py",
+                "sce-component.json"
+              ],
+              "provenance": "OBSERVED_BEHAVIOR",
+              "source": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/summary_report",
+              "content_sha256": null
+            },
+            {
+              "subject": "languages_inferred_from_suffixes",
+              "value": [
+                "Python"
+              ],
+              "provenance": "OBSERVED_BEHAVIOR",
+              "source": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/summary_report",
+              "content_sha256": null
+            }
+          ],
+          "evidence": [
+            {
+              "source": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/summary_report",
+              "detail": "Read-only local inspection; 2 paths observed, 2 content hashes, 734 bytes hashed",
+              "observed_at": "2026-10-15T13:24:22.852315+00:00",
+              "kind": "static_inspection"
+            }
+          ],
+          "limitations": [
+            "Local identity covers the bounded observed file set; it is not a Git revision or a full repository fingerprint",
+            "Static filename and declaration observations do not prove buildability, interface compatibility, licensing permission, or application functionality"
+          ],
+          "discovered_at": "2026-10-15T13:24:22.847788+00:00"
+        }
+      ],
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "selected_components": [],
+      "planned_actions": [],
+      "errors": [],
+      "id": "dfb5df36-6f2d-44ee-8447-ae27d5dd048c",
+      "recorded_at": "2026-10-15T13:24:23.312697+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "acquisition",
+      "status": "planned",
+      "summary": "Prepare resource.acquire_local",
+      "decision": null,
+      "evidence": [],
+      "resource_ids": [],
+      "operation_id": null,
+      "artifacts": [],
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": null,
+      "verification": "not_run",
+      "selected_components": [],
+      "planned_actions": [
+        {
+          "capability": "resource.acquire_local"
+        }
+      ],
+      "errors": [],
+      "id": "d77520a4-ebbc-4366-8905-5a20bf4b0cbf",
+      "recorded_at": "2026-10-15T13:24:23.598173+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "acquisition",
+      "status": "verified",
+      "summary": "resource.acquire_local: succeeded; declared verification passed",
+      "decision": "Acquired bytes match the prepared source inventory",
+      "evidence": [
+        {
+          "source": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/csv_summary",
+          "detail": "Copied content SHA-256 matches prepared inventory",
+          "observed_at": "2026-10-15T13:24:23.742249+00:00",
+          "kind": "observation"
+        },
+        {
+          "source": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/summary_report",
+          "detail": "Copied content SHA-256 matches prepared inventory",
+          "observed_at": "2026-10-15T13:24:23.755967+00:00",
+          "kind": "observation"
+        }
+      ],
+      "resource_ids": [],
+      "operation_id": "f4f49973-bae9-4cab-a4bf-87c7007b8890",
+      "artifacts": [
+        {
+          "kind": "resource_snapshot",
+          "identity": "3319d726-6b2f-4291-9090-e17da9a7b8c3",
+          "source_uri": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/csv_summary",
+          "source_revision": "observed-sha256:e13a1fda52e9d97578e827726e9e52c1544649edef095d6fc6d90dcfdc8ce846",
+          "content_hashes": {
+            "csv_tools.py": "8b626639d89c6310c36b92a9779a590196f4aa473e6b2a972f568b4c91d33620",
+            "sce-component.json": "4845ebe6f256f840cb614c8649c86b6edb32470e05b5cbe1f671f380a5e611d5"
+          },
+          "location": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\resource_library\\3319d726-6b2f-4291-9090-e17da9a7b8c3\\content",
+          "transfer_status": "completed",
+          "evidence": [
+            {
+              "source": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/csv_summary",
+              "detail": "Copied content SHA-256 matches prepared inventory",
+              "observed_at": "2026-10-15T13:24:23.742249+00:00",
+              "kind": "observation"
+            }
+          ],
+          "unknowns": [],
+          "expected_content_hashes": {
+            "csv_tools.py": "8b626639d89c6310c36b92a9779a590196f4aa473e6b2a972f568b4c91d33620",
+            "sce-component.json": "4845ebe6f256f840cb614c8649c86b6edb32470e05b5cbe1f671f380a5e611d5"
+          },
+          "resource_id": "local-observation:sha256:e13a1fda52e9d97578e827726e9e52c1544649edef095d6fc6d90dcfdc8ce846"
+        },
+        {
+          "kind": "resource_snapshot",
+          "identity": "bd0df22d-86cb-470f-82dc-7f78b2ae25d7",
+          "source_uri": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/summary_report",
+          "source_revision": "observed-sha256:6d6cfa2d0f718cd0a46aa08f9423573ead57fdbdc4a7c14ff5a0a514a190bc61",
+          "content_hashes": {
+            "report_tools.py": "922aaf5791c8dbb7ac089c961110dee5d1f4d7cd1ea8f93928d92035f9aea21a",
+            "sce-component.json": "72ee68ee0561629b0d15ecdc31e05e3779d50ae4e089e4e5724ab3922482acfd"
+          },
+          "location": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\resource_library\\bd0df22d-86cb-470f-82dc-7f78b2ae25d7\\content",
+          "transfer_status": "completed",
+          "evidence": [
+            {
+              "source": "file:///I:/SPIDER-CREATOR-ENGINE/examples/components/summary_report",
+              "detail": "Copied content SHA-256 matches prepared inventory",
+              "observed_at": "2026-10-15T13:24:23.755967+00:00",
+              "kind": "observation"
+            }
+          ],
+          "unknowns": [],
+          "expected_content_hashes": {
+            "report_tools.py": "922aaf5791c8dbb7ac089c961110dee5d1f4d7cd1ea8f93928d92035f9aea21a",
+            "sce-component.json": "72ee68ee0561629b0d15ecdc31e05e3779d50ae4e089e4e5724ab3922482acfd"
+          },
+          "resource_id": "local-observation:sha256:6d6cfa2d0f718cd0a46aa08f9423573ead57fdbdc4a7c14ff5a0a514a190bc61"
+        }
+      ],
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "selected_components": [],
+      "planned_actions": [],
+      "errors": [],
+      "id": "99172b66-312b-4ec0-95cf-1af9cddb2ea7",
+      "recorded_at": "2026-10-15T13:24:24.201388+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "analysis",
+      "status": "planned",
+      "summary": "Prepare project.analyze",
+      "decision": null,
+      "evidence": [],
+      "resource_ids": [],
+      "operation_id": null,
+      "artifacts": [],
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": null,
+      "verification": "not_run",
+      "selected_components": [],
+      "planned_actions": [
+        {
+          "capability": "project.analyze"
+        }
+      ],
+      "errors": [],
+      "id": "52a33abd-bcab-4182-ae13-4120e119ead0",
+      "recorded_at": "2026-10-15T13:24:24.515068+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "analysis",
+      "status": "verified",
+      "summary": "project.analyze: succeeded; declared verification passed",
+      "decision": "Bounded static inspection completed; interface validity is checked during synthesis",
+      "evidence": [
+        {
+          "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\resource_library\\3319d726-6b2f-4291-9090-e17da9a7b8c3\\content",
+          "detail": "Static structure and dependencies inspected without importing source",
+          "observed_at": "2026-10-15T13:24:24.618786+00:00",
+          "kind": "static_analysis"
+        },
+        {
+          "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\resource_library\\bd0df22d-86cb-470f-82dc-7f78b2ae25d7\\content",
+          "detail": "Static structure and dependencies inspected without importing source",
+          "observed_at": "2026-10-15T13:24:24.619331+00:00",
+          "kind": "static_analysis"
+        }
+      ],
+      "resource_ids": [],
+      "operation_id": "147baf6b-3b8e-47de-a0bc-ad55458ace93",
+      "artifacts": [
+        {
+          "kind": "static_analysis",
+          "resource_id": "local-observation:sha256:e13a1fda52e9d97578e827726e9e52c1544649edef095d6fc6d90dcfdc8ce846",
+          "source": "file:///I:/SPIDER-CREATOR-ENGINE/.sce/acceptance/spider-v0.2-publish/.sce/resource_library/3319d726-6b2f-4291-9090-e17da9a7b8c3/content",
+          "languages": [
+            "Python"
+          ],
+          "structure": [
+            "csv_tools.py",
+            "sce-component.json"
+          ],
+          "dependencies": [],
+          "build_systems": [],
+          "entry_points": [],
+          "candidate_integration_methods": [],
+          "required_tools": [
+            "Python"
+          ],
+          "evidence": [
+            {
+              "source": "file:///I:/SPIDER-CREATOR-ENGINE/.sce/acceptance/spider-v0.2-publish/.sce/resource_library/3319d726-6b2f-4291-9090-e17da9a7b8c3/content",
+              "detail": "Bounded static filename observations; languages inferred from suffixes",
+              "observed_at": "2026-10-15T13:24:24.618739+00:00",
+              "kind": "observation"
+            }
+          ],
+          "unknowns": [
+            "Static observations do not establish buildability, interfaces, or integration compatibility"
+          ]
+        },
+        {
+          "kind": "static_analysis",
+          "resource_id": "local-observation:sha256:6d6cfa2d0f718cd0a46aa08f9423573ead57fdbdc4a7c14ff5a0a514a190bc61",
+          "source": "file:///I:/SPIDER-CREATOR-ENGINE/.sce/acceptance/spider-v0.2-publish/.sce/resource_library/bd0df22d-86cb-470f-82dc-7f78b2ae25d7/content",
+          "languages": [
+            "Python"
+          ],
+          "structure": [
+            "report_tools.py",
+            "sce-component.json"
+          ],
+          "dependencies": [],
+          "build_systems": [],
+          "entry_points": [],
+          "candidate_integration_methods": [],
+          "required_tools": [
+            "Python"
+          ],
+          "evidence": [
+            {
+              "source": "file:///I:/SPIDER-CREATOR-ENGINE/.sce/acceptance/spider-v0.2-publish/.sce/resource_library/bd0df22d-86cb-470f-82dc-7f78b2ae25d7/content",
+              "detail": "Bounded static filename observations; languages inferred from suffixes",
+              "observed_at": "2026-10-15T13:24:24.619306+00:00",
+              "kind": "observation"
+            }
+          ],
+          "unknowns": [
+            "Static observations do not establish buildability, interfaces, or integration compatibility"
+          ]
+        }
+      ],
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "selected_components": [],
+      "planned_actions": [],
+      "errors": [],
+      "id": "1c0d0b9b-90bf-40ac-9bea-aecd8b2e91d4",
+      "recorded_at": "2026-10-15T13:24:25.093068+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "synthesis",
+      "status": "planned",
+      "summary": "Prepare application.synthesize",
+      "decision": null,
+      "evidence": [],
+      "resource_ids": [],
+      "operation_id": null,
+      "artifacts": [],
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": null,
+      "verification": "not_run",
+      "selected_components": [],
+      "planned_actions": [
+        {
+          "capability": "application.synthesize"
+        }
+      ],
+      "errors": [],
+      "id": "242d9c89-3e26-48bd-839e-29a6ca32af2d",
+      "recorded_at": "2026-10-15T13:24:25.349171+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "synthesis",
+      "status": "verified",
+      "summary": "application.synthesize: succeeded; declared verification passed",
+      "decision": "Apply the selected component route and declared adapter contract",
+      "evidence": [
+        {
+          "source": "python.synthesize.execute",
+          "detail": "Created isolated application source from declared components and fixed bridge; no component code executed",
+          "observed_at": "2026-10-15T13:24:25.510469+00:00",
+          "kind": "observation"
+        },
+        {
+          "source": "python.synthesize.verify",
+          "detail": "All selected and generated file hashes match the prepared application; construction integrity only, not functionality",
+          "observed_at": "2026-10-15T13:24:25.535189+00:00",
+          "kind": "verification"
+        }
+      ],
+      "resource_ids": [],
+      "operation_id": "70add4b0-ca8f-4427-adcd-4492c7cd9e21",
+      "artifacts": [
+        {
+          "kind": "application_source",
+          "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application\\_sce_parts\\p0\\csv_tools.py",
+          "sha256": "8b626639d89c6310c36b92a9779a590196f4aa473e6b2a972f568b4c91d33620",
+          "size": 1101
+        },
+        {
+          "kind": "application_source",
+          "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application\\_sce_parts\\p1\\report_tools.py",
+          "sha256": "922aaf5791c8dbb7ac089c961110dee5d1f4d7cd1ea8f93928d92035f9aea21a",
+          "size": 444
+        },
+        {
+          "kind": "application_source",
+          "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application\\_sce_parts\\__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size": 0
+        },
+        {
+          "kind": "application_source",
+          "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application\\_sce_parts\\p0\\__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size": 0
+        },
+        {
+          "kind": "application_source",
+          "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application\\_sce_parts\\p1\\__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "size": 0
+        },
+        {
+          "kind": "application_source",
+          "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application\\sce_bridge.py",
+          "sha256": "968f68291e684a5a36931503f59a8ab0a79c061154ed87548729bdf80a6f808d",
+          "size": 1226
+        },
+        {
+          "kind": "application_source",
+          "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application\\sce-build.json",
+          "sha256": "e7c6a6f24a6404507bfd33471ae0fa210eaba5f716adc2aa16f994b996f631f7",
+          "size": 477
+        },
+        {
+          "kind": "application_source",
+          "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application\\sce-provenance.json",
+          "sha256": "e0532057acc65044a2be30b68b0b411be0876942d0615404201463728eb57cbd",
+          "size": 2129
+        },
+        {
+          "kind": "application_workspace",
+          "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application",
+          "resource_ids": [
+            "local-observation:sha256:e13a1fda52e9d97578e827726e9e52c1544649edef095d6fc6d90dcfdc8ce846",
+            "local-observation:sha256:6d6cfa2d0f718cd0a46aa08f9423573ead57fdbdc4a7c14ff5a0a514a190bc61"
+          ]
+        }
+      ],
+      "unknowns": [
+        "Application functionality remains unverified until separate build and functional verification"
+      ],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "selected_components": [],
+      "planned_actions": [],
+      "errors": [],
+      "id": "c626616d-3c81-4ea9-b9fd-10bc5241e6e4",
+      "recorded_at": "2026-10-15T13:24:25.618158+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "build",
+      "status": "planned",
+      "summary": "Prepare python.build",
+      "decision": null,
+      "evidence": [],
+      "resource_ids": [],
+      "operation_id": null,
+      "artifacts": [],
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": null,
+      "verification": "not_run",
+      "selected_components": [],
+      "planned_actions": [
+        {
+          "capability": "python.build"
+        }
+      ],
+      "errors": [],
+      "id": "8ff8fe7d-590a-4d99-b709-87d93a6081ad",
+      "recorded_at": "2026-10-15T13:24:25.882559+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "build",
+      "status": "verified",
+      "summary": "python.build: succeeded; declared verification passed",
+      "decision": "Apply the selected component route and declared adapter contract",
+      "evidence": [
+        {
+          "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1\\acceptance-csv-report.pyz",
+          "detail": "package created and SHA-256 recorded; functionality remains unverified",
+          "observed_at": "2026-10-15T13:24:26.044684+00:00",
+          "kind": "artifact"
+        },
+        {
+          "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1\\acceptance-csv-report.pyz",
+          "detail": "Package integrity checked; functional verification is a separate operation",
+          "observed_at": "2026-10-15T13:24:26.045938+00:00",
+          "kind": "package_integrity"
+        }
+      ],
+      "resource_ids": [],
+      "operation_id": "251b8459-9e59-479b-a893-d33a73ddd830",
+      "artifacts": [
+        {
+          "kind": "python_zipapp",
+          "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1\\acceptance-csv-report.pyz",
+          "sha256": "e2096d421b40fd414d1a415d2220771799f57aa73f02bc671d011c4727a8828e",
+          "size": 3904
+        }
+      ],
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "selected_components": [],
+      "planned_actions": [],
+      "errors": [],
+      "id": "ba15c15e-f02e-4f23-9aad-dee25843c44c",
+      "recorded_at": "2026-10-15T13:24:26.130897+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "functional_verification",
+      "status": "planned",
+      "summary": "Prepare application.verify",
+      "decision": null,
+      "evidence": [],
+      "resource_ids": [],
+      "operation_id": null,
+      "artifacts": [],
+      "unknowns": [],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": null,
+      "verification": "not_run",
+      "selected_components": [],
+      "planned_actions": [
+        {
+          "capability": "application.verify"
+        }
+      ],
+      "errors": [],
+      "id": "a9b506bc-a8b9-48c1-8a39-90a447195c56",
+      "recorded_at": "2026-10-15T13:24:26.472111+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "functional_verification",
+      "status": "verified",
+      "summary": "application.verify: succeeded; declared verification passed",
+      "decision": "Functional acceptance",
+      "evidence": [
+        {
+          "source": "python.zipapp.verify",
+          "detail": "declared exit and stdout matched",
+          "observed_at": "2026-10-15T13:24:26.696246+00:00",
+          "kind": "verification"
+        }
+      ],
+      "resource_ids": [],
+      "operation_id": "83a8718c-5b26-4db9-b50e-7f6468e57d19",
+      "artifacts": [],
+      "unknowns": [
+        "Installation was not requested, performed, or verified",
+        "Declared fixture check does not establish general application correctness"
+      ],
+      "objective": "Create a useful CSV summary report from inspected local components",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "selected_components": [],
+      "planned_actions": [],
+      "errors": [],
+      "id": "0d3c0680-a592-4981-9d05-50d8db62c397",
+      "recorded_at": "2026-10-15T13:24:26.772112+00:00"
+    }
+  ]
+}
+

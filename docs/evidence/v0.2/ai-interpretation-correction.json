@@ -1,0 +1,118 @@
+{
+  "claim": "The AI interpretation incorrectly denied actual runtime execution. Recorded QASC verification and later independent holdouts executed the generated application and compared actual output. The earlier generation-only NOT_RUN record describes an earlier stage, not the final verification status.",
+  "provenance": [
+    {
+      "source": "operation:004f4905-04d1-41fa-85a5-1ad91be22d19",
+      "method": "Review of captured subprocess stdout, exit status and source fingerprint",
+      "observed_at": "2026-10-15T13:10:24.336076+00:00",
+      "source_revision": null,
+      "content_sha256": null,
+      "category": "OBSERVED_BEHAVIOR",
+      "actor": "Codex engineering worker"
+    }
+  ],
+  "task_ids": [
+    "2a79f6a5-bb03-48d8-aa29-a32a2c90cc8e"
+  ],
+  "kind": "correction",
+  "id": "263e8b0c-b5e2-488c-a27f-e50b6d360398",
+  "recorded_at": "2026-10-15T13:10:24.336159+00:00",
+  "supporting_evidence": [
+    {
+      "operation": {
+        "capability_id": "application.verify",
+        "id": "004f4905-04d1-41fa-85a5-1ad91be22d19",
+        "task_id": "2a79f6a5-bb03-48d8-aa29-a32a2c90cc8e",
+        "requested": {
+          "application": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc\\temperature-v02-retry\\main.py"
+        },
+        "planned": {
+          "verification_scope": "Three independent holdout cases after generated-source inspection"
+        },
+        "outcome": "succeeded",
+        "verification": "passed",
+        "executed": [
+          {
+            "argv": [
+              "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+              "-I",
+              "-B",
+              "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc\\temperature-v02-retry\\main.py",
+              "25"
+            ],
+            "stdout": "77.0\n",
+            "stderr": "",
+            "exit_code": 0,
+            "expected_stdout": "77.0\n",
+            "expected_exit_code": 0,
+            "passed": true
+          },
+          {
+            "argv": [
+              "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+              "-I",
+              "-B",
+              "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc\\temperature-v02-retry\\main.py",
+              "37.5"
+            ],
+            "stdout": "99.5\n",
+            "stderr": "",
+            "exit_code": 0,
+            "expected_stdout": "99.5\n",
+            "expected_exit_code": 0,
+            "passed": true
+          },
+          {
+            "argv": [
+              "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+              "-I",
+              "-B",
+              "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc\\temperature-v02-retry\\main.py",
+              "not-a-number"
+            ],
+            "stdout": "",
+            "stderr": "",
+            "exit_code": 1,
+            "expected_stdout": "",
+            "expected_exit_code": 1,
+            "passed": true
+          }
+        ],
+        "produced": [],
+        "evidence": [
+          {
+            "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\ai-v02\\.sce\\build_workspaces\\qasc\\temperature-v02-retry\\main.py",
+            "detail": "{\"sha256\": \"518bafaad828f35a82309bbf393306e832209d91c87a5e4634cb7cbd8cce96a1\", \"cases_passed\": true, \"unit_test_limitation\": \"Generated unittest cases assert process exit only; independent acceptance and holdout checks compare exact output.\"}",
+            "observed_at": "2026-10-15T13:06:46.453300+00:00",
+            "kind": "verification"
+          }
+        ],
+        "unknowns": [
+          "No general correctness, packaging or installation claim"
+        ],
+        "started_at": "2026-10-15T13:06:46.453323+00:00",
+        "finished_at": "2026-10-15T13:06:46.453327+00:00"
+      }
+    }
+  ],
+  "contradictory_evidence": [
+    {
+      "record_id": "5c5ce5f7-1812-4015-989a-9f5bd88905e5",
+      "reason": "Runtime execution exists in actual command receipts"
+    }
+  ],
+  "environment": {},
+  "limitations": [
+    "This reviewer correction is attributable to the Codex worker, not a human correction or a new test.",
+    "Model interpretation quality remains distinct from application acceptance."
+  ],
+  "related_record_ids": [
+    "5c5ce5f7-1812-4015-989a-9f5bd88905e5"
+  ],
+  "metadata": {},
+  "resource_id": null,
+  "resource_revision": null,
+  "subject": null,
+  "description": null,
+  "applicability": {}
+}

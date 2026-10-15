@@ -1,0 +1,72 @@
+{
+  "python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+  "evidence_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\experiments",
+  "experiments": [
+    {
+      "fixture": "success",
+      "expected": [
+        "succeeded",
+        "passed"
+      ],
+      "actual": [
+        "succeeded",
+        "passed"
+      ],
+      "passed": true,
+      "operation_id": "de8f3f56-28aa-4aeb-b9dd-5b5c147346b2"
+    },
+    {
+      "fixture": "missing_dependency",
+      "expected": [
+        "failed",
+        "not_run"
+      ],
+      "actual": [
+        "failed",
+        "not_run"
+      ],
+      "passed": true,
+      "operation_id": "3a63ce8f-9ad6-46fb-a0df-1eeaf679b142"
+    },
+    {
+      "fixture": "unsupported",
+      "expected": [
+        "unsupported",
+        "not_run"
+      ],
+      "actual": [
+        "unsupported",
+        "not_run"
+      ],
+      "passed": true,
+      "operation_id": "f8e83b64-05ce-4219-8680-4360d535a0c0"
+    },
+    {
+      "fixture": "failed_verification",
+      "expected": [
+        "succeeded",
+        "failed"
+      ],
+      "actual": [
+        "succeeded",
+        "failed"
+      ],
+      "passed": true,
+      "operation_id": "4f460e9c-fbcd-416a-bc26-d4e7009074cf"
+    },
+    {
+      "fixture": "timeout",
+      "expected": [
+        "partial",
+        "inconclusive"
+      ],
+      "actual": [
+        "partial",
+        "inconclusive"
+      ],
+      "passed": true,
+      "operation_id": "7d2d1e9d-c7db-4f8b-a471-3e74a811396c"
+    }
+  ]
+}

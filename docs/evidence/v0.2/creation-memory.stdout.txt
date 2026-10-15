@@ -1,0 +1,342 @@
+[
+  {
+    "claim": "application.verify: outcome=succeeded; declared verification=passed",
+    "provenance": [
+      {
+        "source": "operation:83a8718c-5b26-4db9-b50e-7f6468e57d19",
+        "method": "Canonical operation evidence capture",
+        "observed_at": "2026-10-15T13:24:26.696337+00:00",
+        "source_revision": null,
+        "content_sha256": null,
+        "category": "VERIFIED_TEST_EVIDENCE",
+        "actor": null
+      }
+    ],
+    "task_ids": [
+      "3db35515-7a9b-4612-8145-5cf2c84227f1"
+    ],
+    "kind": "observation",
+    "id": "95466da6-c4a2-4a91-b73b-73635fcbd9fb",
+    "recorded_at": "2026-10-15T13:24:26.696449+00:00",
+    "supporting_evidence": [
+      {
+        "source": "python.zipapp.verify",
+        "detail": "declared exit and stdout matched",
+        "observed_at": "2026-10-15T13:24:26.696246+00:00",
+        "kind": "verification"
+      }
+    ],
+    "contradictory_evidence": [],
+    "environment": {
+      "python": "3.14.7",
+      "platform": "Windows"
+    },
+    "limitations": [
+      "Verification scope is limited to the procedures and evidence in the operation record."
+    ],
+    "related_record_ids": [],
+    "metadata": {
+      "operation": {
+        "capability_id": "application.verify",
+        "id": "83a8718c-5b26-4db9-b50e-7f6468e57d19",
+        "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+        "requested": {
+          "build_operation_id": "251b8459-9e59-479b-a893-d33a73ddd830",
+          "artifact": [
+            {
+              "kind": "python_zipapp",
+              "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1\\acceptance-csv-report.pyz",
+              "sha256": "e2096d421b40fd414d1a415d2220771799f57aa73f02bc671d011c4727a8828e",
+              "size": 3904
+            }
+          ]
+        },
+        "planned": {
+          "verification_scope": "Functional acceptance",
+          "input": {
+            "csv_text": "name,team\nAda,engineering\nLin,design\nAda,engineering\n"
+          },
+          "expected_output": {
+            "row_count": 3,
+            "column_count": 2,
+            "columns": [
+              "name",
+              "team"
+            ],
+            "distinct_values": {
+              "name": 2,
+              "team": 2
+            },
+            "report": "Rows: 3\nColumns: 2\nname: 2 distinct values\nteam: 2 distinct values"
+          }
+        },
+        "outcome": "succeeded",
+        "verification": "passed",
+        "executed": [
+          {
+            "stage": "verify",
+            "status": "passed",
+            "argv": [
+              "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\installed\\Scripts\\python.exe",
+              "-I",
+              "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1\\acceptance-csv-report.pyz",
+              "--input-json",
+              "{\"csv_text\":\"name,team\\nAda,engineering\\nLin,design\\nAda,engineering\\n\"}"
+            ],
+            "expected_stdout": "{\"column_count\":2,\"columns\":[\"name\",\"team\"],\"distinct_values\":{\"name\":2,\"team\":2},\"report\":\"Rows: 3\\nColumns: 2\\nname: 2 distinct values\\nteam: 2 distinct values\",\"row_count\":3}\n",
+            "expected_exit": 0,
+            "stdout": "{\"column_count\":2,\"columns\":[\"name\",\"team\"],\"distinct_values\":{\"name\":2,\"team\":2},\"report\":\"Rows: 3\\nColumns: 2\\nname: 2 distinct values\\nteam: 2 distinct values\",\"row_count\":3}\n",
+            "stderr": "",
+            "exit_code": 0,
+            "detail": "declared exit and stdout matched",
+            "elapsed_seconds": 0.1000964999984717
+          }
+        ],
+        "produced": [],
+        "evidence": [
+          {
+            "source": "python.zipapp.verify",
+            "detail": "declared exit and stdout matched",
+            "observed_at": "2026-10-15T13:24:26.696246+00:00",
+            "kind": "verification"
+          }
+        ],
+        "unknowns": [
+          "Installation was not requested, performed, or verified",
+          "Declared fixture check does not establish general application correctness"
+        ],
+        "started_at": "2026-10-15T13:24:26.696282+00:00",
+        "finished_at": "2026-10-15T13:24:26.696316+00:00"
+      }
+    },
+    "resource_id": "application:3db35515-7a9b-4612-8145-5cf2c84227f1",
+    "resource_revision": null,
+    "subject": null,
+    "description": null,
+    "applicability": {}
+  },
+  {
+    "claim": "python.build: outcome=succeeded; declared verification=passed",
+    "provenance": [
+      {
+        "source": "operation:251b8459-9e59-479b-a893-d33a73ddd830",
+        "method": "Canonical operation evidence capture",
+        "observed_at": "2026-10-15T13:24:26.045998+00:00",
+        "source_revision": null,
+        "content_sha256": null,
+        "category": "OBSERVED_BEHAVIOR",
+        "actor": null
+      }
+    ],
+    "task_ids": [
+      "3db35515-7a9b-4612-8145-5cf2c84227f1"
+    ],
+    "kind": "observation",
+    "id": "314d5981-f407-4fb8-9445-597cd726fa7e",
+    "recorded_at": "2026-10-15T13:24:26.046192+00:00",
+    "supporting_evidence": [
+      {
+        "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1\\acceptance-csv-report.pyz",
+        "detail": "package created and SHA-256 recorded; functionality remains unverified",
+        "observed_at": "2026-10-15T13:24:26.044684+00:00",
+        "kind": "artifact"
+      },
+      {
+        "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1\\acceptance-csv-report.pyz",
+        "detail": "Package integrity checked; functional verification is a separate operation",
+        "observed_at": "2026-10-15T13:24:26.045938+00:00",
+        "kind": "package_integrity"
+      }
+    ],
+    "contradictory_evidence": [],
+    "environment": {
+      "python": "3.14.7",
+      "platform": "Windows"
+    },
+    "limitations": [
+      "Verification scope is limited to the procedures and evidence in the operation record."
+    ],
+    "related_record_ids": [],
+    "metadata": {
+      "operation": {
+        "capability_id": "python.build",
+        "id": "251b8459-9e59-479b-a893-d33a73ddd830",
+        "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+        "requested": {
+          "operation": "BUILD_ORIGINAL_PROJECT",
+          "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application",
+          "trusted": true
+        },
+        "planned": {
+          "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\build_workspaces\\3db35515-7a9b-4612-8145-5cf2c84227f1\\application",
+          "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1",
+          "operation": "BUILD_ORIGINAL_PROJECT",
+          "trusted": true,
+          "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+          "artifact_name": "acceptance-csv-report.pyz",
+          "entry_point": "sce_bridge:main",
+          "required_modules": [],
+          "verification_args": [
+            "--input-json",
+            "{\"csv_text\":\"name,team\\nAda,engineering\\nLin,design\\nAda,engineering\\n\"}"
+          ],
+          "expected_stdout": "{\"column_count\":2,\"columns\":[\"name\",\"team\"],\"distinct_values\":{\"name\":2,\"team\":2},\"report\":\"Rows: 3\\nColumns: 2\\nname: 2 distinct values\\nteam: 2 distinct values\",\"row_count\":3}\n",
+          "expected_exit": 0,
+          "files": [
+            {
+              "path": "_sce_parts/__init__.py",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "size": 0
+            },
+            {
+              "path": "_sce_parts/p0/__init__.py",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "size": 0
+            },
+            {
+              "path": "_sce_parts/p0/csv_tools.py",
+              "sha256": "8b626639d89c6310c36b92a9779a590196f4aa473e6b2a972f568b4c91d33620",
+              "size": 1101
+            },
+            {
+              "path": "_sce_parts/p1/__init__.py",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "size": 0
+            },
+            {
+              "path": "_sce_parts/p1/report_tools.py",
+              "sha256": "922aaf5791c8dbb7ac089c961110dee5d1f4d7cd1ea8f93928d92035f9aea21a",
+              "size": 444
+            },
+            {
+              "path": "sce-build.json",
+              "sha256": "e7c6a6f24a6404507bfd33471ae0fa210eaba5f716adc2aa16f994b996f631f7",
+              "size": 477
+            },
+            {
+              "path": "sce-provenance.json",
+              "sha256": "e0532057acc65044a2be30b68b0b411be0876942d0615404201463728eb57cbd",
+              "size": 2129
+            },
+            {
+              "path": "sce_bridge.py",
+              "sha256": "968f68291e684a5a36931503f59a8ab0a79c061154ed87548729bdf80a6f808d",
+              "size": 1226
+            }
+          ],
+          "validation_errors": [],
+          "unsupported": false,
+          "temporary_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\temp_storage"
+        },
+        "outcome": "succeeded",
+        "verification": "passed",
+        "executed": [
+          {
+            "stage": "execute",
+            "operation": "zipapp.create_archive",
+            "entry_point": "sce_bridge:main"
+          }
+        ],
+        "produced": [
+          {
+            "kind": "python_zipapp",
+            "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1\\acceptance-csv-report.pyz",
+            "sha256": "e2096d421b40fd414d1a415d2220771799f57aa73f02bc671d011c4727a8828e",
+            "size": 3904
+          }
+        ],
+        "evidence": [
+          {
+            "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1\\acceptance-csv-report.pyz",
+            "detail": "package created and SHA-256 recorded; functionality remains unverified",
+            "observed_at": "2026-10-15T13:24:26.044684+00:00",
+            "kind": "artifact"
+          },
+          {
+            "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\.sce\\artifact_storage\\3db35515-7a9b-4612-8145-5cf2c84227f1\\acceptance-csv-report.pyz",
+            "detail": "Package integrity checked; functional verification is a separate operation",
+            "observed_at": "2026-10-15T13:24:26.045938+00:00",
+            "kind": "package_integrity"
+          }
+        ],
+        "unknowns": [],
+        "started_at": "2026-10-15T13:24:26.000109+00:00",
+        "finished_at": "2026-10-15T13:24:26.045956+00:00"
+      }
+    },
+    "resource_id": "application:3db35515-7a9b-4612-8145-5cf2c84227f1",
+    "resource_revision": null,
+    "subject": null,
+    "description": null,
+    "applicability": {}
+  },
+  {
+    "claim": "analysis: local-observation:sha256:6d6cfa2d0f718cd0a46aa08f9423573ead57fdbdc4a7c14ff5a0a514a190bc61",
+    "provenance": [
+      {
+        "source": "operation:147baf6b-3b8e-47de-a0bc-ad55458ace93",
+        "method": "Recorded local engineering observation",
+        "observed_at": "2026-10-15T13:24:24.909704+00:00",
+        "source_revision": null,
+        "content_sha256": null,
+        "category": "OBSERVED_BEHAVIOR",
+        "actor": null
+      }
+    ],
+    "task_ids": [
+      "3db35515-7a9b-4612-8145-5cf2c84227f1"
+    ],
+    "kind": "observation",
+    "id": "63cc29a4-4a85-4b5b-babd-b94bbcbf565e",
+    "recorded_at": "2026-10-15T13:24:24.909792+00:00",
+    "supporting_evidence": [
+      {
+        "kind": "static_analysis",
+        "resource_id": "local-observation:sha256:6d6cfa2d0f718cd0a46aa08f9423573ead57fdbdc4a7c14ff5a0a514a190bc61",
+        "source": "file:///I:/SPIDER-CREATOR-ENGINE/.sce/acceptance/spider-v0.2-publish/.sce/resource_library/bd0df22d-86cb-470f-82dc-7f78b2ae25d7/content",
+        "languages": [
+          "Python"
+        ],
+        "structure": [
+          "report_tools.py",
+          "sce-component.json"
+        ],
+        "dependencies": [],
+        "build_systems": [],
+        "entry_points": [],
+        "candidate_integration_methods": [],
+        "required_tools": [
+          "Python"
+        ],
+        "evidence": [
+          {
+            "source": "file:///I:/SPIDER-CREATOR-ENGINE/.sce/acceptance/spider-v0.2-publish/.sce/resource_library/bd0df22d-86cb-470f-82dc-7f78b2ae25d7/content",
+            "detail": "Bounded static filename observations; languages inferred from suffixes",
+            "observed_at": "2026-10-15T13:24:24.619306+00:00",
+            "kind": "observation"
+          }
+        ],
+        "unknowns": [
+          "Static observations do not establish buildability, interfaces, or integration compatibility"
+        ]
+      }
+    ],
+    "contradictory_evidence": [],
+    "environment": {
+      "python": "3.14.7",
+      "platform": "Windows"
+    },
+    "limitations": [
+      "Applicability must be reevaluated for another task"
+    ],
+    "related_record_ids": [],
+    "metadata": {},
+    "resource_id": "local-observation:sha256:6d6cfa2d0f718cd0a46aa08f9423573ead57fdbdc4a7c14ff5a0a514a190bc61",
+    "resource_revision": null,
+    "subject": "analysis",
+    "description": null,
+    "applicability": {
+      "python": "3.14.7"
+    }
+  }
+]

@@ -1,5 +1,11 @@
 # Controlled build experiments
 
+The original matrix below remains part of every acceptance run. The current
+[v0.2 acceptance](ACCEPTANCE_V0.2.md) additionally covers the complete component
+creation route, an independent CSV holdout, persistent trace/memory, a real
+[disconnected workflow](OFFLINE.md), and local Qwen/QASC generation with independent
+acceptance. These are separate experiments with their own limitations and receipts.
+
 The initial controlled experiment ran on 2026-10-15 with the project virtual
 environment, Python 3.14.7, Windows AMD64. All five expected behaviors matched.
 These results qualify the checked-in fixture set, not arbitrary Python projects.

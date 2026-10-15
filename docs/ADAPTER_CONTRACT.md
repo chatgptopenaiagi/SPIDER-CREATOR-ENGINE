@@ -17,8 +17,11 @@ prove it works for an arbitrary project.
 
 ## Controlled Python input
 
-V0.1 supports `BUILD_ORIGINAL_PROJECT` for a small explicit `sce.zipapp.v1`
-contract. It reports `CREATE_NEW_APPLICATION_USING_PROJECT` as unsupported.
+The Python builder supports `BUILD_ORIGINAL_PROJECT` for an explicit `sce.zipapp.v1`
+contract. It reports `CREATE_NEW_APPLICATION_USING_PROJECT` as unsupported because
+that operation belongs to the separate [synthesis adapter](SYNTHESIS.md). The v0.2
+Spider workflow first creates new source through synthesis, then builds that
+concrete source project and performs a separate functional verification operation.
 It does not interpret arbitrary project build scripts or install dependencies.
 
 ```json
@@ -50,6 +53,11 @@ Its `.pyz` output requires a suitable Python interpreter; it is not a native
 Windows executable. Native extension packaging, wheel construction, dependency
 resolution, installers, .NET builds, and general repository compatibility remain
 outside the verified foundation.
+
+The independently installed [QASC adapter](INTEGRATIONS.md) also implements the
+five stages: prepare a source-generation request, execute generation, then verify
+fixed independent acceptance without automatically packaging or installing it.
+Its compatibility boundary is the inspected QASC 0.1.0 CLI and recorded experiment.
 
 ## Authority and filesystem rules
 

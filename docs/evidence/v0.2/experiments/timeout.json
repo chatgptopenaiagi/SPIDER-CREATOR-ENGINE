@@ -1,0 +1,92 @@
+{
+  "capability_id": "python.build",
+  "id": "7d2d1e9d-c7db-4f8b-a471-3e74a811396c",
+  "task_id": null,
+  "requested": {
+    "operation": "BUILD_ORIGINAL_PROJECT",
+    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\timeout",
+    "trusted": true
+  },
+  "planned": {
+    "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\timeout",
+    "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\experiments\\timeout",
+    "operation": "BUILD_ORIGINAL_PROJECT",
+    "trusted": true,
+    "task_id": null,
+    "artifact_name": "slow-fixture.pyz",
+    "entry_point": "main:main",
+    "required_modules": [],
+    "verification_args": [],
+    "expected_stdout": "finished\n",
+    "expected_exit": 0,
+    "files": [
+      {
+        "path": "main.py",
+        "sha256": "584e2c6380a0b1e6969908173cd578484a9d7147a6a1936a16d569c874ca5798",
+        "size": 66
+      },
+      {
+        "path": "sce-build.json",
+        "sha256": "ffd68ffd7ba89006d8e106dbbfa76c2a6f65395a6d19eb31cadcc75e60e19dff",
+        "size": 199
+      }
+    ],
+    "validation_errors": [],
+    "unsupported": false,
+    "temporary_root": null
+  },
+  "outcome": "partial",
+  "verification": "inconclusive",
+  "executed": [
+    {
+      "stage": "execute",
+      "operation": "zipapp.create_archive",
+      "entry_point": "main:main"
+    },
+    {
+      "stage": "verify",
+      "status": "inconclusive",
+      "argv": [
+        "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
+        "-I",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\experiments\\timeout\\slow-fixture.pyz"
+      ],
+      "expected_stdout": "finished\n",
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": "",
+      "exit_code": 1,
+      "detail": "verification timed out",
+      "elapsed_seconds": 0.20215019999886863
+    }
+  ],
+  "produced": [
+    {
+      "kind": "python_zipapp",
+      "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\experiments\\timeout\\slow-fixture.pyz",
+      "sha256": "9b7fa06461cb03326884a58d7ad170ce1695e407fa149863223fbdbf4c12546b",
+      "size": 557
+    }
+  ],
+  "evidence": [
+    {
+      "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\spider-v0.2-publish\\experiments\\timeout\\slow-fixture.pyz",
+      "detail": "package created and SHA-256 recorded; functionality remains unverified",
+      "observed_at": "2026-10-15T13:24:29.478272+00:00",
+      "kind": "artifact"
+    },
+    {
+      "source": "python.zipapp.verify",
+      "detail": "verification timed out",
+      "observed_at": "2026-10-15T13:24:29.681864+00:00",
+      "kind": "verification"
+    }
+  ],
+  "unknowns": [
+    "artifact exists, but declared functional verification did not complete",
+    "Installation was not requested, performed, or verified",
+    "Declared fixture check does not establish general application correctness"
+  ],
+  "started_at": "2026-10-15T13:24:29.455413+00:00",
+  "finished_at": "2026-10-15T13:24:29.681894+00:00"
+}

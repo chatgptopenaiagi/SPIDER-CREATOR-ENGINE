@@ -1,0 +1,1 @@
+{"column_count":2,"columns":["city","value"],"distinct_values":{"city":2,"value":3},"report":"Rows: 3\nColumns: 2\ncity: 2 distinct values\nvalue: 3 distinct values","row_count":3}

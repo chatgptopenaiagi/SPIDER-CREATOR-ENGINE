@@ -1,7 +1,7 @@
 # License status
 
-No open-source license has been selected. Repository visibility is initially
-private. No permission beyond applicable law or an explicit agreement is granted
+No open-source license has been selected. The repository is public.
+No permission beyond applicable law or an explicit agreement is granted
 to redistribute this project's original source. Choosing a license is a future
 owner decision; dependency licenses remain their respective authors' licenses.
 

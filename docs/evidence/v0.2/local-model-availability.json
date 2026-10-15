@@ -1,0 +1,10 @@
+{
+  "available": true,
+  "model_id": "qwen3-coder-local",
+  "endpoint": "http://127.0.0.1:8080",
+  "observed_at": "2026-10-15T13:13:25.569170+00:00",
+  "observed_models": [
+    "qwen3-coder-local"
+  ],
+  "reason": null
+}

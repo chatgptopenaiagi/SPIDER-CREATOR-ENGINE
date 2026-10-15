@@ -1,0 +1,139 @@
+{
+  "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+  "level": 1,
+  "offset": 0,
+  "limit": 1000,
+  "events": [
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "planning",
+      "status": "planned",
+      "summary": "Create a new application from selected components",
+      "outcome": null,
+      "verification": "not_run",
+      "id": "0da82b1f-3950-4261-91b3-2a3c93dcad2c",
+      "recorded_at": "2026-10-15T13:24:22.363531+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "discovery",
+      "status": "planned",
+      "summary": "Prepare spider.discover",
+      "outcome": null,
+      "verification": "not_run",
+      "id": "97258dae-c347-4b6c-a2ba-17a0e7533e60",
+      "recorded_at": "2026-10-15T13:24:22.745644+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "discovery",
+      "status": "verified",
+      "summary": "spider.discover: succeeded; declared verification passed",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "id": "dfb5df36-6f2d-44ee-8447-ae27d5dd048c",
+      "recorded_at": "2026-10-15T13:24:23.312697+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "acquisition",
+      "status": "planned",
+      "summary": "Prepare resource.acquire_local",
+      "outcome": null,
+      "verification": "not_run",
+      "id": "d77520a4-ebbc-4366-8905-5a20bf4b0cbf",
+      "recorded_at": "2026-10-15T13:24:23.598173+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "acquisition",
+      "status": "verified",
+      "summary": "resource.acquire_local: succeeded; declared verification passed",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "id": "99172b66-312b-4ec0-95cf-1af9cddb2ea7",
+      "recorded_at": "2026-10-15T13:24:24.201388+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "analysis",
+      "status": "planned",
+      "summary": "Prepare project.analyze",
+      "outcome": null,
+      "verification": "not_run",
+      "id": "52a33abd-bcab-4182-ae13-4120e119ead0",
+      "recorded_at": "2026-10-15T13:24:24.515068+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "analysis",
+      "status": "verified",
+      "summary": "project.analyze: succeeded; declared verification passed",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "id": "1c0d0b9b-90bf-40ac-9bea-aecd8b2e91d4",
+      "recorded_at": "2026-10-15T13:24:25.093068+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "synthesis",
+      "status": "planned",
+      "summary": "Prepare application.synthesize",
+      "outcome": null,
+      "verification": "not_run",
+      "id": "242d9c89-3e26-48bd-839e-29a6ca32af2d",
+      "recorded_at": "2026-10-15T13:24:25.349171+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "synthesis",
+      "status": "verified",
+      "summary": "application.synthesize: succeeded; declared verification passed",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "id": "c626616d-3c81-4ea9-b9fd-10bc5241e6e4",
+      "recorded_at": "2026-10-15T13:24:25.618158+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "build",
+      "status": "planned",
+      "summary": "Prepare python.build",
+      "outcome": null,
+      "verification": "not_run",
+      "id": "8ff8fe7d-590a-4d99-b709-87d93a6081ad",
+      "recorded_at": "2026-10-15T13:24:25.882559+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "build",
+      "status": "verified",
+      "summary": "python.build: succeeded; declared verification passed",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "id": "ba15c15e-f02e-4f23-9aad-dee25843c44c",
+      "recorded_at": "2026-10-15T13:24:26.130897+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "functional_verification",
+      "status": "planned",
+      "summary": "Prepare application.verify",
+      "outcome": null,
+      "verification": "not_run",
+      "id": "a9b506bc-a8b9-48c1-8a39-90a447195c56",
+      "recorded_at": "2026-10-15T13:24:26.472111+00:00"
+    },
+    {
+      "task_id": "3db35515-7a9b-4612-8145-5cf2c84227f1",
+      "stage": "functional_verification",
+      "status": "verified",
+      "summary": "application.verify: succeeded; declared verification passed",
+      "outcome": "succeeded",
+      "verification": "passed",
+      "id": "0d3c0680-a592-4981-9d05-50d8db62c397",
+      "recorded_at": "2026-10-15T13:24:26.772112+00:00"
+    }
+  ]
+}
+
