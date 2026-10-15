@@ -1,6 +1,6 @@
 {
   "capability_id": "python.build",
-  "id": "f204e74f-dfce-4ae4-a4ec-87146b1d5b9e",
+  "id": "048df150-c004-4571-9716-1efca9c18ac8",
   "task_id": null,
   "requested": {
     "operation": "BUILD_ORIGINAL_PROJECT",
@@ -9,7 +9,7 @@
   },
   "planned": {
     "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\missing_dependency",
-    "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\missing_dependency",
+    "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1-final\\experiments\\missing_dependency",
     "operation": "BUILD_ORIGINAL_PROJECT",
     "trusted": true,
     "task_id": null,
@@ -46,13 +46,13 @@
     {
       "source": "python.zipapp.prepare",
       "detail": "missing dependency module: sce_fixture_intentionally_absent_dependency_83f2a1",
-      "observed_at": "2026-10-15T12:23:08.586545+00:00",
+      "observed_at": "2026-10-15T12:26:03.060995+00:00",
       "kind": "validation"
     }
   ],
   "unknowns": [
     "functional verification was not run because packaging did not succeed"
   ],
-  "started_at": "2026-10-15T12:23:08.586380+00:00",
-  "finished_at": "2026-10-15T12:23:08.586560+00:00"
+  "started_at": "2026-10-15T12:26:03.060905+00:00",
+  "finished_at": "2026-10-15T12:26:03.061011+00:00"
 }

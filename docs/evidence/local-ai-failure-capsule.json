@@ -1,0 +1,72 @@
+{
+  "claim": "Unresolved failure for local-qwen-provider: Local provider request failed at /chat/completions: timed out",
+  "provenance": [
+    {
+      "source": "docs/evidence/local-ai-smoke.json",
+      "method": "One bounded installed-CLI request",
+      "observed_at": "2026-10-15T12:15:45.148290+00:00",
+      "source_revision": null,
+      "content_sha256": "b9aac87696073c174b21eda5e2de8df00ea70135ffd4a5fe17db27218bf4c008"
+    }
+  ],
+  "task_ids": [
+    "e4aa67f7-4dd4-4a20-9f62-05610cb94295"
+  ],
+  "kind": "failure_capsule",
+  "id": "6042570e-c262-4fee-b21e-376fdae602e8",
+  "recorded_at": "2026-10-15T12:27:05.085289+00:00",
+  "supporting_evidence": [],
+  "contradictory_evidence": [],
+  "environment": {
+    "endpoint": "http://127.0.0.1:8080",
+    "advertised_model": "qwen3-coder-local"
+  },
+  "limitations": [
+    "One timed-out request does not establish root cause or model incompatibility",
+    "Historical observations do not establish future applicability or resolution."
+  ],
+  "related_record_ids": [],
+  "metadata": {
+    "capsule": {
+      "project_identity": "local-qwen-provider",
+      "provenance": [
+        {
+          "source": "docs/evidence/local-ai-smoke.json",
+          "method": "One bounded installed-CLI request",
+          "observed_at": "2026-10-15T12:15:45.148290+00:00",
+          "source_revision": null,
+          "content_sha256": "b9aac87696073c174b21eda5e2de8df00ea70135ffd4a5fe17db27218bf4c008"
+        }
+      ],
+      "relevant_errors": [
+        "Local provider request failed at /chat/completions: timed out"
+      ],
+      "id": "6042570e-c262-4fee-b21e-376fdae602e8",
+      "source_revision": null,
+      "environment": {
+        "endpoint": "http://127.0.0.1:8080",
+        "advertised_model": "qwen3-coder-local"
+      },
+      "reproduction_instructions": [
+        "Run sce ai-probe",
+        "Run the proposal_command recorded in the source receipt"
+      ],
+      "attempted_repairs": [],
+      "partial_artifacts": [],
+      "unresolved_hypotheses": [
+        "Server contention, prompt processing, or another server condition; none established"
+      ],
+      "suggested_next_checks": [
+        "Inspect available server diagnostics without interrupting other sessions",
+        "Qualify a future inference window and request timeout"
+      ],
+      "supporting_evidence": [],
+      "contradictory_evidence": [],
+      "limitations": [
+        "One timed-out request does not establish root cause or model incompatibility"
+      ],
+      "created_at": "2026-10-15T12:27:05.081669+00:00",
+      "state": "unresolved"
+    }
+  }
+}

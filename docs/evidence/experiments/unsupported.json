@@ -1,6 +1,6 @@
 {
   "capability_id": "python.build",
-  "id": "518b1f73-fd87-447b-af98-e19d47772a50",
+  "id": "b239d5bb-521f-4830-a9d0-e64eabdf5cd1",
   "task_id": null,
   "requested": {
     "operation": "BUILD_ORIGINAL_PROJECT",
@@ -9,7 +9,7 @@
   },
   "planned": {
     "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\unsupported",
-    "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\unsupported",
+    "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1-final\\experiments\\unsupported",
     "operation": "BUILD_ORIGINAL_PROJECT",
     "trusted": true,
     "task_id": null,
@@ -33,13 +33,13 @@
     {
       "source": "python.zipapp.prepare",
       "detail": "missing controlled sce-build.json manifest",
-      "observed_at": "2026-10-15T12:23:08.587861+00:00",
+      "observed_at": "2026-10-15T12:26:03.062308+00:00",
       "kind": "validation"
     }
   ],
   "unknowns": [
     "functional verification was not run because packaging did not succeed"
   ],
-  "started_at": "2026-10-15T12:23:08.587808+00:00",
-  "finished_at": "2026-10-15T12:23:08.587872+00:00"
+  "started_at": "2026-10-15T12:26:03.062259+00:00",
+  "finished_at": "2026-10-15T12:26:03.062317+00:00"
 }

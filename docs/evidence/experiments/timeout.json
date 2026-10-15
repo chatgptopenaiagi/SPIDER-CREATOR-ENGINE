@@ -1,6 +1,6 @@
 {
   "capability_id": "python.build",
-  "id": "8c1cc4b2-b0b1-4b79-a43e-0933a8c8bd5b",
+  "id": "ace319f9-68cf-4e6a-9be2-e2785d1ede6f",
   "task_id": null,
   "requested": {
     "operation": "BUILD_ORIGINAL_PROJECT",
@@ -9,7 +9,7 @@
   },
   "planned": {
     "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\timeout",
-    "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\timeout",
+    "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1-final\\experiments\\timeout",
     "operation": "BUILD_ORIGINAL_PROJECT",
     "trusted": true,
     "task_id": null,
@@ -48,7 +48,7 @@
       "argv": [
         "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
         "-I",
-        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\timeout\\slow-fixture.pyz"
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1-final\\experiments\\timeout\\slow-fixture.pyz"
       ],
       "expected_stdout": "finished\n",
       "expected_exit": 0,
@@ -56,28 +56,28 @@
       "stderr": "",
       "exit_code": 1,
       "detail": "verification timed out",
-      "elapsed_seconds": 0.2167207000002236
+      "elapsed_seconds": 0.21458590000020195
     }
   ],
   "produced": [
     {
       "kind": "python_zipapp",
-      "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\timeout\\slow-fixture.pyz",
-      "sha256": "c1c52944669cffb3bc6c800d1c851d45e0b4f0621958ceead8a3a30243625a1f",
+      "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1-final\\experiments\\timeout\\slow-fixture.pyz",
+      "sha256": "e55f6d764361d26ca50cf2dde83dae20857745bbc3df83149b502c3a650b080d",
       "size": 557
     }
   ],
   "evidence": [
     {
-      "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\timeout\\slow-fixture.pyz",
+      "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1-final\\experiments\\timeout\\slow-fixture.pyz",
       "detail": "package created and SHA-256 recorded; functionality remains unverified",
-      "observed_at": "2026-10-15T12:23:08.721932+00:00",
+      "observed_at": "2026-10-15T12:26:03.224283+00:00",
       "kind": "artifact"
     },
     {
       "source": "python.zipapp.verify",
       "detail": "verification timed out",
-      "observed_at": "2026-10-15T12:23:08.939966+00:00",
+      "observed_at": "2026-10-15T12:26:03.440562+00:00",
       "kind": "verification"
     }
   ],
@@ -86,6 +86,6 @@
     "Installation was not requested, performed, or verified",
     "Declared fixture check does not establish general application correctness"
   ],
-  "started_at": "2026-10-15T12:23:08.694168+00:00",
-  "finished_at": "2026-10-15T12:23:08.939998+00:00"
+  "started_at": "2026-10-15T12:26:03.194800+00:00",
+  "finished_at": "2026-10-15T12:26:03.440587+00:00"
 }

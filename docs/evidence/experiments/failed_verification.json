@@ -1,6 +1,6 @@
 {
   "capability_id": "python.build",
-  "id": "810e26a3-f006-4577-97e4-41db84fb76d0",
+  "id": "a260c407-2eea-4523-bb2c-7266e612c814",
   "task_id": null,
   "requested": {
     "operation": "BUILD_ORIGINAL_PROJECT",
@@ -9,7 +9,7 @@
   },
   "planned": {
     "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\failed_verification",
-    "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\failed_verification",
+    "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1-final\\experiments\\failed_verification",
     "operation": "BUILD_ORIGINAL_PROJECT",
     "trusted": true,
     "task_id": null,
@@ -48,7 +48,7 @@
       "argv": [
         "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
         "-I",
-        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\failed_verification\\wrong-output.pyz"
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1-final\\experiments\\failed_verification\\wrong-output.pyz"
       ],
       "expected_stdout": "expected result\n",
       "expected_exit": 0,
@@ -56,28 +56,28 @@
       "stderr": "",
       "exit_code": 0,
       "detail": "declared exit or stdout did not match",
-      "elapsed_seconds": 0.0704304000000775
+      "elapsed_seconds": 0.07456589999947028
     }
   ],
   "produced": [
     {
       "kind": "python_zipapp",
-      "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\failed_verification\\wrong-output.pyz",
-      "sha256": "6afc6c2eb059e9ddeaa2b24c8fbd913543f64ba62f19dcb0ff3d437de3cec02e",
+      "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1-final\\experiments\\failed_verification\\wrong-output.pyz",
+      "sha256": "72d006012e0d3d7855c3bc787c28abd6e767c6bf24b4f9d176060aa629aeddb5",
       "size": 543
     }
   ],
   "evidence": [
     {
-      "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\failed_verification\\wrong-output.pyz",
+      "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1-final\\experiments\\failed_verification\\wrong-output.pyz",
       "detail": "package created and SHA-256 recorded; functionality remains unverified",
-      "observed_at": "2026-10-15T12:23:08.618240+00:00",
+      "observed_at": "2026-10-15T12:26:03.106402+00:00",
       "kind": "artifact"
     },
     {
       "source": "python.zipapp.verify",
       "detail": "declared exit or stdout did not match",
-      "observed_at": "2026-10-15T12:23:08.689925+00:00",
+      "observed_at": "2026-10-15T12:26:03.182192+00:00",
       "kind": "verification"
     }
   ],
@@ -85,6 +85,6 @@
     "Installation was not requested, performed, or verified",
     "Declared fixture check does not establish general application correctness"
   ],
-  "started_at": "2026-10-15T12:23:08.591374+00:00",
-  "finished_at": "2026-10-15T12:23:08.689955+00:00"
+  "started_at": "2026-10-15T12:26:03.079226+00:00",
+  "finished_at": "2026-10-15T12:26:03.182213+00:00"
 }

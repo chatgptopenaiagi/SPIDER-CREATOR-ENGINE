@@ -5,7 +5,7 @@ PowerShell 7.6.6, Python 3.14.7. The private repository is
 [chatgptopenaiagi/SPIDER-CREATOR-ENGINE](https://github.com/chatgptopenaiagi/SPIDER-CREATOR-ENGINE),
 with independent workspace `I:\SPIDER-CREATOR-ENGINE`.
 
-The tested implementation revision is `ad56f2d` (full hash in the receipt). The
+The tested implementation revision is `5ebb900` (full hash in the receipt). The
 subsequent evidence/documentation commit does not change the tested source. Obtain
 the current delivery commit with `git rev-parse HEAD`; do not confuse a report's
 source revision with an inferred future commit hash.
@@ -46,10 +46,16 @@ currently running Qwen service can complete this request within its configured b
 - [Environment observation](evidence/environment.json), [Windows hardware observation](evidence/windows-hardware.json),
   and [development package versions](evidence/development-packages.json).
 - [Live local AI receipt](evidence/local-ai-smoke.json), including the exact timeout.
+- [Unresolved AI failure capsule](evidence/local-ai-failure-capsule.json), persisted
+  and retrieved through the local knowledge store with original receipt provenance.
 
 Full local logs, installed environment, built wheel, databases, and artifacts remain
-under `.sce/acceptance/foundation-v0.1`. A copy of the accepted wheel is in `dist`.
+under `.sce/acceptance/foundation-v0.1-final`. A copy of the accepted wheel is in `dist`.
 These generated environments/artifacts are ignored by Git; curated receipts are versioned.
+The final collector excludes generated package metadata from source fingerprints and
+checks that all recorded source inputs remain unchanged through the complete run.
+Evidence files are stored without Git line-ending normalization so their original
+bytes and provenance digests remain consistent.
 
 Reproduce acceptance with `python scripts/run_acceptance.py` from the installed
 development environment. It chooses a fresh output directory, builds and installs a

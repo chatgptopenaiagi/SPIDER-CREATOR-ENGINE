@@ -1,6 +1,6 @@
 {
   "capability_id": "python.build",
-  "id": "e9826e22-2b28-4bb8-89dd-45da1cf4cd43",
+  "id": "6abeb665-f176-4efd-a7c4-649b3cd74241",
   "task_id": null,
   "requested": {
     "operation": "BUILD_ORIGINAL_PROJECT",
@@ -9,7 +9,7 @@
   },
   "planned": {
     "source": "I:\\SPIDER-CREATOR-ENGINE\\examples\\fixtures\\success",
-    "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\success",
+    "output_root": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1-final\\experiments\\success",
     "operation": "BUILD_ORIGINAL_PROJECT",
     "trusted": true,
     "task_id": null,
@@ -50,7 +50,7 @@
       "argv": [
         "I:\\SPIDER-CREATOR-ENGINE\\.venv\\Scripts\\python.exe",
         "-I",
-        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\success\\hello-sce.pyz",
+        "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1-final\\experiments\\success\\hello-sce.pyz",
         "Ada"
       ],
       "expected_stdout": "Hello, Ada. Human time matters.\n",
@@ -59,28 +59,28 @@
       "stderr": "",
       "exit_code": 0,
       "detail": "declared exit and stdout matched",
-      "elapsed_seconds": 0.07254449999982171
+      "elapsed_seconds": 0.07810799999970186
     }
   ],
   "produced": [
     {
       "kind": "python_zipapp",
-      "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\success\\hello-sce.pyz",
-      "sha256": "2565c4f0adcbbab22fd4a8194372fa33e5730cc86f5a7c8478d138f709ba4972",
+      "path": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1-final\\experiments\\success\\hello-sce.pyz",
+      "sha256": "5f12d83b4c48621b9068ca1fa2cd01308e717852b6663f3dcb7944f9c7323a70",
       "size": 671
     }
   ],
   "evidence": [
     {
-      "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1\\experiments\\success\\hello-sce.pyz",
+      "source": "I:\\SPIDER-CREATOR-ENGINE\\.sce\\acceptance\\foundation-v0.1-final\\experiments\\success\\hello-sce.pyz",
       "detail": "package created and SHA-256 recorded; functionality remains unverified",
-      "observed_at": "2026-10-15T12:23:08.506715+00:00",
+      "observed_at": "2026-10-15T12:26:02.975925+00:00",
       "kind": "artifact"
     },
     {
       "source": "python.zipapp.verify",
       "detail": "declared exit and stdout matched",
-      "observed_at": "2026-10-15T12:23:08.581052+00:00",
+      "observed_at": "2026-10-15T12:26:03.055380+00:00",
       "kind": "verification"
     }
   ],
@@ -88,6 +88,6 @@
     "Installation was not requested, performed, or verified",
     "Declared fixture check does not establish general application correctness"
   ],
-  "started_at": "2026-10-15T12:23:08.477664+00:00",
-  "finished_at": "2026-10-15T12:23:08.581099+00:00"
+  "started_at": "2026-10-15T12:26:02.957107+00:00",
+  "finished_at": "2026-10-15T12:26:03.055413+00:00"
 }
