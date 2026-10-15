@@ -13,6 +13,7 @@ INDEX_STORAGE = "../.sce/index"
 TEMP_STORAGE = "../.sce/temp"
 LOG_STORAGE = "../.sce/logs"
 REPORT_STORAGE = "../.sce/reports"
+INSTALLATION_DESTINATIONS = "../.sce/installations"
 
 [resources]
 max_workers = 1
@@ -29,3 +30,4 @@ endpoint = "http://127.0.0.1:8080"
 model = "qwen3-coder-local"
 max_context_chars = 12000
 max_response_tokens = 512
+timeout_seconds = 120.0

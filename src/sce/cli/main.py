@@ -23,10 +23,12 @@ def emit(value) -> None:
 
 
 def parser() -> argparse.ArgumentParser:
-    root = argparse.ArgumentParser(prog="sce", description="SCE Foundation: local engineering with evidence")
+    root = argparse.ArgumentParser(prog="sce", description="Spider Creator Engine: local software discovery, engineering intelligence and creation")
     root.add_argument("--version", action="version", version=f"SCE {__version__}")
     root.add_argument("--config", type=Path, help="TOML config; relative storage paths use its directory")
     commands = root.add_subparsers(dest="command", required=True)
+    from sce.cli.spider import add_commands
+    add_commands(commands)
     commands.add_parser("config", help="Show resolved configuration without creating storage")
     commands.add_parser("init", help="Explicitly initialize selected storage paths")
     commands.add_parser("doctor", help="Observe environment and configured resource limits")
@@ -70,13 +72,14 @@ def _provider(config: Config) -> LoopbackAIProvider:
         max_context_chars=config.ai.max_context_chars,
         max_output_tokens=config.ai.max_response_tokens,
         model_context_tokens=config.resources.model_context_tokens,
-        timeout_seconds=min(config.resources.execution_timeout_seconds, 30),
+        timeout_seconds=min(config.resources.execution_timeout_seconds, config.ai.timeout_seconds),
     ))
 
 
 def _adapter(config: Config):
     from sce.builders.python import PythonBuildAdapter
-    return PythonBuildAdapter(timeout_seconds=config.resources.execution_timeout_seconds)
+    return PythonBuildAdapter(timeout_seconds=config.resources.execution_timeout_seconds,
+                              temporary_root=config.storage["TEMP_STORAGE"])
 
 
 def _task_execution(args, config: Config, store: TaskStore) -> int:
@@ -95,8 +98,15 @@ def _task_execution(args, config: Config, store: TaskStore) -> int:
                     step.inputs[key] = str((base / path).resolve())
     else:
         task = store.get_task(args.id)
+        if task.mode == "CREATE_NEW_APPLICATION":
+            from sce.spider import SpiderEngine
+            result = SpiderEngine(config).resume(task.id, trusted=args.trust_source)
+            emit(result)
+            return 0 if result["functional_application_created"] else 1
     registry = default_registry()
     for step in task.steps:
+        if step.capability_id != "python.build":
+            raise ValueError("Task JSON executor supports python.build only; use the corresponding Spider product workflow")
         registry.validate_call(step.capability_id, step.inputs)
         if step.max_attempts > config.resources.max_retries + 1:
             raise ValueError("Task retry budget exceeds configured maximum")
@@ -127,6 +137,9 @@ def main(argv: list[str] | None = None) -> int:
     args = parser().parse_args(argv)
     try:
         config = Config.load(args.config) if args.config else Config.default(Path.cwd())
+        if args.command in {"discover", "spider", "trace", "memory", "ai-interpret", "create-ai"}:
+            from sce.cli.spider import execute
+            return execute(args, config, emit, _provider)
         if args.command == "config":
             emit(config)
         elif args.command == "init":

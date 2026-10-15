@@ -1,8 +1,11 @@
-"""Extensible discovery, initially qualified only for explicit local roots."""
+"""Local-first software discovery; legacy LocalDiscovery remains compatible."""
 
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Protocol
+
+from .spider import SpiderDiscovery, StartingPoint
+from .structured import DiscoveryLimits, DiscoveryResult, SoftwareObservation, SoftwareProject, inspect_local
 
 
 @dataclass(frozen=True)

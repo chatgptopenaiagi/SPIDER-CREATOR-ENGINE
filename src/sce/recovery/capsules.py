@@ -41,6 +41,11 @@ class FailureCapsule:
     limitations: list[str] = field(default_factory=list)
     created_at: str = field(default_factory=utc_now)
     state: str = field(default="unresolved", init=False)
+    original_objective: str | None = None
+    failed_operation: str | None = None
+    relevant_inputs: dict[str, Any] = field(default_factory=dict)
+    software_versions: dict[str, str] = field(default_factory=dict)
+    error_signature: str | None = None
 
     def __post_init__(self) -> None:
         if not self.project_identity.strip() or not self.id.strip():
@@ -51,6 +56,12 @@ class FailureCapsule:
             source.__post_init__()
         if not self.relevant_errors or any(not error.strip() for error in self.relevant_errors):
             raise ValueError("Failure capsule requires observed error information")
+        for name in ("original_objective", "failed_operation", "error_signature"):
+            value = getattr(self, name)
+            if value is not None and (not isinstance(value, str) or not value.strip()):
+                raise ValueError(f"{name} must be nonempty when supplied")
+        if not isinstance(self.relevant_inputs, dict) or not isinstance(self.software_versions, dict):
+            raise ValueError("Failure inputs and software versions must be objects")
 
     def to_knowledge_record(self, task_ids: list[str]) -> KnowledgeRecord:
         self.__post_init__()
@@ -62,6 +73,8 @@ class FailureCapsule:
             provenance=self.provenance, environment=self.environment,
             supporting_evidence=self.supporting_evidence,
             contradictory_evidence=self.contradictory_evidence,
+            resource_id=self.project_identity, resource_revision=self.source_revision,
+            subject=self.failed_operation,
             limitations=[*self.limitations, "Historical observations do not establish future applicability or resolution."],
             metadata={"capsule": jsonable(self)},
         )

@@ -1,0 +1,12 @@
+{
+  "input": {
+    "csv_text": "name,team\nAda,engineering\nLin,design\nAda,engineering\n"
+  },
+  "expected_output": {
+    "row_count": 3,
+    "column_count": 2,
+    "columns": ["name", "team"],
+    "distinct_values": {"name": 2, "team": 2},
+    "report": "Rows: 3\nColumns: 2\nname: 2 distinct values\nteam: 2 distinct values"
+  }
+}

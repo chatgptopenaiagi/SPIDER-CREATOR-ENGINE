@@ -57,6 +57,7 @@ class BuildPlan:
     files: tuple[SourceFile, ...] = ()
     validation_errors: tuple[str, ...] = ()
     unsupported: bool = False
+    temporary_root: str | None = None
 
     @property
     def ready(self) -> bool:
@@ -64,13 +65,14 @@ class BuildPlan:
 
 
 class PythonBuildAdapter:
-    def __init__(self, timeout_seconds: float = 30, max_source_bytes: int = 10_000_000):
+    def __init__(self, timeout_seconds: float = 30, max_source_bytes: int = 10_000_000, temporary_root: Path | None = None):
         if not math.isfinite(timeout_seconds) or timeout_seconds <= 0:
             raise ValueError("timeout_seconds must be finite and positive")
         if max_source_bytes <= 0:
             raise ValueError("max_source_bytes must be positive")
         self.timeout_seconds = timeout_seconds
         self.max_source_bytes = max_source_bytes
+        self.temporary_root = None if temporary_root is None else Path(temporary_root).resolve()
 
     def describe(self) -> dict[str, Any]:
         return {
@@ -113,7 +115,8 @@ class PythonBuildAdapter:
     ) -> BuildPlan:
         """Read and validate only. Never create directories or execute project code."""
         source_path, output_path = Path(source).resolve(), Path(output_root).resolve()
-        base = dict(source=str(source_path), output_root=str(output_path), operation=operation, trusted=trusted, task_id=task_id)
+        base = dict(source=str(source_path), output_root=str(output_path), operation=operation, trusted=trusted, task_id=task_id,
+                    temporary_root=str(self.temporary_root) if self.temporary_root is not None else None)
         if operation != BUILD_ORIGINAL_PROJECT:
             return BuildPlan(**base, unsupported=True, validation_errors=(f"unsupported operation: {operation}",))
         if not (source_path / "sce-build.json").is_file():
@@ -123,6 +126,8 @@ class PythonBuildAdapter:
             errors.append("explicit trust authorization is required before building or running this source")
         if output_path == source_path or source_path in output_path.parents:
             errors.append("output root must be outside the source directory")
+        if self.temporary_root is not None and (self.temporary_root == source_path or source_path in self.temporary_root.parents):
+            errors.append("temporary root must be outside the source directory")
         try:
             files = self._snapshot(source_path)
             spec = json.loads((source_path / "sce-build.json").read_text(encoding="utf-8"))
@@ -190,7 +195,11 @@ class PythonBuildAdapter:
                 if artifact.exists():
                     raise ValueError("artifact already exists; refusing overwrite")
                 output.mkdir(parents=True, exist_ok=True)
-                with tempfile.TemporaryDirectory(prefix="sce-build-", dir=output) as temporary:
+                temporary_root = Path(plan.temporary_root) if plan.temporary_root else output
+                if temporary_root.resolve() != temporary_root:
+                    raise ValueError("prepared temporary storage location changed")
+                temporary_root.mkdir(parents=True, exist_ok=True)
+                with tempfile.TemporaryDirectory(prefix="sce-build-", dir=temporary_root) as temporary:
                     stage = Path(temporary) / "source"
                     stage.mkdir()
                     for item in plan.files:

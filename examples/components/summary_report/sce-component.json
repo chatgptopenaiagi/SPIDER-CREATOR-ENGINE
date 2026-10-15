@@ -1,0 +1,8 @@
+{
+  "format": "sce.python-component.v1",
+  "name": "summary-report",
+  "description": "Turn structured CSV statistics into a readable report while preserving the original data.",
+  "interface": "report_tools:format_report",
+  "source_files": ["report_tools.py"],
+  "required_modules": []
+}

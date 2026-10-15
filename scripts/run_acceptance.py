@@ -84,6 +84,37 @@ def main() -> int:
         if task_result["status"] != "completed":
             raise RuntimeError("Installed task graph did not complete")
         receipt["completed_task_id"] = task_result["id"]
+        discovery = json.loads(run("installed-discovery", [executable, "discover", root / "examples/components/csv_summary"], cwd=output))
+        if not discovery["discovery"]["projects"]:
+            raise RuntimeError("Installed Spider did not retain structured source observations")
+        creation = json.loads(run("installed-creation", [executable, "spider", "create",
+            "Create a useful CSV summary report from inspected local components",
+            "--component", root / "examples/components/csv_summary",
+            "--component", root / "examples/components/summary_report",
+            "--acceptance", root / "examples/components/csv_report_request.json",
+            "--name", "acceptance-csv-report", "--trust-source"], cwd=output))
+        if not creation["functional_application_created"] or len(creation["operation_ids"]) != 6:
+            raise RuntimeError("Installed Spider creation did not complete its six engineering stages")
+        receipt["created_application"] = creation
+        application = creation["artifacts"][0]["path"]
+        # Independent holdout data was not supplied to the synthesis acceptance plan.
+        holdout = {"csv_text": "city,value\nVienna,1\nParis,2\nVienna,3\n"}
+        expected = {"row_count": 3, "column_count": 2, "columns": ["city", "value"],
+            "distinct_values": {"city": 2, "value": 3},
+            "report": "Rows: 3\nColumns: 2\ncity: 2 distinct values\nvalue: 3 distinct values"}
+        actual = json.loads(run("application-holdout", [python, "-I", "-B", application,
+            "--input-json", json.dumps(holdout)], cwd=output))
+        if actual != expected:
+            raise RuntimeError("Independent application holdout output differs from expected result")
+        receipt["holdout"] = {"input": holdout, "expected": expected, "actual": actual, "passed": True}
+        for level in (1, 2, 3):
+            run(f"creation-trace-{level}", [executable, "trace", creation["task"]["id"], "--level", level], cwd=output)
+        memory = json.loads(run("creation-memory", [executable, "memory", creation["task"]["id"]], cwd=output))
+        if not memory:
+            raise RuntimeError("Created application evidence did not persist into another CLI process")
+        resumed = json.loads(run("creation-resume", [executable, "spider", "resume", creation["task"]["id"], "--trust-source"], cwd=output))
+        if resumed["operation_ids"] != creation["operation_ids"]:
+            raise RuntimeError("Resume repeated completed engineering operations")
         run("experiments", [sys.executable, root / "scripts/run_experiments.py", "--output", output / "experiments"])
         receipt["experiments"] = json.loads((output / "experiments/summary.json").read_text())["experiments"]
         changed = [name for name, digest in receipt["source_sha256"].items()

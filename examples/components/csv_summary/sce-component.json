@@ -1,0 +1,8 @@
+{
+  "format": "sce.python-component.v1",
+  "name": "csv-summary",
+  "description": "Count CSV rows, columns and distinct values using the Python standard library.",
+  "interface": "csv_tools:summarize",
+  "source_files": ["csv_tools.py"],
+  "required_modules": []
+}

@@ -4,6 +4,7 @@ import subprocess
 import sys
 
 from sce.cli.main import main
+from sce import __version__
 
 FIXTURES = Path(__file__).parents[1] / "examples" / "fixtures"
 
@@ -11,7 +12,7 @@ FIXTURES = Path(__file__).parents[1] / "examples" / "fixtures"
 def test_installed_module_entry_point():
     result = subprocess.run([sys.executable, "-m", "sce", "--version"], capture_output=True, text=True, timeout=10)
     assert result.returncode == 0
-    assert "SCE 0.1.0" in result.stdout
+    assert f"SCE {__version__}" in result.stdout
 
 
 def test_cli_prepare_is_read_only(tmp_path, monkeypatch, capsys):

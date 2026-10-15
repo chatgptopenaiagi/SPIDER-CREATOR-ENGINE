@@ -14,7 +14,7 @@ from sce.resources import ResourceLimits
 STORAGE_NAMES = (
     "TASK_DATABASE", "RESOURCE_LIBRARY", "DOWNLOAD_CACHE", "BUILD_WORKSPACES",
     "DEPENDENCY_ENVIRONMENTS", "ARTIFACT_STORAGE", "MODEL_STORAGE", "MODEL_CACHE",
-    "INDEX_STORAGE", "TEMP_STORAGE", "LOG_STORAGE", "REPORT_STORAGE",
+    "INDEX_STORAGE", "TEMP_STORAGE", "LOG_STORAGE", "REPORT_STORAGE", "INSTALLATION_DESTINATIONS",
 )
 
 
@@ -24,10 +24,14 @@ class AIConfig:
     model: str = "qwen3-coder-local"
     max_context_chars: int = 12000
     max_response_tokens: int = 512
+    timeout_seconds: float = 120.0
 
     def __post_init__(self) -> None:
         if not self.model or self.max_context_chars < 1 or self.max_response_tokens < 1:
             raise ValueError("AI model and positive context/output budgets are required")
+        import math
+        if isinstance(self.timeout_seconds, bool) or not math.isfinite(self.timeout_seconds) or self.timeout_seconds <= 0:
+            raise ValueError("AI timeout must be finite and positive")
 
 
 @dataclass(frozen=True)

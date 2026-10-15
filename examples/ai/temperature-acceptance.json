@@ -1,0 +1,7 @@
+{
+  "cases": [
+    {"name": "freezing", "args": ["0"], "stdout": "32.0\n"},
+    {"name": "boiling", "args": ["100"], "stdout": "212.0\n"},
+    {"name": "negative", "args": ["-40"], "stdout": "-40.0\n"}
+  ]
+}

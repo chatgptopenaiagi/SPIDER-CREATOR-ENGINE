@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "spider-creator-engine"
-version = "0.1.0"
-description = "Local-first engineering orchestration with evidence and human time recovery"
+version = "0.2.0"
+description = "Local-first autonomous software discovery, engineering intelligence and creation"
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [{name = "SPIDER CREATOR ENGINE contributors"}]

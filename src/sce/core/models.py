@@ -148,6 +148,7 @@ class Task:
     created_at: str = field(default_factory=utc_now)
     time: TimeMeasurements = field(default_factory=TimeMeasurements)
     unknowns: list[str] = field(default_factory=list)
+    mode: str = "CUSTOM"
 
     def __post_init__(self) -> None:
         self.status = TaskStatus(self.status)
@@ -156,6 +157,8 @@ class Task:
         _string(self.created_at, "Task.created_at")
         _strings(self.allowed_capabilities, "Task.allowed_capabilities")
         _strings(self.unknowns, "Task.unknowns")
+        if self.mode not in {"CUSTOM", "DISCOVERY", "DOWNLOAD_ONLY", "BUILD_EXISTING_PROJECT", "CREATE_NEW_APPLICATION", "PACKAGE_APPLICATION", "REGISTER_AI_CAPABILITY"}:
+            raise ValueError("Unsupported task mode")
         if not isinstance(self.steps, list) or any(not isinstance(step, TaskStep) for step in self.steps):
             raise ValueError("Task.steps must be a list of TaskStep values")
         if not isinstance(self.time, TimeMeasurements):
