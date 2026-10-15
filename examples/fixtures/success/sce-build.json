@@ -1,0 +1,11 @@
+{
+  "format": "sce.zipapp.v1",
+  "name": "hello-sce",
+  "entry_point": "main:main",
+  "required_modules": [],
+  "verification": {
+    "args": ["Ada"],
+    "expected_stdout": "Hello, Ada. Human time matters.\n",
+    "expected_exit": 0
+  }
+}

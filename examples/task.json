@@ -1,0 +1,17 @@
+{
+  "objective": "Build and functionally verify the controlled greeting fixture",
+  "allowed_capabilities": ["python.build"],
+  "steps": [
+    {
+      "id": "build-greeting",
+      "capability_id": "python.build",
+      "inputs": {
+        "source": "fixtures/success",
+        "output_root": "../.sce/example-task-output",
+        "trusted": true
+      },
+      "dependencies": [],
+      "max_attempts": 1
+    }
+  ]
+}

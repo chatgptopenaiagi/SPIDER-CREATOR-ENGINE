@@ -1,0 +1,1 @@
+"""SCE command-line interface."""

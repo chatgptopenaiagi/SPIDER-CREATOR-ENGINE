@@ -1,0 +1,31 @@
+# Copy to local.toml and edit. Paths are relative to THIS file, never silently
+# redirected. TASK_DATABASE is a file; every other storage setting is a directory.
+[storage]
+TASK_DATABASE = "../.sce/tasks.sqlite3"
+RESOURCE_LIBRARY = "../.sce/resource_library"
+DOWNLOAD_CACHE = "../.sce/download_cache"
+BUILD_WORKSPACES = "../.sce/build_workspaces"
+DEPENDENCY_ENVIRONMENTS = "../.sce/dependency_environments"
+ARTIFACT_STORAGE = "../.sce/artifacts"
+MODEL_STORAGE = "../.sce/models"
+MODEL_CACHE = "../.sce/model_cache"
+INDEX_STORAGE = "../.sce/index"
+TEMP_STORAGE = "../.sce/temp"
+LOG_STORAGE = "../.sce/logs"
+REPORT_STORAGE = "../.sce/reports"
+
+[resources]
+max_workers = 1
+build_parallelism = 1
+model_context_tokens = 8192
+max_temp_bytes = 1073741824
+execution_timeout_seconds = 30.0
+max_retries = 1
+# max_ram_bytes / max_gpu_bytes may be configured; they are advisory in v0.1.
+# No RAM or GPU offload topology is assumed.
+
+[ai]
+endpoint = "http://127.0.0.1:8080"
+model = "qwen3-coder-local"
+max_context_chars = 12000
+max_response_tokens = 512

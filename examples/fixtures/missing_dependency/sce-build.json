@@ -1,0 +1,7 @@
+{
+  "format": "sce.zipapp.v1",
+  "name": "missing-dependency",
+  "entry_point": "main:main",
+  "required_modules": ["sce_fixture_intentionally_absent_dependency_83f2a1"],
+  "verification": {"args": [], "expected_stdout": "not run\n", "expected_exit": 0}
+}

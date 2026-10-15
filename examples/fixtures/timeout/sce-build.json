@@ -1,0 +1,7 @@
+{
+  "format": "sce.zipapp.v1",
+  "name": "slow-fixture",
+  "entry_point": "main:main",
+  "required_modules": [],
+  "verification": {"args": [], "expected_stdout": "finished\n", "expected_exit": 0}
+}
